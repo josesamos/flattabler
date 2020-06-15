@@ -1,0 +1,24 @@
+Package: flattabler
+Title: Transformations to obtain tidy data from pivot tables
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Jose",
+           family = "Samos",
+           role = c("aut", "cre"),
+           email = "jsamos@ugr.es",
+           comment = c(ORCID = "0000-0002-4457-3439"))
+Description: Transformations that allow obtaining tidy data from 
+    reports in excel or csv format that contain data in the form of 
+    pivot tables. They can be defined for a single report and applied 
+    to a set of reports.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Imports: 
+    utils,
+    xlsx,
+    dplyr,
+    stringr,
+    tibble
