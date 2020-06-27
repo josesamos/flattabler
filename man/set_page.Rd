@@ -28,8 +28,8 @@ existing information is replaced by new information.
 Each pivot table implements a report. The pivot table page represents the
 context of that report. It is useful when we work with several pivot tables
 with the same structure: for example, the page can allow us to differentiate
-their origin, date, author, etc. This information is often included in the
-file name, sheet name, or a cell attached to the pivot table.
+their origin, date or author. This information is often included in the file
+name, sheet name, or a cell attached to the pivot table.
 }
 \examples{
 library(tidyr)

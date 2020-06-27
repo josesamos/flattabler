@@ -11,7 +11,7 @@ status](https://travis-ci.com/josesamos/flattabler.svg?branch=master)](https://t
 
 Pivot tables are generally used to present raw and summary data. They
 are generated from spreadsheets and, more recently, also from R
-([`pivottabler`](https://cran.r-project.org/web/packages/pivottabler/vignettes/v00-vignettes.html)).
+([`pivottabler`](https://CRAN.R-project.org/package=pivottabler)).
 
 If we generate pivot tables from our own data, `flattabler` package is
 not necessary. But, if we get data in pivot table format and need to

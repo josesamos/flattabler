@@ -22,7 +22,7 @@ library(flattabler)
 
 # Introduction
 
-Pivot tables are generally used to present raw and summary data. They are generated from spreadsheets and, more recently, also from R ([`pivottabler`](https://cran.r-project.org/web/packages/pivottabler/vignettes/v00-vignettes.html)).
+Pivot tables are generally used to present raw and summary data. They are generated from spreadsheets and, more recently, also from R ([`pivottabler`](https://CRAN.R-project.org/package=pivottabler)).
 
 If we generate pivot tables from our own data, `flattabler` package is not necessary. But, if we get data in pivot table format and need to represent or analyse it using another tool, this package can be very helpful: It can save us several hours of programming or manual transformation. 
 
@@ -164,7 +164,7 @@ pander::pandoc.table(t)
 
 To transform one or more pivot tables into a flat table, the workflow is as follows:
 
-1. __Pivot table import__: Import pivot tables into an object or list of objects. We start from data in text or Excel files, or previously imported data in a data frame, and generate pivot table objects from them.
+1. __Pivot table import__: Import pivot tables into an object or list of objects. We start from data in text files, or previously imported data in a data frame, and generate pivot table objects from them.
 
 1. __Pivot table definition__: Study the structure of the data and define the pivot table. If there are several homogeneous pivot tables, we will focus on one, the definition should be applicable to all of them. 
    * Define the characteristics of the pivot table: Number of rows and columns with labels, and page value (identifies the pivot table).
@@ -180,9 +180,9 @@ In this section, the operations available in `flattabler` package, classified ac
 ## Pivot table import
 
 The objective of import operations is to obtain external data that contains one or more pivot tables to transform them.
-Three formats have been considered: text file, Excel file, and data frame.
+Two formats have been considered: text file, and data frame.
 
-In the case of working with files, the situation of jointly treating all the files in a folder has also been considered. In the case of Excel, alternatively, all the sheets in a file can be treated together.
+In the case of working with files, the situation of jointly treating all the files in a folder has also been considered. 
 
 The S3 `pivot_table` class has been defined in the package. Transform operations are defined for objects of this class. Import operations can be classified into two groups: those that return a `pivot_table` object, and those that return a list of `pivot_table` objects. Objects in a list can be transformed together.
 
@@ -190,43 +190,25 @@ The S3 `pivot_table` class has been defined in the package. Transform operations
 
 * `pivot_table()`: Creates a `pivot_table` object from a data frame. Page information associated with the pivot table can be defined. Data frame data is converted to character type. 
 Example:
-```{r}
+```{r, eval = FALSE}
 df <- data.frame(unclass(pt_m4)[c(1:7)])
 pt <- pivot_table(df, page = "M4")
 ```
 
 
 * `read_text_file()`: Reads a text file and creates a `pivot_table` object. The file is expected to contain one or more pivot tables. Each line in the file corresponds to a row in a table; within each row, columns are defined by a separator character. The file name is included as part of the object attributes. Example:
-```{r}
+```{r, eval = FALSE}
 file <- system.file("extdata", "csv/set_v_ie.csv", package = "flattabler")
 pt_set_v_ie <- read_text_file(file)
-```
-
-* `read_excel_sheet()`:. Reads an Excel file sheet and creates a `pivot_table` object. The sheet is expected to contain one or more pivot tables. Each line in the sheet corresponds to a row in a table. The file and sheet names are included as part of the object attributes. Example: 
-```{r}
-file <- system.file("extdata", "excel/ine2871.xlsx", package = "flattabler")
-pt <- read_excel_sheet(file)
 ```
 
 
 ### Operations that return a list of objects
 
 * `read_text_folder()`: Reads all text files in a folder and creates a list of `pivot_table` objects, one from each file. Each file is expected to contain a pivot table. Each line in a file corresponds to a row in a table; within each row, columns are defined by a separator character. File name is included as part of each object attributes. Example: 
-```{r}
+```{r, eval = FALSE}
 folder <- system.file("extdata", "csvfolder", package = "flattabler")
 lpt <- read_text_folder(folder)
-```
-
-* `read_excel_folder()`: Reads one sheet from each of the Excel files in a folder and creates a list of `pivot_table` objects, one from each sheet or, which is the same in this case, one from each file. Each sheet is expected to contain a pivot table. Each line in a file corresponds to a row in a table. File and sheet names are included as part of each object attributes. Example: 
-```{r}
-folder <- system.file("extdata", "excelfolder", package = "flattabler")
-lpt <- read_excel_folder(folder)
-```
-
-* `read_excel_file()`: Reads sheets from an Excel file and creates a `pivot_table` object list, one from each sheet. Each sheet is expected to contain a pivot table. Each line in a sheet corresponds to a row in a table. The file and sheet names are included as part of each object attributes. Example: 
-```{r}
-file <- system.file("extdata", "excel/set_sheets.xlsx", package = "flattabler")
-lpt <- read_excel_file(file)
 ```
 
 
@@ -263,8 +245,8 @@ pt_set_v_ie %>% view_table_attr()
 
 ### Split a text table
 
-* `divide()`: Divides a table into tables separated by some empty row or column. Sometimes multiple pivot tables are placed in a text document or Excel sheet, imported as one text table. This operation recursively divides the initial table into tables separated by some empty row or column. Once a division has been made, it tries to divide each part of the result. An object is generated for each indivisible pivot table. Returns a list of `pivot_table` objects. Example: 
-```{r}
+* `divide()`: Divides a table into tables separated by some empty row or column. Sometimes multiple pivot tables are placed in a text document, imported as one text table. This operation recursively divides the initial table into tables separated by some empty row or column. Once a division has been made, it tries to divide each part of the result. An object is generated for each indivisible pivot table. Returns a list of `pivot_table` objects. Example: 
+```{r, eval = FALSE}
 list_pt_ie <- pt_set_v_ie %>% divide()
 ```
 

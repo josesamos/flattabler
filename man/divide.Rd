@@ -20,11 +20,11 @@ Divides a table into tables separated by some empty row or column. Returns a
 table list.
 }
 \details{
-Sometimes multiple pivot tables are placed in a text document or Excel sheet,
-imported as one text table. This operation recursively divides the initial
-table into tables separated by some empty row or column. Once a division has
-been made, it tries to divide each part of the result. An object is generated
-for each indivisible pivot table. Returns a list of pivot_table objects.
+Sometimes multiple pivot tables are placed in a text document, imported as
+one text table. This operation recursively divides the initial table into
+tables separated by some empty row or column. Once a division has been made,
+it tries to divide each part of the result. An object is generated for each
+indivisible pivot table. Returns a list of pivot_table objects.
 
 If individual tables have a header or footer, they should not be separated
 from the table by empty rows. If they were, objects would be generated from

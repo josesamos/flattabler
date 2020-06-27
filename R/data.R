@@ -16,7 +16,7 @@
 #'
 #' @format A pivot_table object.
 #' @source
-#'   \url{https://cran.r-project.org/web/packages/pivottabler/vignettes/v00-vignettes.html}
+#'   \url{https://CRAN.R-project.org/package=pivottabler}
 #'
 "pt_pivottabler"
 

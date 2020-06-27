@@ -6,8 +6,8 @@
 #' Each pivot table implements a report. The pivot table page represents the
 #' context of that report. It is useful when we work with several pivot tables
 #' with the same structure: for example, the page can allow us to differentiate
-#' their origin, date, author, etc. This information is often included in the
-#' file name, sheet name, or cells attached to the pivot table.
+#' their origin, date or author. This information is often included in the file
+#' name, sheet name, or cells attached to the pivot table.
 #'
 #' @param pt A pivot_table object.
 #'
@@ -39,8 +39,8 @@ get_page.pivot_table <- function(pt) {
 #' Each pivot table implements a report. The pivot table page represents the
 #' context of that report. It is useful when we work with several pivot tables
 #' with the same structure: for example, the page can allow us to differentiate
-#' their origin, date, author, etc. This information is often included in the
-#' file name, sheet name, or a cell attached to the pivot table.
+#' their origin, date or author. This information is often included in the file
+#' name, sheet name, or a cell attached to the pivot table.
 #'
 #' @param pt A pivot_table object.
 #' @param row,col A cell (row and column number), page information included in
