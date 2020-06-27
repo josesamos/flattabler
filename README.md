@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/josesamos/flattabler.svg?branch=master)](https://travis-ci.com/josesamos/flattabler)
 <!-- badges: end -->
 
 Pivot tables are generally used to present raw and summary data. They
