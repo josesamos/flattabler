@@ -2,16 +2,35 @@
 % Please edit documentation in R/read_text_folder.R
 \name{read_text_folder}
 \alias{read_text_folder}
-\title{Title}
+\title{Import all text files in a folder}
 \usage{
-read_text_folder(folder, sep = ";")
+read_text_folder(folder, sep = ";", encoding = "UTF-8")
 }
 \arguments{
-\item{sep}{}
+\item{folder}{A string, folder name.}
+
+\item{sep}{Column separator character.}
+
+\item{encoding}{A string, encoding to be assumed for input strings.}
 }
 \value{
-
+A pivot_table object list.
 }
 \description{
-Title
+Reads all text files in a folder and creates a list of pivot_table objects,
+one from each file. Each file is expected to contain a pivot table. Each line
+in a file corresponds to a row in a table; within each row, columns are
+defined by a separator character. File name is included as part of each
+object attributes.
+}
+\details{
+When multiple files are handled, the file name may contain information
+associated with the pivot table, it could be the table page information. In
+order not to lose this information, it is always stored in each pivot_table
+object.
+}
+\examples{
+folder <- system.file("extdata", "csvfolder", package = "flattabler")
+lpt <- read_text_folder(folder)
+
 }

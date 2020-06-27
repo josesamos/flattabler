@@ -3,23 +3,36 @@
 \name{remove_cols}
 \alias{remove_cols}
 \alias{remove_cols.pivot_table}
-\title{Title}
+\title{Remove columns from a pivot table}
 \usage{
 remove_cols(pt, c)
 
 \method{remove_cols}{pivot_table}(pt, c)
 }
 \arguments{
-\item{c}{}
+\item{pt}{A pivot_table object.}
+
+\item{c}{A vector of numbers, column numbers.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+Remove the columns whose numbers are indicated from the pivot table
+represented by the object.
+}
+\details{
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data.
 
-Title
+All columns not belonging to the pivot table must be removed.
+}
+\examples{
+library(tidyr)
+
+pt <- pt_m4 \%>\% remove_cols(7)
+
+pt <- pt_m4 \%>\% remove_cols(c(6,7))
+
 }
 \keyword{internal}

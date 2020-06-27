@@ -1,21 +1,22 @@
-
-
-#' Title
-#' low-level constructor that efficiently creates new objects with the correct structure
-#' @param df
-#' @param page
-#' @param n_col_labels
-#' @param n_row_labels
+#' pivot_table S3 class
 #'
-#' @return
-#' @export
+#' Internal low-level constructor that creates new objects with the correct
+#' structure.
 #'
-#' @examples
+#' @param df A data frame, contains one or more pivot tables.
+#' @param page A string, additional information associated with the pivot table.
+#' @param n_col_labels A number, number of columns containing pivot table labels.
+#' @param n_row_labels A number, number of rows containing pivot table labels.
+#' @param n_extract A number, number of new columns added to the table.
+#'
+#' @return A pivot_table object.
+#'
 new_pivot_table <-
   function(df = data.frame(),
            page = vector("character"),
            n_col_labels = 0,
-           n_row_labels = 0) {
+           n_row_labels = 0,
+           n_extract = 0) {
     # Check the type of the base object and the types of each attribute
     stopifnot(is.data.frame(df))
     stopifnot(is.vector(page))
@@ -25,43 +26,35 @@ new_pivot_table <-
       class = unique(append(class(df), "pivot_table")),
       page = page,
       n_col_labels = n_col_labels,
-      n_row_labels = n_row_labels
+      n_row_labels = n_row_labels,
+      n_extract = n_extract
     )
   }
 
-# validator that performs more computationally expensive checks to ensure that the object has correct values
-# You don’t need a validator for very simple classes
-validate_pivot_table <- function(dt) {
-  for (n in seq_along(colnames(dt))) {
-    if (class(dt[, n]) != "character") {
-      stop("All columns of the data frame must be of type character",
-           call. = FALSE)
-    }
-  }
-  dt
-}
 
-#' Title
-#' helper that provides a convenient way for others to create objects of your class
-#' you can skip the helper if the class is for internal use only
-#' If you expect users to also create objects, you should create a friendly helper function
-
-#' @param df
-#' @param page
-#' @param n_col_labels
-#' @param n_row_labels
+#' pivot_table S3 class
 #'
-#' @return
+#' Creates a pivot_table object from a data frame. Additional information
+#' associated with the pivot table can be indicated. Data frame data is
+#' converted to character type.
+
+#' @inheritParams new_pivot_table
+#'
+#' @return A pivot_table object.
 #' @export
 #'
 #' @examples
+#' df <- data.frame(unclass(pt_m4)[c(1:7)])
+#' pt <- pivot_table(df)
+#'
+#' pt <- pivot_table(df, page = "M4")
+#'
 pivot_table <- function(df,
-                        page = vector("character"),
-                        n_col_labels,
-                        n_row_labels) {
+                        page = vector("character")) {
   df <- data.frame(lapply(df, as.character), stringsAsFactors = FALSE)
   page <- as.character(page)
   new_pivot_table(df, page,
-                  n_col_labels,
-                  n_row_labels)
+                  n_col_labels = 0,
+                  n_row_labels = 0,
+                  n_extract = 0)
 }

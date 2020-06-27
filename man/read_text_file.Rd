@@ -2,24 +2,34 @@
 % Please edit documentation in R/read_text_file.R
 \name{read_text_file}
 \alias{read_text_file}
-\title{Import text data file}
+\title{Import text file}
 \usage{
-read_text_file(file, sep = ";")
+read_text_file(file, sep = ";", encoding = "UTF-8")
 }
 \arguments{
-\item{file}{UTF-8 encoded text file whose data is to be read. Each line in
-the file corresponds to a row in a table.}
+\item{file}{A string, name of a text file.}
 
-\item{sep}{Column separator character. Within each row, columns are separated
-by this character.}
+\item{sep}{Column separator character.}
+
+\item{encoding}{A string, encoding to be assumed for input strings.}
 }
 \value{
-A two elements list of metadata and character data frame containing the data in the file.
+A pivot_table object.
 }
 \description{
-Reads a UTF-8 text file with column separators and creates a list of metadata and a data frame with data from
-it.
+Reads a text file and creates a pivot_table object. The file is expected to
+contain one or more pivot tables. Each line in the file corresponds to a row
+in a table; within each row, columns are defined by a separator character.
+The file name is included as part of the object attributes.
 }
-\seealso{
-\code{\link[utils]{View}}
+\details{
+When multiple files are handled, the file name may contain information
+associated with the pivot table, it could be the table page information. In
+order not to lose this information, it is always stored in the pivot_table
+object.
+}
+\examples{
+file <- system.file("extdata", "csv/ine2871.csv", package = "flattabler")
+pt <- read_text_file(file)
+
 }

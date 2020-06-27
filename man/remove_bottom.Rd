@@ -3,23 +3,39 @@
 \name{remove_bottom}
 \alias{remove_bottom}
 \alias{remove_bottom.pivot_table}
-\title{Title}
+\title{Remove bottom rows from a pivot table}
 \usage{
 remove_bottom(pt, n)
 
 \method{remove_bottom}{pivot_table}(pt, n)
 }
 \arguments{
+\item{pt}{A pivot_table object.}
+
 \item{n}{}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+Remove bottom rows from the pivot table represented by the object.
+}
+\details{
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data.
 
-Title
+All rows not belonging to the pivot table must be removed. It is common to
+find rows with footer information, which must be removed.
+
+This function is very useful because it is not necessary to know the number
+of rows in the table.
+}
+\examples{
+library(tidyr)
+
+pt <- pt_m4 \%>\% remove_bottom(1)
+
+pt <- pt_ine2871 \%>\% remove_bottom(9)
+
 }
 \keyword{internal}

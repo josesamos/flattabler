@@ -1,0 +1,113 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# flattabler
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Pivot tables are generally used to present raw and summary data. They are generated from spreadsheets and, more recently, also from R ([`pivottabler`](https://cran.r-project.org/web/packages/pivottabler/vignettes/v00-vignettes.html)).
+
+If we generate pivot tables from our own data, `flattabler` package is not necessary. But, if we get data in pivot table format and need to represent or analyse it using another tool, this package can be very helpful: It can save us several hours of programming or manual transformation.
+
+`flattabler` package offers a set of operations that allow us to transform one or more pivot tables into a flat table. 
+
+
+## Installation
+
+You can install the development version with:
+
+```{r, eval = FALSE}
+# install.packages("flattabler")
+devtools::install_github("josesamos/flattabler")
+```
+
+
+## Example
+
+A pivot table contains label rows and columns, and an array of values, usually numeric data. It can contain additional information, such as table header or footer.
+
+```{r setup, echo = FALSE}
+library(flattabler)
+```
+
+```{r, results = "asis", echo = FALSE}
+pt <- list_pt_ie[[1]]
+pander::pandoc.table(pt, split.table = Inf)
+```
+
+
+The transformation to obtain a flat table from the pivot table using `flattabler` package is as follows:
+
+```{r, eval = FALSE}
+library(flattabler)
+library(tidyr)
+
+ft <- pt %>%
+  set_page(1, 1) %>%
+  define_labels(n_col = 2, n_row = 2) %>%
+  remove_top(1) %>%
+  fill_labels() %>%
+  remove_agg() %>%
+  fill_values() %>%
+  remove_k() %>%
+  replace_dec() %>%
+  unpivot()
+```
+
+
+The result obtained is as follows:
+
+```{r, results = "asis", echo = FALSE}
+library(tidyr)
+
+ft <- pt %>%
+  set_page(1, 1) %>%
+  define_labels(n_col = 2, n_row = 2) %>%
+  remove_top(1) %>%
+  fill_labels() %>%
+  remove_agg() %>%
+  fill_values() %>%
+  remove_k() %>%
+  replace_dec() %>%
+  unpivot()
+
+pander::pandoc.table(ft)
+```
+
+The table above is a flat table whose data has been obtained from the pivot table through `flattabler`. It only contains raw data and the labels that characterize it. An additional label has been added with the value that identifies the pivot table, the pivot table _page_. `NA` values have not been included. 
+
+Once we have defined the necessary transformations for a pivot table, we can apply them to any other with the same structure. Candidate tables can have different number of rows or columns, depending on the number of labels, but they must have the same number of rows and columns of labels, and the same number of header or footer rows, so that the transformations are the same for each table.
+
+To easily perform this operation, we define a function `f` from the transformations, as shown below.
+
+```{r, eval = FALSE}
+f <- function(pt) {
+  pt %>%
+    set_page(1, 1) %>%
+    define_labels(n_col = 2, n_row = 2) %>%
+    remove_top(1) %>%
+    fill_labels() %>%
+    remove_agg() %>%
+    fill_values() %>%
+    remove_k() %>%
+    replace_dec() %>%
+    unpivot()
+}
+
+ft <- flatten_table_list(list_pt_ie, f)
+```
+
+In this way we can generate a flat table from a list of pivot tables. The list of pivot tables is generated using package functions to import them from various data sources.

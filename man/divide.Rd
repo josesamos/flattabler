@@ -3,23 +3,45 @@
 \name{divide}
 \alias{divide}
 \alias{divide.pivot_table}
-\title{Title}
+\title{Divide table}
 \usage{
 divide(pt)
 
 \method{divide}{pivot_table}(pt)
 }
 \arguments{
-\item{pt}{}
+\item{pt}{A pivot_table object.}
 }
 \value{
-
-
-
+A pivot_table object list.
 }
 \description{
-Title
+Divides a table into tables separated by some empty row or column. Returns a
+table list.
+}
+\details{
+Sometimes multiple pivot tables are placed in a text document or Excel sheet,
+imported as one text table. This operation recursively divides the initial
+table into tables separated by some empty row or column. Once a division has
+been made, it tries to divide each part of the result. An object is generated
+for each indivisible pivot table. Returns a list of pivot_table objects.
 
-Title
+If individual tables have a header or footer, they should not be separated
+from the table by empty rows. If they were, objects would be generated from
+them that must later be removed from the list of objects in the result.
+
+The operation can be applied to tables located horizontally, vertically or in
+a grid on the initial table. The only requirement to be able to divide it is
+that there is some empty row or column between them.
+}
+\examples{
+library(tidyr)
+
+lpt <- pt_set_h \%>\% divide()
+
+lpt <- pt_set_v \%>\% divide()
+
+lpt <- pt_set_h_v \%>\% divide()
+
 }
 \keyword{internal}

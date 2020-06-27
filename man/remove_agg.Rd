@@ -3,23 +3,48 @@
 \name{remove_agg}
 \alias{remove_agg}
 \alias{remove_agg.pivot_table}
-\title{Title}
+\title{Remove rows and columns with aggregated data}
 \usage{
 remove_agg(pt, indicator)
 
 \method{remove_agg}{pivot_table}(pt, indicator = "")
 }
 \arguments{
-\item{indicator}{}
+\item{pt}{A pivot_table object.}
+
+\item{indicator}{A string, row or column label for aggregates.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+Removes pivot table rows and columns that contain aggregated data.
+}
+\details{
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data.
 
-Title
+Aggregated data is recognized because the label of the row or column closest
+to the array of values is empty or has a special value as an indicator.
+
+To correctly carry out this operation, the number of rows and columns that
+contain labels must be defined, and the table must only contain the pivot
+table rows and columns.
+}
+\examples{
+library(tidyr)
+
+pt <-
+  pt_m4 \%>\%
+  remove_top(1) \%>\%
+  define_labels(n_col = 2, n_row = 2) \%>\%
+  remove_agg()
+
+pt <-
+  pt_pivottabler \%>\%
+  define_labels(n_col = 2, n_row = 2) \%>\%
+  remove_agg("Total") \%>\%
+  remove_agg()
+
 }
 \keyword{internal}

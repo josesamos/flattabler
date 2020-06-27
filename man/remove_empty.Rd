@@ -3,23 +3,35 @@
 \name{remove_empty}
 \alias{remove_empty}
 \alias{remove_empty.pivot_table}
-\title{Title}
+\title{Remove empty rows and columns from a pivot table}
 \usage{
 remove_empty(pt)
 
 \method{remove_empty}{pivot_table}(pt)
 }
 \arguments{
-\item{pt}{}
+\item{pt}{A pivot_table object.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+Remove rows and columns without data from the pivot table represented by the
+object.
+}
+\details{
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data.
 
-Title
+All rows and columns not belonging to the pivot table must be removed,
+including those without data.
+}
+\examples{
+library(tidyr)
+
+pt <- pt_m4 \%>\% remove_empty()
+
+pt <- pt_ine2871 \%>\% remove_empty()
+
 }
 \keyword{internal}

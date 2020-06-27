@@ -3,23 +3,36 @@
 \name{remove_top}
 \alias{remove_top}
 \alias{remove_top.pivot_table}
-\title{Title}
+\title{Remove top rows from a pivot table}
 \usage{
 remove_top(pt, n)
 
 \method{remove_top}{pivot_table}(pt, n)
 }
 \arguments{
-\item{n}{}
+\item{pt}{A pivot_table object.}
+
+\item{n}{A number, number of rows to remove.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+Remove top rows from the pivot table represented by the object.
+}
+\details{
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data.
 
-Title
+All rows not belonging to the pivot table must be removed. It is common to
+find rows with header information, which must be removed.
+}
+\examples{
+library(tidyr)
+
+pt <- pt_m4 \%>\% remove_top(1)
+
+pt <- pt_ine2871 \%>\% remove_top(6)
+
 }
 \keyword{internal}

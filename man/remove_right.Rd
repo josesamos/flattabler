@@ -3,23 +3,36 @@
 \name{remove_right}
 \alias{remove_right}
 \alias{remove_right.pivot_table}
-\title{Title}
+\title{Remove right columns from a pivot table}
 \usage{
 remove_right(pt, n)
 
 \method{remove_right}{pivot_table}(pt, n)
 }
 \arguments{
-\item{n}{}
+\item{pt}{A pivot_table object.}
+
+\item{n}{A number, number of columns to remove.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+Remove right columns from the pivot table represented by the object.
+}
+\details{
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data.
 
-Title
+All columns not belonging to the pivot table must be removed.
+
+This function is very useful because it is not necessary to know the number
+of columns in the table.
+}
+\examples{
+library(tidyr)
+
+pt <- pt_m4 \%>\% remove_right(2)
+
 }
 \keyword{internal}

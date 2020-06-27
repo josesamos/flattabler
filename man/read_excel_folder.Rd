@@ -2,16 +2,45 @@
 % Please edit documentation in R/read_excel_folder.R
 \name{read_excel_folder}
 \alias{read_excel_folder}
-\title{Title}
+\title{Import one sheet from each Excel file in a folder}
 \usage{
-read_excel_folder(folder, sheetIndex = 1, sheetName = NULL)
+read_excel_folder(
+  folder,
+  sheetIndex = 1,
+  sheetName = NULL,
+  encoding = "UTF-8",
+  password = NULL
+)
 }
 \arguments{
-\item{sheetName}{}
+\item{folder}{A string, folder name.}
+
+\item{sheetIndex}{A number, sheet index in the workbook.}
+
+\item{sheetName}{A string, sheet name.}
+
+\item{encoding}{A string, encoding to be assumed for input strings.}
+
+\item{password}{A string with the password (if required).}
 }
 \value{
-
+A pivot_table object list.
 }
 \description{
-Title
+Reads one sheet from each of the Excel files in a folder and creates a list
+of pivot_table objects, one from each sheet or, which is the same in this
+case, one from each file. Each sheet is expected to contain a pivot table.
+Each line in a file corresponds to a row in a table. File and sheet names are
+included as part of each object attributes.
+}
+\details{
+When multiple files or sheets are handled, the file and/or sheet names may
+contain information associated with the pivot table, they could be the table
+page information. In order not to lose this information, they are always
+stored in each pivot_table object.
+}
+\examples{
+folder <- system.file("extdata", "excelfolder", package = "flattabler")
+# lpt <- read_excel_folder(folder)
+
 }

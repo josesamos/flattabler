@@ -1,0 +1,14 @@
+citHeader("To cite flattabler in publications use:")
+
+citEntry(entry = "Manual",
+  title        = "{flattabler}: Obtaining a Flat Table from Pivot Tables in R",
+  author       = personList(as.person("Jose Samos")),
+  year         = "2020",
+  note         = "R package version 0.0.0.9000",
+  url          = "https://github.com/josesamos/flattabler",
+
+  textVersion  =
+  paste("Jose Samos (2020).",
+        "flattabler: Obtaining a Flat Table from Pivot Tables in R.",
+        "https://github.com/josesamos/flattabler.")
+)

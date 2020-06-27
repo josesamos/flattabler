@@ -3,23 +3,31 @@
 \name{define_labels}
 \alias{define_labels}
 \alias{define_labels.pivot_table}
-\title{Title}
+\title{Define the quantity of rows and columns that contain labels}
 \usage{
 define_labels(pt, n_col, n_row)
 
 \method{define_labels}{pivot_table}(pt, n_col, n_row)
 }
 \arguments{
-\item{n_row}{}
+\item{pt}{A pivot_table object.}
+
+\item{n_col}{A number, quantity of columns containing pivot table labels.}
+
+\item{n_row}{A number, quantity of rows containing pivot table labels.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data. This function defines the quantity of rows and
+columns that contain labels.
+}
+\examples{
+library(tidyr)
 
-Title
+pt <- pt_m4 \%>\% define_labels(n_col = 2, n_row = 2)
+
 }
 \keyword{internal}

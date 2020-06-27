@@ -1,29 +1,34 @@
-
-
-#' Import text data file
+#' Import text file
 #'
-#' Reads a UTF-8 text file with column separators and creates a list of metadata and a data frame with data from
-#' it.
+#' Reads a text file and creates a pivot_table object. The file is expected to
+#' contain one or more pivot tables. Each line in the file corresponds to a row
+#' in a table; within each row, columns are defined by a separator character.
+#' The file name is included as part of the object attributes.
 #'
-#' @param file UTF-8 encoded text file whose data is to be read. Each line in
-#'   the file corresponds to a row in a table.
-#' @param sep Column separator character. Within each row, columns are separated
-#'   by this character.
+#' When multiple files are handled, the file name may contain information
+#' associated with the pivot table, it could be the table page information. In
+#' order not to lose this information, it is always stored in the pivot_table
+#' object.
 #'
-#' @return A two elements list of metadata and character data frame containing the data in the file.
+#' @param file A string, name of a text file.
+#' @param sep Column separator character.
+#' @param encoding A string, encoding to be assumed for input strings.
+#'
+#' @return A pivot_table object.
 #' @export
 #'
-#' @seealso \code{\link[utils]{View}}
-#'
 #' @examples
-read_text_file <- function(file, sep = ';') {
+#' file <- system.file("extdata", "csv/ine2871.csv", package = "flattabler")
+#' pt <- read_text_file(file)
+#'
+read_text_file <- function(file, sep = ';', encoding = "UTF-8") {
   new_pivot_table(
     utils::read.table(
       file,
       sep = sep,
       header = FALSE,
       stringsAsFactors = FALSE,
-      encoding = "UTF-8",
+      encoding = encoding,
       colClasses = c("character")
     ),
     file

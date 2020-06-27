@@ -2,23 +2,31 @@
 % Please edit documentation in R/pivot_table.R
 \name{new_pivot_table}
 \alias{new_pivot_table}
-\title{Title
-low-level constructor that efficiently creates new objects with the correct structure}
+\title{pivot_table S3 class}
 \usage{
 new_pivot_table(
   df = data.frame(),
   page = vector("character"),
   n_col_labels = 0,
-  n_row_labels = 0
+  n_row_labels = 0,
+  n_extract = 0
 )
 }
 \arguments{
-\item{n_row_labels}{}
+\item{df}{A data frame, contains one or more pivot tables.}
+
+\item{page}{A string, additional information associated with the pivot table.}
+
+\item{n_col_labels}{A number, number of columns containing pivot table labels.}
+
+\item{n_row_labels}{A number, number of rows containing pivot table labels.}
+
+\item{n_extract}{A number, number of new columns added to the table.}
 }
 \value{
-
+A pivot_table object.
 }
 \description{
-Title
-low-level constructor that efficiently creates new objects with the correct structure
+Internal low-level constructor that creates new objects with the correct
+structure.
 }

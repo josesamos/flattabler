@@ -3,23 +3,37 @@
 \name{remove_rows}
 \alias{remove_rows}
 \alias{remove_rows.pivot_table}
-\title{Title}
+\title{Remove rows from a pivot table}
 \usage{
 remove_rows(pt, r)
 
 \method{remove_rows}{pivot_table}(pt, r)
 }
 \arguments{
-\item{r}{}
+\item{pt}{A pivot_table object.}
+
+\item{r}{A vector of numbers, row numbers.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+Remove the rows whose numbers are indicated from the pivot table represented
+by the object.
+}
+\details{
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data.
 
-Title
+All rows not belonging to the pivot table must be removed. It is common to
+find rows with header or footer information, which must be removed.
+}
+\examples{
+library(tidyr)
+
+pt <- pt_m4 \%>\% remove_rows(1)
+
+pt <- pt_m4 \%>\% remove_rows(c(1, 8, 14, 19, 25, 26))
+
 }
 \keyword{internal}

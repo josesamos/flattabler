@@ -2,22 +2,27 @@
 % Please edit documentation in R/pivot_table.R
 \name{pivot_table}
 \alias{pivot_table}
-\title{Title
-helper that provides a convenient way for others to create objects of your class
-you can skip the helper if the class is for internal use only
-If you expect users to also create objects, you should create a friendly helper function}
+\title{pivot_table S3 class}
 \usage{
-pivot_table(df, page = vector("character"), n_col_labels, n_row_labels)
+pivot_table(df, page = vector("character"))
 }
 \arguments{
-\item{n_row_labels}{}
+\item{df}{A data frame, contains one or more pivot tables.}
+
+\item{page}{A string, additional information associated with the pivot table.}
 }
 \value{
-
+A pivot_table object.
 }
 \description{
-Title
-helper that provides a convenient way for others to create objects of your class
-you can skip the helper if the class is for internal use only
-If you expect users to also create objects, you should create a friendly helper function
+Creates a pivot_table object from a data frame. Additional information
+associated with the pivot table can be indicated. Data frame data is
+converted to character type.
+}
+\examples{
+df <- data.frame(unclass(pt_m4)[c(1:7)])
+pt <- pivot_table(df)
+
+pt <- pivot_table(df, page = "M4")
+
 }

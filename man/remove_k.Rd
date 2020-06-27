@@ -3,23 +3,46 @@
 \name{remove_k}
 \alias{remove_k}
 \alias{remove_k.pivot_table}
-\title{Title}
+\title{Remove thousands separator}
 \usage{
 remove_k(pt, sep = ".")
 
 \method{remove_k}{pivot_table}(pt, sep = ".")
 }
 \arguments{
-\item{sep}{}
+\item{pt}{A pivot_table object.}
+
+\item{sep}{A character, thousands separator to remove.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data. Values, even though they are numbers, are
+represented as text and sometimes include a thousands separator that can be
+removed using this function.
+}
+\details{
+To correctly carry out this operation, the number of rows and columns that
+contain labels must be defined, and the table must only contain the pivot
+table rows and columns.
+}
+\examples{
+library(tidyr)
 
-Title
+pt <-
+  pt_m4 \%>\%
+  remove_top(1) \%>\%
+  define_labels(n_col = 2, n_row = 2) \%>\%
+  remove_k()
+
+pt <-
+  pt_ine2871 \%>\%
+  remove_top(6) \%>\%
+  remove_bottom(9) \%>\%
+  define_labels(n_col = 1, n_row = 2) \%>\%
+  remove_k()
+
 }
 \keyword{internal}

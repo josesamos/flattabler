@@ -3,23 +3,33 @@
 \name{remove_left}
 \alias{remove_left}
 \alias{remove_left.pivot_table}
-\title{Title}
+\title{Remove left columns from a pivot table}
 \usage{
 remove_left(pt, n)
 
 \method{remove_left}{pivot_table}(pt, n)
 }
 \arguments{
-\item{n}{}
+\item{pt}{A pivot_table object.}
+
+\item{n}{A number, number of columns to remove.}
 }
 \value{
-
-
-
+A pivot_table object.
 }
 \description{
-Title
+Remove left columns from the pivot table represented by the object.
+}
+\details{
+A pivot table should only contain label rows and columns, and an array of
+values, usually numeric data.
 
-Title
+All columns not belonging to the pivot table must be removed.
+}
+\examples{
+library(tidyr)
+
+pt <- pt_m4 \%>\% remove_left(2)
+
 }
 \keyword{internal}
