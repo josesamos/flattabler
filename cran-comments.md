@@ -16,6 +16,6 @@ This is a resubmission. In this version I have:
 
 * Changed mis-spelled word in DESCRIPTION.
 
-* CRAN URL in canonical form.
+* CRAN URL is in canonical form.
 
 * Vignettes no longer need JAVA_HOME.
