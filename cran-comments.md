@@ -15,3 +15,7 @@ This is a resubmission. In this version I have:
 * Removed dependency from package xlsx.
 
 * Changed mis-spelled word in DESCRIPTION.
+
+* CRAN URL in canonical form.
+
+* Vignettes no longer need JAVA_HOME.
