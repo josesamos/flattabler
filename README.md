@@ -31,6 +31,13 @@ You can install the development version with:
 devtools::install_github("josesamos/flattabler")
 ```
 
+You can install the released version of `flattabler` from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("flattabler")
+```
+
 ## Example
 
 A pivot table contains label rows and columns, and an array of values,
