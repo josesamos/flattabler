@@ -1,6 +1,6 @@
 #' Unpivot a pivot table
 #'
-#' Transforms a pivot table into a flat table (implemented by a tibble). An
+#' Transforms a pivot table into a flat table (implemented by a `tibble`). An
 #' additional column with page information can be included. NA values can be
 #' excluded from the array of values.
 #'
@@ -17,7 +17,7 @@
 #' @param na.rm A boolean, indicates whether NA values from the array of values
 #'   are removed or not.
 #'
-#' @return A tibble.
+#' @return A `tibble`.
 #'
 #' @family flat table generation functions
 #' @seealso
