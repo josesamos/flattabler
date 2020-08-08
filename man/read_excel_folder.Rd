@@ -24,11 +24,11 @@ read_excel_folder(
 \item{password}{A string with the password (if required).}
 }
 \value{
-A pivot_table object list.
+A \code{pivot_table} object list.
 }
 \description{
 Reads one sheet from each of the Excel files in a folder and creates a list
-of pivot_table objects, one from each sheet or, which is the same in this
+of \code{pivot_table} objects, one from each sheet or, which is the same in this
 case, one from each file. Each sheet is expected to contain a pivot table.
 Each line in a file corresponds to a row in a table. File and sheet names are
 included as part of each object attributes.
@@ -37,10 +37,21 @@ included as part of each object attributes.
 When multiple files or sheets are handled, the file and/or sheet names may
 contain information associated with the pivot table, they could be the table
 page information. In order not to lose this information, they are always
-stored in each pivot_table object.
+stored in each \code{pivot_table} object.
 }
 \examples{
 folder <- system.file("extdata", "excelfolder", package = "flattabler")
 # lpt <- read_excel_folder(folder)
 
 }
+\seealso{
+
+
+Other import functions: 
+\code{\link{pivot_table}()},
+\code{\link{read_excel_file}()},
+\code{\link{read_excel_sheet}()},
+\code{\link{read_text_file}()},
+\code{\link{read_text_folder}()}
+}
+\concept{import functions}

@@ -11,12 +11,13 @@
 #'
 #' The only decimal separators considered are "." and ",".
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param sep A character, new decimal separator to use.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table transformation functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -27,13 +28,12 @@
 #'   define_labels(n_col = 2, n_row = 2) %>%
 #'   replace_dec()
 #'
+#' @export
 replace_dec <- function(pt, sep = ".") {
-  UseMethod("replace_dec", pt)
+  UseMethod("replace_dec")
 }
 
 #' @rdname replace_dec
-#' @export replace_dec.pivot_table
-#' @method replace_dec pivot_table
 #' @export
 replace_dec.pivot_table <-
   function(pt, sep = ".") {

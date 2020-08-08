@@ -3,14 +3,14 @@
 \name{get_page}
 \alias{get_page}
 \alias{get_page.pivot_table}
-\title{Get the page information of a pivot_table object}
+\title{Get the page information of a pivot table}
 \usage{
 get_page(pt)
 
 \method{get_page}{pivot_table}(pt)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 }
 \value{
 A vector of strings.
@@ -30,4 +30,20 @@ name, sheet name, or cells attached to the pivot table.
 page <- get_page(pt_m4)
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{define_labels}()},
+\code{\link{divide}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_empty}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{remove_top}()},
+\code{\link{set_page}()},
+\code{\link{view_table_attr}()}
+}
+\concept{pivot table definition functions}

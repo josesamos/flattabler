@@ -10,12 +10,12 @@ remove_rows(pt, r)
 \method{remove_rows}{pivot_table}(pt, r)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 
 \item{r}{A vector of numbers, row numbers.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Remove the rows whose numbers are indicated from the pivot table represented
@@ -36,4 +36,20 @@ pt <- pt_m4 \%>\% remove_rows(1)
 pt <- pt_m4 \%>\% remove_rows(c(1, 8, 14, 19, 25, 26))
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{define_labels}()},
+\code{\link{divide}()},
+\code{\link{get_page}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_empty}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_top}()},
+\code{\link{set_page}()},
+\code{\link{view_table_attr}()}
+}
+\concept{pivot table definition functions}

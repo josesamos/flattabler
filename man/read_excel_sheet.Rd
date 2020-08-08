@@ -24,10 +24,10 @@ read_excel_sheet(
 \item{password}{A string with the password (if required).}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
-Reads an Excel file sheet and creates a pivot_table object. The sheet is
+Reads an Excel file sheet and creates a \code{pivot_table} object. The sheet is
 expected to contain one or more pivot tables. Each line in the sheet
 corresponds to a row in a table. The file and sheet names are included as
 part of the object attributes.
@@ -36,7 +36,7 @@ part of the object attributes.
 When multiple files or sheets are handled, the file and/or sheet names may
 contain information associated with the pivot table, they could be the table
 page information. In order not to lose this information, they are always
-stored in the pivot_table object.
+stored in the \code{pivot_table} object.
 }
 \examples{
 file <- system.file("extdata", "excel/ine2871.xlsx", package = "flattabler")
@@ -45,3 +45,14 @@ file <- system.file("extdata", "excel/ine2871.xlsx", package = "flattabler")
 # pt <- read_excel_sheet(file, sheetName = "tabla-2871")
 
 }
+\seealso{
+
+
+Other import functions: 
+\code{\link{pivot_table}()},
+\code{\link{read_excel_file}()},
+\code{\link{read_excel_folder}()},
+\code{\link{read_text_file}()},
+\code{\link{read_text_folder}()}
+}
+\concept{import functions}

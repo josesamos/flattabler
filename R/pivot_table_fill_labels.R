@@ -6,6 +6,7 @@
 #'
 #' @return A vector.
 #'
+#' @keywords internal
 fill_vector <- function(v) {
   v <- dplyr::na_if(stringr::str_trim(v), "")
   last <- ""
@@ -32,11 +33,12 @@ fill_vector <- function(v) {
 #' contain labels must be defined, and the table must only contain the pivot
 #' table rows and columns.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table transformation functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -54,13 +56,12 @@ fill_vector <- function(v) {
 #'   define_labels(n_col = 1, n_row = 2) %>%
 #'   fill_labels()
 #'
+#' @export
 fill_labels <- function(pt) {
-  UseMethod("fill_labels", pt)
+  UseMethod("fill_labels")
 }
 
 #' @rdname fill_labels
-#' @export fill_labels.pivot_table
-#' @method fill_labels pivot_table
 #' @export
 fill_labels.pivot_table <- function(pt) {
   if (attr(pt, "n_col_labels") > 1) {

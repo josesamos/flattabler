@@ -9,8 +9,9 @@
 #' @param n_row_labels A number, number of rows containing pivot table labels.
 #' @param n_extract A number, number of new columns added to the table.
 #'
-#' @return A pivot_table object.
+#' @return A `pivot_table` object.
 #'
+#' @keywords internal
 new_pivot_table <-
   function(df = data.frame(),
            page = vector("character"),
@@ -34,21 +35,25 @@ new_pivot_table <-
 
 #' pivot_table S3 class
 #'
-#' Creates a pivot_table object from a data frame. Additional information
+#' Creates a `pivot_table` object from a data frame. Additional information
 #' associated with the pivot table can be indicated. Data frame data is
 #' converted to character type.
 
 #' @inheritParams new_pivot_table
 #'
-#' @return A pivot_table object.
-#' @export
+#' @return A `pivot_table` object.
+#'
+#' @family import functions
+#' @seealso
 #'
 #' @examples
+#'
 #' df <- data.frame(unclass(pt_m4)[c(1:7)])
 #' pt <- pivot_table(df)
 #'
 #' pt <- pivot_table(df, page = "M4")
 #'
+#' @export
 pivot_table <- function(df,
                         page = vector("character")) {
   df <- data.frame(lapply(df, as.character), stringsAsFactors = FALSE)

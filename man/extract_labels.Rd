@@ -10,14 +10,14 @@ extract_labels(pt, col = 1, labels = c())
 \method{extract_labels}{pivot_table}(pt, col = 1, labels = c())
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 
 \item{col}{A number, column from which labels are extracted.}
 
 \item{labels}{A vector of strings, set of labels to extract.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Extract the given set of labels from a table column in compact format to
@@ -39,4 +39,15 @@ pt <- pt_ine2871 \%>\%
   extract_labels(col = 1, labels = c("18 Granada"))
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table transformation functions: 
+\code{\link{fill_labels}()},
+\code{\link{fill_values}()},
+\code{\link{get_col_values}()},
+\code{\link{remove_agg}()},
+\code{\link{remove_k}()},
+\code{\link{replace_dec}()}
+}
+\concept{pivot table transformation functions}

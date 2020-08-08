@@ -10,10 +10,10 @@ divide(pt)
 \method{divide}{pivot_table}(pt)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 }
 \value{
-A pivot_table object list.
+A \code{pivot_table} object list.
 }
 \description{
 Divides a table into tables separated by some empty row or column. Returns a
@@ -24,7 +24,7 @@ Sometimes multiple pivot tables are placed in a text document, imported as
 one text table. This operation recursively divides the initial table into
 tables separated by some empty row or column. Once a division has been made,
 it tries to divide each part of the result. An object is generated for each
-indivisible pivot table. Returns a list of pivot_table objects.
+indivisible pivot table. Returns a list of \code{pivot_table} objects.
 
 If individual tables have a header or footer, they should not be separated
 from the table by empty rows. If they were, objects would be generated from
@@ -44,4 +44,20 @@ lpt <- pt_set_v \%>\% divide()
 lpt <- pt_set_h_v \%>\% divide()
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{define_labels}()},
+\code{\link{get_page}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_empty}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{remove_top}()},
+\code{\link{set_page}()},
+\code{\link{view_table_attr}()}
+}
+\concept{pivot table definition functions}

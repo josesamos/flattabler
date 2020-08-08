@@ -8,13 +8,14 @@
 #' labels, it generates a new column with the labels located at the positions
 #' they occupied in the original column and removes them from it.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param col A number, column from which labels are extracted.
 #' @param labels A vector of strings, set of labels to extract.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table transformation functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -25,13 +26,12 @@
 #' pt <- pt_ine2871 %>%
 #'   extract_labels(col = 1, labels = c("18 Granada"))
 #'
+#' @export
 extract_labels <- function(pt, col = 1, labels = c()) {
-  UseMethod("extract_labels", pt)
+  UseMethod("extract_labels")
 }
 
 #' @rdname extract_labels
-#' @export extract_labels.pivot_table
-#' @method extract_labels pivot_table
 #' @export
 extract_labels.pivot_table <- function(pt, col = 1, labels = c()) {
   if (col > 0 && length(labels) > 0) {

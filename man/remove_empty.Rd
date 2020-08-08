@@ -10,10 +10,10 @@ remove_empty(pt)
 \method{remove_empty}{pivot_table}(pt)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Remove rows and columns without data from the pivot table represented by the
@@ -34,4 +34,20 @@ pt <- pt_m4 \%>\% remove_empty()
 pt <- pt_ine2871 \%>\% remove_empty()
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{define_labels}()},
+\code{\link{divide}()},
+\code{\link{get_page}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{remove_top}()},
+\code{\link{set_page}()},
+\code{\link{view_table_attr}()}
+}
+\concept{pivot table definition functions}

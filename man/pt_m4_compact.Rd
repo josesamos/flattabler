@@ -5,7 +5,7 @@
 \alias{pt_m4_compact}
 \title{Pivot table with a column with data from two label fields}
 \format{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \usage{
 pt_m4_compact

@@ -10,7 +10,7 @@ unpivot(pt, include_page = TRUE, na.rm = TRUE)
 \method{unpivot}{pivot_table}(pt, include_page = TRUE, na.rm = TRUE)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 
 \item{include_page}{A boolean, indicates whether a column with the page
 information is included or not.}
@@ -65,4 +65,10 @@ a_tibble <-
   unpivot(include_page = FALSE, na.rm = FALSE)
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other flat table generation functions: 
+\code{\link{flatten_table_list}()}
+}
+\concept{flat table generation functions}

@@ -17,3 +17,4 @@ Gets the empty column numbers for a table. If there are several consecutive
 empty columns, only one is considered. The first and last columns in the
 table are also added to the list even if they are not empty.
 }
+\keyword{internal}

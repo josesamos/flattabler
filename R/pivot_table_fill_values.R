@@ -9,11 +9,12 @@
 #' contain labels must be defined, and the table must only contain the pivot
 #' table rows and columns.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table transformation functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -31,13 +32,12 @@
 #'   define_labels(n_col = 1, n_row = 2) %>%
 #'   fill_values()
 #'
+#' @export
 fill_values <- function(pt) {
-  UseMethod("fill_values", pt)
+  UseMethod("fill_values")
 }
 
 #' @rdname fill_values
-#' @export fill_values.pivot_table
-#' @method fill_values pivot_table
 #' @export
 fill_values.pivot_table <- function(pt) {
   rows <- (attr(pt, "n_row_labels") + 1):nrow(pt)

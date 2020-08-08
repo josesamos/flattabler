@@ -10,10 +10,10 @@ fill_values(pt)
 \method{fill_values}{pivot_table}(pt)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Fills with NA missing values in a pivot table value array.
@@ -43,4 +43,15 @@ pt <-
   fill_values()
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table transformation functions: 
+\code{\link{extract_labels}()},
+\code{\link{fill_labels}()},
+\code{\link{get_col_values}()},
+\code{\link{remove_agg}()},
+\code{\link{remove_k}()},
+\code{\link{replace_dec}()}
+}
+\concept{pivot table transformation functions}

@@ -10,12 +10,28 @@ view_table_attr(pt)
 \method{view_table_attr}{pivot_table}(pt)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Displays the table and attributes of the object.
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{define_labels}()},
+\code{\link{divide}()},
+\code{\link{get_page}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_empty}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{remove_top}()},
+\code{\link{set_page}()}
+}
+\concept{pivot table definition functions}

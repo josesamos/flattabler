@@ -8,6 +8,7 @@
 #'
 #' @return A vector of numbers.
 #'
+#' @keywords internal
 spacer_rows <- function(df) {
   # empty rows
   x <- which((rowSums(is.na(df)) == ncol(df)) == TRUE)
@@ -27,6 +28,7 @@ spacer_rows <- function(df) {
 #'
 #' @return A vector of numbers.
 #'
+#' @keywords internal
 spacer_columns <- function(df) {
   # empty columns
   y <- which((colSums(is.na(df)) == nrow(df)) == TRUE)
@@ -46,7 +48,7 @@ spacer_columns <- function(df) {
 #' one text table. This operation recursively divides the initial table into
 #' tables separated by some empty row or column. Once a division has been made,
 #' it tries to divide each part of the result. An object is generated for each
-#' indivisible pivot table. Returns a list of pivot_table objects.
+#' indivisible pivot table. Returns a list of `pivot_table` objects.
 #'
 #' If individual tables have a header or footer, they should not be separated
 #' from the table by empty rows. If they were, objects would be generated from
@@ -56,11 +58,12 @@ spacer_columns <- function(df) {
 #' a grid on the initial table. The only requirement to be able to divide it is
 #' that there is some empty row or column between them.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #'
-#' @return A pivot_table object list.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object list.
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -71,13 +74,12 @@ spacer_columns <- function(df) {
 #'
 #' lpt <- pt_set_h_v %>% divide()
 #'
+#' @export
 divide <- function(pt) {
-  UseMethod("divide", pt)
+  UseMethod("divide")
 }
 
 #' @rdname divide
-#' @export divide.pivot_table
-#' @method divide pivot_table
 #' @export
 divide.pivot_table <- function(pt) {
   # empty cells with NA

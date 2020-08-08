@@ -24,9 +24,10 @@ new_pivot_table(
 \item{n_extract}{A number, number of new columns added to the table.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Internal low-level constructor that creates new objects with the correct
 structure.
 }
+\keyword{internal}

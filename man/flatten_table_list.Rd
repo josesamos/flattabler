@@ -7,17 +7,17 @@
 flatten_table_list(lpt = list(), FUN)
 }
 \arguments{
-\item{lpt}{A list of pivot_table objects.}
+\item{lpt}{A list of \code{pivot_table} objects.}
 
-\item{FUN}{A function, transformation function that flattens a pivot_table
-object (it returns a tibble).}
+\item{FUN}{A function, transformation function that flattens a \code{pivot_table}
+object (it returns a \code{tibble}).}
 }
 \value{
-A tibble, a flat table implemented by a tibble.
+A \code{tibble}, a flat table implemented by a \code{tibble}.
 }
 \description{
 Given a list of pivot tables and a transformation function that flattens a
-pivot_table object, transforms each table using the function and merges the
+\code{pivot_table} object, transforms each table using the function and merges the
 results into a flat table.
 }
 \examples{
@@ -39,3 +39,10 @@ f <- function(pt) {
 ft <- flatten_table_list(list_pt, f)
 
 }
+\seealso{
+
+
+Other flat table generation functions: 
+\code{\link{unpivot}()}
+}
+\concept{flat table generation functions}

@@ -5,7 +5,7 @@
 \alias{list_pt}
 \title{List of pivot tables}
 \format{
-List of pivot_table objects.
+List of \code{pivot_table} objects.
 }
 \usage{
 list_pt

@@ -13,12 +13,13 @@
 #' table rows and columns.
 
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param indicator A string, row or column label for aggregates.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table transformation functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -35,14 +36,13 @@
 #'   remove_agg("Total") %>%
 #'   remove_agg()
 #'
+#' @export
 remove_agg <- function(pt,
                        indicator) {
-  UseMethod("remove_agg", pt)
+  UseMethod("remove_agg")
 }
 
 #' @rdname remove_agg
-#' @export remove_agg.pivot_table
-#' @method remove_agg pivot_table
 #' @export
 remove_agg.pivot_table <- function(pt,
                                    indicator = "") {

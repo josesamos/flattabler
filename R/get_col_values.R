@@ -15,12 +15,15 @@
 #'
 #' @return Data frame with two columns: Labels in the column, and the index of
 #'   the table in the list of tables from which they come.
-#' @export
+#'
+#' @family pivot table transformation functions
+#' @seealso
 #'
 #' @examples
 #' df <- get_col_values(list_pt_compact, start_row = 4)
 #' labels <- sort(unique(df$label))
 #'
+#' @export
 get_col_values <-
   function(lpt,
            col = 1,

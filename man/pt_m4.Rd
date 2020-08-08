@@ -5,7 +5,7 @@
 \alias{pt_m4}
 \title{Pivot table with with thousands indicator and decimal numbers}
 \format{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \usage{
 pt_m4

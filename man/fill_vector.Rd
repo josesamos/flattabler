@@ -15,3 +15,4 @@ A vector.
 \description{
 Fills missing values in a vector with previous value.
 }
+\keyword{internal}

@@ -5,7 +5,7 @@
 \alias{pt_pivottabler}
 \title{Pivot table with basic and subtotal labels in the same column}
 \format{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \source{
 \url{https://CRAN.R-project.org/package=pivottabler}
@@ -15,7 +15,7 @@ pt_pivottabler
 }
 \description{
 A dataset containing number of train passengers, generated with the
-pivottabler package. It contains basic and subtotal labels in the same
+\code{pivottabler} package. It contains basic and subtotal labels in the same
 column.
 }
 \keyword{datasets}

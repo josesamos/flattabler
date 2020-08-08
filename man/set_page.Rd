@@ -3,14 +3,14 @@
 \name{set_page}
 \alias{set_page}
 \alias{set_page.pivot_table}
-\title{Set page information to a pivot_table object}
+\title{Set page information to a pivot table}
 \usage{
 set_page(pt, row = 0, col = 0, page = "")
 
 \method{set_page}{pivot_table}(pt, row = 0, col = 0, page = "")
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 
 \item{row, col}{A cell (row and column number), page information included in
 the table.}
@@ -18,7 +18,7 @@ the table.}
 \item{page}{A string, page information.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Define the page information associated with a pivot table. Previously
@@ -39,4 +39,20 @@ pt <- pt_m4 \%>\% set_page(1, 1)
 pt <- pt_m4 \%>\% set_page(page = "M4")
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{define_labels}()},
+\code{\link{divide}()},
+\code{\link{get_page}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_empty}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{remove_top}()},
+\code{\link{view_table_attr}()}
+}
+\concept{pivot table definition functions}

@@ -10,12 +10,12 @@ remove_top(pt, n)
 \method{remove_top}{pivot_table}(pt, n)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 
 \item{n}{A number, number of rows to remove.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Remove top rows from the pivot table represented by the object.
@@ -35,4 +35,20 @@ pt <- pt_m4 \%>\% remove_top(1)
 pt <- pt_ine2871 \%>\% remove_top(6)
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{define_labels}()},
+\code{\link{divide}()},
+\code{\link{get_page}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_empty}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{set_page}()},
+\code{\link{view_table_attr}()}
+}
+\concept{pivot table definition functions}

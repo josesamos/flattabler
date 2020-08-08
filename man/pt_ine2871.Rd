@@ -5,7 +5,7 @@
 \alias{pt_ine2871}
 \title{Official population in the municipalities of Granada (Spain)}
 \format{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \source{
 \url{https://www.ine.es/dynt3/inebase/index.htm?padre=525}

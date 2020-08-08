@@ -10,14 +10,14 @@ define_labels(pt, n_col, n_row)
 \method{define_labels}{pivot_table}(pt, n_col, n_row)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 
 \item{n_col}{A number, quantity of columns containing pivot table labels.}
 
 \item{n_row}{A number, quantity of rows containing pivot table labels.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 A pivot table should only contain label rows and columns, and an array of
@@ -30,4 +30,20 @@ library(tidyr)
 pt <- pt_m4 \%>\% define_labels(n_col = 2, n_row = 2)
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{divide}()},
+\code{\link{get_page}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_empty}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{remove_top}()},
+\code{\link{set_page}()},
+\code{\link{view_table_attr}()}
+}
+\concept{pivot table definition functions}

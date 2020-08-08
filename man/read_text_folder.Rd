@@ -14,10 +14,10 @@ read_text_folder(folder, sep = ";", encoding = "UTF-8")
 \item{encoding}{A string, encoding to be assumed for input strings.}
 }
 \value{
-A pivot_table object list.
+A \code{pivot_table} object list.
 }
 \description{
-Reads all text files in a folder and creates a list of pivot_table objects,
+Reads all text files in a folder and creates a list of \code{pivot_table} objects,
 one from each file. Each file is expected to contain a pivot table. Each line
 in a file corresponds to a row in a table; within each row, columns are
 defined by a separator character. File name is included as part of each
@@ -26,7 +26,7 @@ object attributes.
 \details{
 When multiple files are handled, the file name may contain information
 associated with the pivot table, it could be the table page information. In
-order not to lose this information, it is always stored in each pivot_table
+order not to lose this information, it is always stored in each \code{pivot_table}
 object.
 }
 \examples{
@@ -34,3 +34,14 @@ folder <- system.file("extdata", "csvfolder", package = "flattabler")
 lpt <- read_text_folder(folder)
 
 }
+\seealso{
+
+
+Other import functions: 
+\code{\link{pivot_table}()},
+\code{\link{read_excel_file}()},
+\code{\link{read_excel_folder}()},
+\code{\link{read_excel_sheet}()},
+\code{\link{read_text_file}()}
+}
+\concept{import functions}

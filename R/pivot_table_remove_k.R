@@ -9,12 +9,13 @@
 #' contain labels must be defined, and the table must only contain the pivot
 #' table rows and columns.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param sep A character, thousands separator to remove.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table transformation functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -32,13 +33,12 @@
 #'   define_labels(n_col = 1, n_row = 2) %>%
 #'   remove_k()
 #'
+#' @export
 remove_k <- function(pt, sep = ".") {
-  UseMethod("remove_k", pt)
+  UseMethod("remove_k")
 }
 
 #' @rdname remove_k
-#' @export remove_k.pivot_table
-#' @method remove_k pivot_table
 #' @export
 remove_k.pivot_table <-
   function(pt, sep = ".") {

@@ -1,15 +1,17 @@
 #' Transform a pivot table list into a flat table
 #'
 #' Given a list of pivot tables and a transformation function that flattens a
-#' pivot_table object, transforms each table using the function and merges the
+#' `pivot_table` object, transforms each table using the function and merges the
 #' results into a flat table.
 #'
-#' @param lpt A list of pivot_table objects.
-#' @param FUN A function, transformation function that flattens a pivot_table
-#'   object (it returns a tibble).
+#' @param lpt A list of `pivot_table` objects.
+#' @param FUN A function, transformation function that flattens a `pivot_table`
+#'   object (it returns a `tibble`).
 #'
-#' @return A tibble, a flat table implemented by a tibble.
-#' @export
+#' @return A `tibble`, a flat table implemented by a `tibble`.
+#'
+#' @family flat table generation functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -29,6 +31,7 @@
 #'
 #' ft <- flatten_table_list(list_pt, f)
 #'
+#' @export
 flatten_table_list <- function(lpt = list(), FUN) {
   lft <- lapply(lpt, FUN)
   ft <- lft[[1]]

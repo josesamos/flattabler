@@ -14,10 +14,10 @@ read_text_file(file, sep = ";", encoding = "UTF-8")
 \item{encoding}{A string, encoding to be assumed for input strings.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
-Reads a text file and creates a pivot_table object. The file is expected to
+Reads a text file and creates a \code{pivot_table} object. The file is expected to
 contain one or more pivot tables. Each line in the file corresponds to a row
 in a table; within each row, columns are defined by a separator character.
 The file name is included as part of the object attributes.
@@ -25,7 +25,7 @@ The file name is included as part of the object attributes.
 \details{
 When multiple files are handled, the file name may contain information
 associated with the pivot table, it could be the table page information. In
-order not to lose this information, it is always stored in the pivot_table
+order not to lose this information, it is always stored in the \code{pivot_table}
 object.
 }
 \examples{
@@ -33,3 +33,14 @@ file <- system.file("extdata", "csv/ine2871.csv", package = "flattabler")
 pt <- read_text_file(file)
 
 }
+\seealso{
+
+
+Other import functions: 
+\code{\link{pivot_table}()},
+\code{\link{read_excel_file}()},
+\code{\link{read_excel_folder}()},
+\code{\link{read_excel_sheet}()},
+\code{\link{read_text_folder}()}
+}
+\concept{import functions}

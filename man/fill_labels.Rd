@@ -10,10 +10,10 @@ fill_labels(pt)
 \method{fill_labels}{pivot_table}(pt)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Fills missing values in row and column labels for a pivot table. In columns
@@ -44,4 +44,15 @@ pt <-
   fill_labels()
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table transformation functions: 
+\code{\link{extract_labels}()},
+\code{\link{fill_values}()},
+\code{\link{get_col_values}()},
+\code{\link{remove_agg}()},
+\code{\link{remove_k}()},
+\code{\link{replace_dec}()}
+}
+\concept{pivot table transformation functions}

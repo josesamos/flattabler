@@ -10,12 +10,12 @@ remove_k(pt, sep = ".")
 \method{remove_k}{pivot_table}(pt, sep = ".")
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 
 \item{sep}{A character, thousands separator to remove.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 A pivot table should only contain label rows and columns, and an array of
@@ -45,4 +45,15 @@ pt <-
   remove_k()
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table transformation functions: 
+\code{\link{extract_labels}()},
+\code{\link{fill_labels}()},
+\code{\link{fill_values}()},
+\code{\link{get_col_values}()},
+\code{\link{remove_agg}()},
+\code{\link{replace_dec}()}
+}
+\concept{pivot table transformation functions}

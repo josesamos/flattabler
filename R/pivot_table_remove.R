@@ -12,12 +12,13 @@
 #' All rows not belonging to the pivot table must be removed. It is common to
 #' find rows with header or footer information, which must be removed.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param r A vector of numbers, row numbers.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -26,13 +27,12 @@
 #'
 #' pt <- pt_m4 %>% remove_rows(c(1, 8, 14, 19, 25, 26))
 #'
+#' @export
 remove_rows <- function(pt, r) {
-  UseMethod("remove_rows", pt)
+  UseMethod("remove_rows")
 }
 
 #' @rdname remove_rows
-#' @export remove_rows.pivot_table
-#' @method remove_rows pivot_table
 #' @export
 remove_rows.pivot_table <- function(pt, r) {
   pt[-r,]
@@ -51,12 +51,13 @@ remove_rows.pivot_table <- function(pt, r) {
 #'
 #' All columns not belonging to the pivot table must be removed.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param c A vector of numbers, column numbers.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -65,13 +66,12 @@ remove_rows.pivot_table <- function(pt, r) {
 #'
 #' pt <- pt_m4 %>% remove_cols(c(6,7))
 #'
+#' @export
 remove_cols <- function(pt, c) {
-  UseMethod("remove_cols", pt)
+  UseMethod("remove_cols")
 }
 
 #' @rdname remove_cols
-#' @export remove_cols.pivot_table
-#' @method remove_cols pivot_table
 #' @export
 remove_cols.pivot_table <- function(pt, c) {
   page <- attr(pt, "page")
@@ -102,11 +102,12 @@ remove_cols.pivot_table <- function(pt, c) {
 #' All rows and columns not belonging to the pivot table must be removed,
 #' including those without data.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -115,13 +116,12 @@ remove_cols.pivot_table <- function(pt, c) {
 #'
 #' pt <- pt_ine2871 %>% remove_empty()
 #'
+#' @export
 remove_empty <- function(pt) {
-  UseMethod("remove_empty", pt)
+  UseMethod("remove_empty")
 }
 
 #' @rdname remove_empty
-#' @export remove_empty.pivot_table
-#' @method remove_empty pivot_table
 #' @export
 remove_empty.pivot_table <- function(pt) {
   page <- attr(pt, "page")
@@ -156,12 +156,13 @@ remove_empty.pivot_table <- function(pt) {
 #' All rows not belonging to the pivot table must be removed. It is common to
 #' find rows with header information, which must be removed.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param n A number, number of rows to remove.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -170,13 +171,12 @@ remove_empty.pivot_table <- function(pt) {
 #'
 #' pt <- pt_ine2871 %>% remove_top(6)
 #'
+#' @export
 remove_top <- function(pt, n) {
-  UseMethod("remove_top", pt)
+  UseMethod("remove_top")
 }
 
 #' @rdname remove_top
-#' @export remove_top.pivot_table
-#' @method remove_top pivot_table
 #' @export
 remove_top.pivot_table <- function(pt, n) {
   if (n > 0) {
@@ -201,15 +201,13 @@ remove_top.pivot_table <- function(pt, n) {
 #' This function is very useful because it is not necessary to know the number
 #' of rows in the table.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param n A number, number of rows to remove.
 #'
-#' @param pt A pivot_table object.
-#' @param n
+#' @return A `pivot_table` object.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -218,13 +216,12 @@ remove_top.pivot_table <- function(pt, n) {
 #'
 #' pt <- pt_ine2871 %>% remove_bottom(9)
 #'
+#' @export
 remove_bottom <- function(pt, n) {
-  UseMethod("remove_bottom", pt)
+  UseMethod("remove_bottom")
 }
 
 #' @rdname remove_bottom
-#' @export remove_bottom.pivot_table
-#' @method remove_bottom pivot_table
 #' @export
 remove_bottom.pivot_table <- function(pt, n) {
   if (n > 0) {
@@ -248,25 +245,25 @@ remove_bottom.pivot_table <- function(pt, n) {
 #'
 #' All columns not belonging to the pivot table must be removed.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param n A number, number of columns to remove.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
 #'
 #' pt <- pt_m4 %>% remove_left(2)
 #'
+#' @export
 remove_left <- function(pt, n) {
-  UseMethod("remove_left", pt)
+  UseMethod("remove_left")
 }
 
 #' @rdname remove_left
-#' @export remove_left.pivot_table
-#' @method remove_left pivot_table
 #' @export
 remove_left.pivot_table <- function(pt, n) {
   if (n > 0) {
@@ -302,25 +299,25 @@ remove_left.pivot_table <- function(pt, n) {
 #' This function is very useful because it is not necessary to know the number
 #' of columns in the table.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param n A number, number of columns to remove.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
 #'
 #' pt <- pt_m4 %>% remove_right(2)
 #'
+#' @export
 remove_right <- function(pt, n) {
-  UseMethod("remove_right", pt)
+  UseMethod("remove_right")
 }
 
 #' @rdname remove_right
-#' @export remove_right.pivot_table
-#' @method remove_right pivot_table
 #' @export
 remove_right.pivot_table <- function(pt, n) {
   if (n > 0) {

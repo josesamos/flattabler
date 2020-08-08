@@ -1,4 +1,4 @@
-#' Get the page information of a pivot_table object
+#' Get the page information of a pivot table
 #'
 #' Get the page information associated with the pivot table represented by the
 #' object.
@@ -9,29 +9,29 @@
 #' their origin, date or author. This information is often included in the file
 #' name, sheet name, or cells attached to the pivot table.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #'
 #' @return A vector of strings.
-#' @export
-#' @keywords internal
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' page <- get_page(pt_m4)
 #'
+#' @export
 get_page <- function(pt) {
-  UseMethod("get_page", pt)
+  UseMethod("get_page")
 }
 
 #' @rdname get_page
-#' @export get_page.pivot_table
-#' @method get_page pivot_table
 #' @export
 get_page.pivot_table <- function(pt) {
   attr(pt, "page")
 }
 
 
-#' Set page information to a pivot_table object
+#' Set page information to a pivot table
 #'
 #' Define the page information associated with a pivot table. Previously
 #' existing information is replaced by new information.
@@ -42,14 +42,15 @@ get_page.pivot_table <- function(pt) {
 #' their origin, date or author. This information is often included in the file
 #' name, sheet name, or a cell attached to the pivot table.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #' @param row,col A cell (row and column number), page information included in
 #'   the table.
 #' @param page A string, page information.
 #'
-#' @return A pivot_table object.
-#' @export
-#' @keywords internal
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso
 #'
 #' @examples
 #' library(tidyr)
@@ -58,13 +59,12 @@ get_page.pivot_table <- function(pt) {
 #'
 #' pt <- pt_m4 %>% set_page(page = "M4")
 #'
+#' @export
 set_page <- function(pt, row = 0, col = 0, page = "") {
-  UseMethod("set_page", pt)
+  UseMethod("set_page")
 }
 
 #' @rdname set_page
-#' @export set_page.pivot_table
-#' @method set_page pivot_table
 #' @export
 set_page.pivot_table <- function(pt,
                                  row = 0,

@@ -5,7 +5,7 @@
 \alias{list_pt_ie}
 \title{List of pivot tables used in the vignette}
 \format{
-List of pivot_table objects.
+List of \code{pivot_table} objects.
 }
 \usage{
 list_pt_ie

@@ -12,17 +12,29 @@ pivot_table(df, page = vector("character"))
 \item{page}{A string, additional information associated with the pivot table.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
-Creates a pivot_table object from a data frame. Additional information
+Creates a \code{pivot_table} object from a data frame. Additional information
 associated with the pivot table can be indicated. Data frame data is
 converted to character type.
 }
 \examples{
+
 df <- data.frame(unclass(pt_m4)[c(1:7)])
 pt <- pivot_table(df)
 
 pt <- pivot_table(df, page = "M4")
 
 }
+\seealso{
+
+
+Other import functions: 
+\code{\link{read_excel_file}()},
+\code{\link{read_excel_folder}()},
+\code{\link{read_excel_sheet}()},
+\code{\link{read_text_file}()},
+\code{\link{read_text_folder}()}
+}
+\concept{import functions}

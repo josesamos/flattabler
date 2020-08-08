@@ -2,19 +2,19 @@
 #'
 #' Displays the table and attributes of the object.
 #'
-#' @param pt A pivot_table object.
+#' @param pt A `pivot_table` object.
 #'
-#' @return A pivot_table object.
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso
+#'
 #' @export
-#' @keywords internal
-#'
 view_table_attr <- function(pt) {
-  UseMethod("view_table_attr", pt)
+  UseMethod("view_table_attr")
 }
 
 #' @rdname view_table_attr
-#' @export view_table_attr.pivot_table
-#' @method view_table_attr pivot_table
 #' @export
 view_table_attr.pivot_table <- function(pt) {
   if (ncol(pt) > 0) {

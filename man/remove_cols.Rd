@@ -10,12 +10,12 @@ remove_cols(pt, c)
 \method{remove_cols}{pivot_table}(pt, c)
 }
 \arguments{
-\item{pt}{A pivot_table object.}
+\item{pt}{A \code{pivot_table} object.}
 
 \item{c}{A vector of numbers, column numbers.}
 }
 \value{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \description{
 Remove the columns whose numbers are indicated from the pivot table
@@ -35,4 +35,20 @@ pt <- pt_m4 \%>\% remove_cols(7)
 pt <- pt_m4 \%>\% remove_cols(c(6,7))
 
 }
-\keyword{internal}
+\seealso{
+
+
+Other pivot table definition functions: 
+\code{\link{define_labels}()},
+\code{\link{divide}()},
+\code{\link{get_page}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_empty}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{remove_top}()},
+\code{\link{set_page}()},
+\code{\link{view_table_attr}()}
+}
+\concept{pivot table definition functions}

@@ -1,8 +1,8 @@
 #' Obtaining a Flat Table from Pivot Tables
 #'
-#' Transformations that allow obtaining a flat table from reports in text format
-#' that contain data in the form of pivot tables. They can be defined for a
-#' single report and applied to a set of reports.
+#' Transformations that allow obtaining a flat table from reports in excel or
+#' text format that contain data in the form of pivot tables. They can be
+#' defined for a single report and applied to a set of reports.
 #'
 #' A pivot table should only contain label rows and columns, and an array of
 #' values, usually numeric data.
@@ -12,10 +12,13 @@
 #' generation.
 #'
 #' @section Pivot table import:
-#' Functions to import pivot tables from a text file or set of files, or to
-#' generate it from a data frame.
+#' Functions to import pivot tables from a text or Excel file or set of files,
+#' or to generate it from a data frame.
 #' - [read_text_file()]
 #' - [read_text_folder()]
+#' - [read_excel_sheet()]
+#' - [read_excel_file()]
+#' - [read_excel_folder()]
 #' - [pivot_table()]
 #'
 #' @section Pivot table definition: Functions to view the object, to split a

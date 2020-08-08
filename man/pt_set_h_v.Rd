@@ -5,7 +5,7 @@
 \alias{pt_set_h_v}
 \title{Set of pivot tables on one sheet}
 \format{
-A pivot_table object.
+A \code{pivot_table} object.
 }
 \usage{
 pt_set_h_v
