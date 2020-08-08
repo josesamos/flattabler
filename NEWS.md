@@ -1,9 +1,7 @@
 
 # flattabler (development version)
-
+* Functions to work directly with Excel files.
 
 # flattabler 1.0.0
+* Basic functionality with text files.
 
-* The functions to import Excel files have been removed.
-
-# flattabler 1.0.0.9000

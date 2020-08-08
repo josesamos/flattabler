@@ -1,10 +1,10 @@
 ---
-title: "flattabler: Obtaining a Flat Table from Pivot Tables in R"
+title: "flattabler: Obtaining a Flat Table from Pivot Tables"
 author: "Jose Samos (jsamos@ugr.es)"
 date: "2020-06-20"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{flattabler: Obtaining a Flat Table from Pivot Tables in R}
+  %\VignetteIndexEntry{flattabler: Obtaining a Flat Table from Pivot Tables}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -74,7 +74,7 @@ The table above is a flat table whose data has been obtained from the pivot tabl
 
 ## Transforming a pivot table
 
-The transformation to obtain the flat table from the pivot table has been carried out in R, using `flattabler` package. The code is shown below. For clarity, the pipe operator syntax provided by `tidyr` package has been used.
+The transformation to obtain the flat table from the pivot table has been carried out using `flattabler` package. The code is shown below. For clarity, the pipe operator syntax provided by `tidyr` package has been used.
 
 ```{r, eval = FALSE}
 library(flattabler)

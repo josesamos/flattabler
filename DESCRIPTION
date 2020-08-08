@@ -4,25 +4,26 @@ Version: 1.0.0.9000
 Authors@R: 
     person(given = "Jose",
            family = "Samos",
-           role = c("aut", "cre"),
+           role = c("aut", "cre", "cph"),
            email = "jsamos@ugr.es",
            comment = c(ORCID = "0000-0002-4457-3439"))
 Description: Transformations that allow obtaining a flat table from 
-    reports in text format that contain data in the form of pivot 
-    tables. They can be defined for a single report and applied to a 
-    set of reports.
+    reports in text or Excel format that contain data in the form of 
+    pivot tables. They can be defined for a single report and applied 
+    to a set of reports.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Imports: 
     utils,
     dplyr,
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    xlsx
 Suggests: 
     testthat,
     knitr,
