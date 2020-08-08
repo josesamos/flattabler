@@ -1,7 +1,7 @@
 context("test read_excel_file")
 
 test_that("read_excel_file works", {
-  # skip("Skip Excel test")
+  skip("Skip Excel test")
   result <- c(NA, "Total e1", NA, "78.31", "73.68", "48.12", "78.01", "278.12",
               "70.7", "93.9", "35.01", "66", "72", "337.61", "39.66", "13.98",
               "40.92", "42.98", "100.92", "238.46", "40.72", "45.57", "47.04",
