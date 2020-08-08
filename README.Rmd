@@ -28,17 +28,17 @@ If we generate pivot tables from our own data, `flattabler` package is not neces
 
 ## Installation
 
-You can install the development version with:
-
-```{r, eval = FALSE}
-# install.packages("flattabler")
-devtools::install_github("josesamos/flattabler")
-```
-
 You can install the released version of `flattabler` from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("flattabler")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("josesamos/flattabler")
 ```
 
 ## Example

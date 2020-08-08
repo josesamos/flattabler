@@ -24,18 +24,18 @@ transform one or more pivot tables into a flat table.
 
 ## Installation
 
-You can install the development version with:
-
-``` r
-# install.packages("flattabler")
-devtools::install_github("josesamos/flattabler")
-```
-
 You can install the released version of `flattabler` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("flattabler")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("josesamos/flattabler")
 ```
 
 ## Example
