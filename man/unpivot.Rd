@@ -19,10 +19,10 @@ information is included or not.}
 are removed or not.}
 }
 \value{
-A tibble.
+A \code{tibble}.
 }
 \description{
-Transforms a pivot table into a flat table (implemented by a tibble). An
+Transforms a pivot table into a flat table (implemented by a \code{tibble}). An
 additional column with page information can be included. NA values can be
 excluded from the array of values.
 }
