@@ -1,10 +1,10 @@
 ## Test environments
-
-* local Ubuntu 20.04 LTS: R 3.6.3
-* local Windows 10: R 4.0.2
-* travis-ci Ubuntu 16.04.6 LTS
+* local R installation, R 4.0.3
+* ubuntu 16.04 (on travis-ci), R 4.0.3
+* win-builder (devel)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
 
+* This is a new release.
