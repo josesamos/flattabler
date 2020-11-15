@@ -1,3 +1,6 @@
+# flattabler 1.2.0.9000
+
+
 # flattabler 1.2.0
 * Change the implementation of [read_excel_sheet()], [read_excel_file()] and [read_excel_folder()] functions to use the readxl package.
 * Parameter [allSheets] to obtain all the sheets of all the Excel files in a folder: [read_excel_folder()].
