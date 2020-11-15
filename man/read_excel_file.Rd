@@ -4,13 +4,7 @@
 \alias{read_excel_file}
 \title{Import Excel file}
 \usage{
-read_excel_file(
-  file,
-  sheetIndexes = c(),
-  sheetNames = c(),
-  encoding = "UTF-8",
-  password = NULL
-)
+read_excel_file(file, sheetIndexes = NULL, sheetNames = NULL)
 }
 \arguments{
 \item{file}{A string, name of an Excel file.}
@@ -18,10 +12,6 @@ read_excel_file(
 \item{sheetIndexes}{A vector of numbers, sheet indexes in the workbook.}
 
 \item{sheetNames}{A vector of strings, sheet names.}
-
-\item{encoding}{A string, encoding to be assumed for input strings.}
-
-\item{password}{A string with the password (if required).}
 }
 \value{
 A \code{pivot_table} object list.
@@ -40,11 +30,11 @@ stored in each \code{pivot_table} object.
 }
 \examples{
 file <- system.file("extdata", "excel/set_sheets.xlsx", package = "flattabler")
-# lpt <- read_excel_file(file)
+lpt <- read_excel_file(file)
 
-# lpt <- read_excel_file(file, sheetIndexes = 1:4)
+lpt <- read_excel_file(file, sheetIndexes = 1:4)
 
-# lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
+lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
 
 }
 \seealso{

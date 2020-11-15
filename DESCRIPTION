@@ -23,7 +23,7 @@ Imports:
     stringr,
     tibble,
     tidyr,
-    xlsx
+    readxl
 Suggests: 
     testthat,
     knitr,

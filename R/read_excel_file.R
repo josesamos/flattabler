@@ -21,54 +21,36 @@
 #'
 #' @examples
 #' file <- system.file("extdata", "excel/set_sheets.xlsx", package = "flattabler")
-#' # lpt <- read_excel_file(file)
+#' lpt <- read_excel_file(file)
 #'
-#' # lpt <- read_excel_file(file, sheetIndexes = 1:4)
+#' lpt <- read_excel_file(file, sheetIndexes = 1:4)
 #'
-#' # lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
+#' lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
 #'
 #' @export
 read_excel_file <- function (file,
-                             sheetIndexes = c(),
-                             sheetNames = c(),
-                             encoding = "UTF-8",
-                             password = NULL) {
-  if (length(sheetIndexes) == 0 && length(sheetNames) == 0) {
-    wb <- xlsx::loadWorkbook(file, password = password)
-    sheetNames <- names(xlsx::getSheets(wb))
+                             sheetIndexes = NULL,
+                             sheetNames = NULL) {
+  if (is.null(sheetIndexes) && is.null(sheetNames)) {
+    sheetNames <- readxl::excel_sheets(file)
+  } else if (is.null(sheetNames)) {
+    sheetNames <- readxl::excel_sheets(file)[sheetIndexes]
   }
   lpt <- list()
-  if (length(sheetNames) > 0) {
-    for (name in sheetNames) {
-      sh <- xlsx::read.xlsx(
+  for (name in sheetNames) {
+    ft <- suppressMessages(
+      readxl::read_excel(
         file,
-        sheetName = name,
-        header = FALSE,
-        colClasses = c("character"),
-        encoding = encoding,
-        password = password,
-        stringsAsFactors = FALSE
+        sheet = name,
+        col_names = FALSE,
+        col_types = "text",
+        trim_ws = TRUE
       )
-      if (!is.null(sh)) {
-        lpt <- c(lpt, list(new_pivot_table(sh, c(file, name))))
-      }
-    }
-  } else {
-    wb <- xlsx::loadWorkbook(file, password = password)
-    sheetNames <- names(xlsx::getSheets(wb))
-    for (index in sheetIndexes) {
-      sh <- xlsx::read.xlsx(
-        file,
-        sheetIndex = index,
-        header = FALSE,
-        colClasses = c("character"),
-        encoding = "UTF-8",
-        password = password,
-        stringsAsFactors = FALSE
-      )
-      if (!is.null(sh)) {
-        lpt <- c(lpt, list(new_pivot_table(sh, c(file, sheetNames[index]))))
-      }
+    )
+    if (nrow(ft) > 0) {
+      ft <- as.data.frame(ft)
+      names(ft) <- paste("X", 1:length(names(ft)), sep = "")
+      lpt <- c(lpt, list(new_pivot_table(ft, c(file, name))))
     }
   }
   lpt

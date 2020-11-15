@@ -13,8 +13,6 @@
 #' @param file A string, name of an Excel file.
 #' @param sheetIndex A number, sheet index in the workbook.
 #' @param sheetName A string, sheet name.
-#' @param encoding A string, encoding to be assumed for input strings.
-#' @param password A string with the password (if required).
 #'
 #' @return A `pivot_table` object.
 #'
@@ -23,28 +21,28 @@
 #'
 #' @examples
 #' file <- system.file("extdata", "excel/ine2871.xlsx", package = "flattabler")
-#' # pt <- read_excel_sheet(file)
+#' pt <- read_excel_sheet(file)
 #'
-#' # pt <- read_excel_sheet(file, sheetName = "tabla-2871")
+#' pt <- read_excel_sheet(file, sheetName = "tabla-2871")
 #'
 #' @export
 read_excel_sheet <- function(file,
                              sheetIndex = 1,
-                             sheetName = NULL,
-                             encoding = "UTF-8",
-                             password = NULL) {
+                             sheetName = NULL) {
   if (is.null(sheetName)) {
-    wb <- xlsx::loadWorkbook(file, password = password)
-    sheetName <- names(xlsx::getSheets(wb))[sheetIndex]
+    wb <- readxl::excel_sheets(file)
+    sheetName <- wb[sheetIndex]
   }
   info <- c(file, sheetName)
-  new_pivot_table(xlsx::read.xlsx(file,
-                                  sheetIndex,
-                                  sheetName,
-                                  header = FALSE,
-                                  colClasses = c("character"),
-                                  encoding = encoding,
-                                  password = password,
-                                  stringsAsFactors = FALSE),
-                  info)
+  ft <- suppressMessages(
+    readxl::read_excel(
+      file,
+      sheet = sheetName,
+      col_names = FALSE,
+      col_types = "text",
+      trim_ws = TRUE
+    )
+  )
+  names(ft) <- paste("X", 1:length(names(ft)), sep = "")
+  new_pivot_table(as.data.frame(ft), info)
 }

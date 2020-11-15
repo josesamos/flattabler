@@ -4,13 +4,7 @@
 \alias{read_excel_folder}
 \title{Import one sheet from each Excel file in a folder}
 \usage{
-read_excel_folder(
-  folder,
-  sheetIndex = 1,
-  sheetName = NULL,
-  encoding = "UTF-8",
-  password = NULL
-)
+read_excel_folder(folder, sheetIndex = 1, sheetName = NULL, allSheets = FALSE)
 }
 \arguments{
 \item{folder}{A string, folder name.}
@@ -19,19 +13,17 @@ read_excel_folder(
 
 \item{sheetName}{A string, sheet name.}
 
-\item{encoding}{A string, encoding to be assumed for input strings.}
-
-\item{password}{A string with the password (if required).}
+\item{allSheets}{A boolean.}
 }
 \value{
 A \code{pivot_table} object list.
 }
 \description{
-Reads one sheet from each of the Excel files in a folder and creates a list
-of \code{pivot_table} objects, one from each sheet or, which is the same in this
-case, one from each file. Each sheet is expected to contain a pivot table.
-Each line in a file corresponds to a row in a table. File and sheet names are
-included as part of each object attributes.
+Reads one sheet (or all sheets) from each of the Excel files in a folder and
+creates a list of \code{pivot_table} objects, one from each sheet. Each sheet is
+expected to contain a pivot table. Each line in a file corresponds to a row
+in a table. File and sheet names are included as part of each object
+attributes.
 }
 \details{
 When multiple files or sheets are handled, the file and/or sheet names may
@@ -41,7 +33,9 @@ stored in each \code{pivot_table} object.
 }
 \examples{
 folder <- system.file("extdata", "excelfolder", package = "flattabler")
-# lpt <- read_excel_folder(folder)
+lpt <- read_excel_folder(folder)
+
+lpt <- read_excel_folder(folder, allSheets = TRUE)
 
 }
 \seealso{
