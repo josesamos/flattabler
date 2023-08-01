@@ -63,7 +63,7 @@ remove_agg.pivot_table <- function(pt,
       dplyr::na_if(stringr::str_trim(pt[n_row, cols]), indicator)
     pt <- pt[, c(rep(TRUE, n_col), !is.na(pt[n_row, cols]))]
   }
-  new_pivot_table(
+  pivot_table(
     pt,
     page = page,
     n_col_labels = n_col,

@@ -40,7 +40,6 @@ lpt <- read_excel_folder(folder, allSheets = TRUE)
 }
 \seealso{
 Other import functions: 
-\code{\link{pivot_table}()},
 \code{\link{read_excel_file}()},
 \code{\link{read_excel_sheet}()},
 \code{\link{read_text_file}()},

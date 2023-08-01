@@ -44,5 +44,5 @@ read_excel_sheet <- function(file,
     )
   )
   names(ft) <- paste("X", 1:length(names(ft)), sep = "")
-  new_pivot_table(as.data.frame(ft), info)
+  pivot_table(as.data.frame(ft), info)
 }

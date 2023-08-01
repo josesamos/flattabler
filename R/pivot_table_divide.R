@@ -99,13 +99,13 @@ divide.pivot_table <- function(pt) {
       if (length(x2) > 2 || length(y2) > 2) {
         # recursively divide
         lpt <-
-          c(lpt, divide.pivot_table(new_pivot_table(pt2, attr(pt, "page"))))
+          c(lpt, divide.pivot_table(pivot_table(pt2, attr(pt, "page"))))
       } else {
         # remove empty rows and columns
         pt2 <-
           pt2[rowSums(is.na(df2)) != ncol(df2), colSums(is.na(df2)) != nrow(df2)]
         lpt <-
-          c(lpt, list(new_pivot_table(pt2, attr(pt, "page"))))
+          c(lpt, list(pivot_table(pt2, attr(pt, "page"))))
       }
     }
   }

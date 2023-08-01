@@ -77,7 +77,7 @@ remove_cols.pivot_table <- function(pt, c) {
   n_row <- attr(pt, "n_row_labels")
   n_extract <- attr(pt, "n_extract")
   pt <- as.data.frame(pt[,-c], stringsAsFactors = FALSE)
-  new_pivot_table(
+  pivot_table(
     pt,
     page = page,
     n_col_labels = n_col,
@@ -131,7 +131,7 @@ remove_empty.pivot_table <- function(pt) {
       dplyr::na_if(stringr::str_trim(x), "")), stringsAsFactors = FALSE)
   pt <-
     as.data.frame(pt[rowSums(is.na(df)) != ncol(df), colSums(is.na(df)) != nrow(df)], stringsAsFactors = FALSE)
-  new_pivot_table(
+  pivot_table(
     pt,
     page = page,
     n_col_labels = n_col,
@@ -266,7 +266,7 @@ remove_left.pivot_table <- function(pt, n) {
     n_row <- attr(pt, "n_row_labels")
     n_extract <- attr(pt, "n_extract")
     pt <- as.data.frame(pt[, c(-1:-n)], stringsAsFactors = FALSE)
-    new_pivot_table(
+    pivot_table(
       pt,
       page = page,
       n_col_labels = n_col,
@@ -321,7 +321,7 @@ remove_right.pivot_table <- function(pt, n) {
     n_cols <- ncol(pt)
     first_col <- ncol(pt) - n + 1
     pt <- as.data.frame(pt[, c(-first_col:-n_cols)], stringsAsFactors = FALSE)
-    new_pivot_table(
+    pivot_table(
       pt,
       page = page,
       n_col_labels = n_col,

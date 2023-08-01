@@ -50,7 +50,7 @@ read_excel_file <- function (file,
     if (nrow(ft) > 0) {
       ft <- as.data.frame(ft)
       names(ft) <- paste("X", 1:length(names(ft)), sep = "")
-      lpt <- c(lpt, list(new_pivot_table(ft, c(file, name))))
+      lpt <- c(lpt, list(pivot_table(ft, c(file, name))))
     }
   }
   lpt

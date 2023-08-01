@@ -51,7 +51,7 @@ extract_labels.pivot_table <- function(pt, col = 1, labels = c()) {
     } else {
       pt <- cbind(pt[, 1:(col - 1), drop = FALSE], df, pt[, col:ncol(pt)])
     }
-    new_pivot_table(
+    pivot_table(
       pt,
       page = page,
       n_col_labels = n_col + 1,

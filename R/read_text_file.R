@@ -25,7 +25,7 @@
 #'
 #' @export
 read_text_file <- function(file, sep = ';', encoding = "UTF-8") {
-  new_pivot_table(
+  pivot_table(
     utils::read.table(
       file,
       sep = sep,
