@@ -14,9 +14,8 @@
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% define_labels(n_col = 2, n_row = 2)
+#' pt <- pt_m4 |> define_labels(n_col = 2, n_row = 2)
 #'
 #' @export
 define_labels <- function(pt,

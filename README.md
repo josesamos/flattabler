@@ -44,44 +44,43 @@ A pivot table contains label rows and columns, and an array of values,
 usually numeric data. It can contain additional information, such as
 table header or footer.
 
-|      V1       | V2 |  V3   |  V4   |    V5    |  V6   |  V7  |    V8    |      V9       |
-| :-----------: | :-: | :---: | :---: | :------: | :---: | :--: | :------: | :-----------: |
-|      M1       |    |   E   |   D   |          |       |      |          |               |
-|               |    |  e1   |       | Total e1 |  e2   |      | Total e2 | Total general |
-|       A       | B  |  d1   |  d2   |          |  d1   |  d2  |          |               |
-|      a1       | b1 | 2,99  | 1,02  |   4,01   | 4,06  | 1,32 |   5,38   |     9,39      |
-|               | b2 | 3,89  | 3,65  |   7,54   | 5,55  |      |   5,55   |     13,09     |
-|               | b3 | 2,33  |       |   2,33   | 1,87  |      |   1,87   |      4,2      |
-|   Total a1    |    | 9,21  | 4,67  |  13,88   | 11,48 | 1,32 |   12,8   |     26,68     |
-|      a2       | b1 | 5,62  | 1,94  |   7,56   | 4,59  | 2,13 |   6,72   |     14,28     |
-|               | b2 | 3,82  | 7,72  |  11,54   | 4,78  | 2,94 |   7,72   |     19,26     |
-|               | b3 | 5,36  | 6,38  |  11,74   | 1,69  | 1,78 |   3,47   |     15,21     |
-|   Total a2    |    | 14,8  | 16,04 |  30,84   | 11,06 | 6,85 |  17,91   |     48,75     |
-| Total general |    | 24,01 | 20,71 |  44,72   | 22,54 | 8,17 |  30,71   |     75,43     |
+|      V1       | V2  |  V3   |  V4   |    V5    |  V6   |  V7  |    V8    |      V9       |
+|:-------------:|:---:|:-----:|:-----:|:--------:|:-----:|:----:|:--------:|:-------------:|
+|      M1       |     |   E   |   D   |          |       |      |          |               |
+|               |     |  e1   |       | Total e1 |  e2   |      | Total e2 | Total general |
+|       A       |  B  |  d1   |  d2   |          |  d1   |  d2  |          |               |
+|      a1       | b1  | 2,99  | 1,02  |   4,01   | 4,06  | 1,32 |   5,38   |     9,39      |
+|               | b2  | 3,89  | 3,65  |   7,54   | 5,55  |      |   5,55   |     13,09     |
+|               | b3  | 2,33  |       |   2,33   | 1,87  |      |   1,87   |      4,2      |
+|   Total a1    |     | 9,21  | 4,67  |  13,88   | 11,48 | 1,32 |   12,8   |     26,68     |
+|      a2       | b1  | 5,62  | 1,94  |   7,56   | 4,59  | 2,13 |   6,72   |     14,28     |
+|               | b2  | 3,82  | 7,72  |  11,54   | 4,78  | 2,94 |   7,72   |     19,26     |
+|               | b3  | 5,36  | 6,38  |  11,74   | 1,69  | 1,78 |   3,47   |     15,21     |
+|   Total a2    |     | 14,8  | 16,04 |  30,84   | 11,06 | 6,85 |  17,91   |     48,75     |
+| Total general |     | 24,01 | 20,71 |  44,72   | 22,54 | 8,17 |  30,71   |     75,43     |
 
 The transformation to obtain a flat table from the pivot table using
 `flattabler` package is as follows:
 
 ``` r
 library(flattabler)
-library(tidyr)
 
-ft <- pt %>%
-  set_page(1, 1) %>%
-  define_labels(n_col = 2, n_row = 2) %>%
-  remove_top(1) %>%
-  fill_labels() %>%
-  remove_agg() %>%
-  fill_values() %>%
-  remove_k() %>%
-  replace_dec() %>%
+ft <- pt |>
+  set_page(1, 1) |>
+  define_labels(n_col = 2, n_row = 2) |>
+  remove_top(1) |>
+  fill_labels() |>
+  remove_agg() |>
+  fill_values() |>
+  remove_k() |>
+  replace_dec() |>
   unpivot()
 ```
 
 The result obtained is as follows:
 
 | page | col1 | col2 | row1 | row2 | value |
-| :--: | :--: | :--: | :--: | :--: | :---: |
+|:----:|:----:|:----:|:----:|:----:|:-----:|
 |  M1  |  a1  |  b1  |  e1  |  d1  | 2.99  |
 |  M1  |  a1  |  b1  |  e1  |  d2  | 1.02  |
 |  M1  |  a1  |  b1  |  e2  |  d1  | 4.06  |
@@ -122,15 +121,15 @@ transformations, as shown below.
 
 ``` r
 f <- function(pt) {
-  pt %>%
-    set_page(1, 1) %>%
-    define_labels(n_col = 2, n_row = 2) %>%
-    remove_top(1) %>%
-    fill_labels() %>%
-    remove_agg() %>%
-    fill_values() %>%
-    remove_k() %>%
-    replace_dec() %>%
+  pt |>
+    set_page(1, 1) |>
+    define_labels(n_col = 2, n_row = 2) |>
+    remove_top(1) |>
+    fill_labels() |>
+    remove_agg() |>
+    fill_values() |>
+    remove_k() |>
+    replace_dec() |>
     unpivot()
 }
 

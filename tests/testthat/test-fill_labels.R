@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test fill_labels")
 
@@ -132,9 +131,9 @@ test_that("fill_labels works", {
       row.names = 2:12
     )
   pt <-
-    list_pt_ie[[1]] %>%
-    remove_top(1) %>%
-    define_labels(n_col = 2, n_row = 2) %>%
+    list_pt_ie[[1]] |>
+    remove_top(1) |>
+    define_labels(n_col = 2, n_row = 2) |>
     fill_labels()
   expect_equal(pt[c(1, 2),], result3)
   expect_equal(pt[, c(1, 2)], result4)

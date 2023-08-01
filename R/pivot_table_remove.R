@@ -21,11 +21,10 @@
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% remove_rows(1)
+#' pt <- pt_m4 |> remove_rows(1)
 #'
-#' pt <- pt_m4 %>% remove_rows(c(1, 8, 14, 19, 25, 26))
+#' pt <- pt_m4 |> remove_rows(c(1, 8, 14, 19, 25, 26))
 #'
 #' @export
 remove_rows <- function(pt, r) {
@@ -60,11 +59,10 @@ remove_rows.pivot_table <- function(pt, r) {
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% remove_cols(7)
+#' pt <- pt_m4 |> remove_cols(7)
 #'
-#' pt <- pt_m4 %>% remove_cols(c(6,7))
+#' pt <- pt_m4 |> remove_cols(c(6,7))
 #'
 #' @export
 remove_cols <- function(pt, c) {
@@ -110,11 +108,10 @@ remove_cols.pivot_table <- function(pt, c) {
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% remove_empty()
+#' pt <- pt_m4 |> remove_empty()
 #'
-#' pt <- pt_ine2871 %>% remove_empty()
+#' pt <- pt_ine2871 |> remove_empty()
 #'
 #' @export
 remove_empty <- function(pt) {
@@ -165,11 +162,10 @@ remove_empty.pivot_table <- function(pt) {
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% remove_top(1)
+#' pt <- pt_m4 |> remove_top(1)
 #'
-#' pt <- pt_ine2871 %>% remove_top(6)
+#' pt <- pt_ine2871 |> remove_top(6)
 #'
 #' @export
 remove_top <- function(pt, n) {
@@ -210,11 +206,10 @@ remove_top.pivot_table <- function(pt, n) {
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% remove_bottom(1)
+#' pt <- pt_m4 |> remove_bottom(1)
 #'
-#' pt <- pt_ine2871 %>% remove_bottom(9)
+#' pt <- pt_ine2871 |> remove_bottom(9)
 #'
 #' @export
 remove_bottom <- function(pt, n) {
@@ -254,9 +249,8 @@ remove_bottom.pivot_table <- function(pt, n) {
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% remove_left(2)
+#' pt <- pt_m4 |> remove_left(2)
 #'
 #' @export
 remove_left <- function(pt, n) {
@@ -308,9 +302,8 @@ remove_left.pivot_table <- function(pt, n) {
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% remove_right(2)
+#' pt <- pt_m4 |> remove_right(2)
 #'
 #' @export
 remove_right <- function(pt, n) {

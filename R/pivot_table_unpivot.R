@@ -23,33 +23,32 @@
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
 #' a_tibble <-
-#'   pt_m4 %>%
-#'   remove_top(1) %>%
-#'   define_labels(n_col = 2, n_row = 2) %>%
+#'   pt_m4 |>
+#'   remove_top(1) |>
+#'   define_labels(n_col = 2, n_row = 2) |>
 #'   unpivot(include_page = FALSE)
 #'
 #' a_tibble <-
-#'   pt_m4 %>%
-#'   set_page(1, 1) %>%
-#'   remove_top(1) %>%
-#'   define_labels(n_col = 2, n_row = 2) %>%
-#'   remove_k() %>%
-#'   replace_dec() %>%
-#'   fill_values() %>%
-#'   fill_labels() %>%
-#'   remove_agg() %>%
+#'   pt_m4 |>
+#'   set_page(1, 1) |>
+#'   remove_top(1) |>
+#'   define_labels(n_col = 2, n_row = 2) |>
+#'   remove_k() |>
+#'   replace_dec() |>
+#'   fill_values() |>
+#'   fill_labels() |>
+#'   remove_agg() |>
 #'   unpivot()
 #'
 #' a_tibble <-
-#'   pt_pivottabler %>%
-#'   define_labels(n_col = 2, n_row = 2) %>%
-#'   fill_values() %>%
-#'   fill_labels() %>%
-#'   remove_agg("Total") %>%
-#'   remove_agg() %>%
+#'   pt_pivottabler |>
+#'   define_labels(n_col = 2, n_row = 2) |>
+#'   fill_values() |>
+#'   fill_labels() |>
+#'   remove_agg("Total") |>
+#'   remove_agg() |>
 #'   unpivot(include_page = FALSE, na.rm = FALSE)
 #'
 #' @export

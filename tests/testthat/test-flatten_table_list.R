@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test flatten_table_list")
 
@@ -529,15 +528,15 @@ test_that("flatten_table_list works", {
     )
 
   f <- function(pt) {
-    pt %>%
-      set_page(1, 1) %>%
-      define_labels(n_col = 2, n_row = 2) %>%
-      remove_top(1) %>%
-      fill_labels() %>%
-      remove_agg() %>%
-      fill_values() %>%
-      remove_k() %>%
-      replace_dec() %>%
+    pt |>
+      set_page(1, 1) |>
+      define_labels(n_col = 2, n_row = 2) |>
+      remove_top(1) |>
+      fill_labels() |>
+      remove_agg() |>
+      fill_values() |>
+      remove_k() |>
+      replace_dec() |>
       unpivot()
   }
 

@@ -35,18 +35,15 @@ a grid on the initial table. The only requirement to be able to divide it is
 that there is some empty row or column between them.
 }
 \examples{
-library(tidyr)
 
-lpt <- pt_set_h \%>\% divide()
+lpt <- pt_set_h |> divide()
 
-lpt <- pt_set_v \%>\% divide()
+lpt <- pt_set_v |> divide()
 
-lpt <- pt_set_h_v \%>\% divide()
+lpt <- pt_set_h_v |> divide()
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{get_page}()},

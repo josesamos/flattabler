@@ -31,8 +31,6 @@ page <- get_page(pt_m4)
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},

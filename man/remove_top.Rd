@@ -28,16 +28,13 @@ All rows not belonging to the pivot table must be removed. It is common to
 find rows with header information, which must be removed.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4 \%>\% remove_top(1)
+pt <- pt_m4 |> remove_top(1)
 
-pt <- pt_ine2871 \%>\% remove_top(6)
+pt <- pt_ine2871 |> remove_top(6)
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},

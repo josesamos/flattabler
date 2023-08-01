@@ -35,8 +35,6 @@ labels <- sort(unique(df$label))
 
 }
 \seealso{
-
-
 Other pivot table transformation functions: 
 \code{\link{extract_labels}()},
 \code{\link{fill_labels}()},

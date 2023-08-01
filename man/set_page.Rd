@@ -32,16 +32,13 @@ their origin, date or author. This information is often included in the file
 name, sheet name, or a cell attached to the pivot table.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4 \%>\% set_page(1, 1)
+pt <- pt_m4 |> set_page(1, 1)
 
-pt <- pt_m4 \%>\% set_page(page = "M4")
+pt <- pt_m4 |> set_page(page = "M4")
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},

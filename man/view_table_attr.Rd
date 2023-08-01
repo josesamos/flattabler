@@ -19,8 +19,6 @@ A \code{pivot_table} object.
 Displays the table and attributes of the object.
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},

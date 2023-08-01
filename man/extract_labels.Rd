@@ -30,18 +30,15 @@ labels, it generates a new column with the labels located at the positions
 they occupied in the original column and removes them from it.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4_compact \%>\%
+pt <- pt_m4_compact |>
   extract_labels(col = 1, labels = c("b1", "b2", "b3", "b4", "Total general"))
 
-pt <- pt_ine2871 \%>\%
+pt <- pt_ine2871 |>
   extract_labels(col = 1, labels = c("18 Granada"))
 
 }
 \seealso{
-
-
 Other pivot table transformation functions: 
 \code{\link{fill_labels}()},
 \code{\link{fill_values}()},

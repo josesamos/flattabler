@@ -27,16 +27,13 @@ All rows and columns not belonging to the pivot table must be removed,
 including those without data.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4 \%>\% remove_empty()
+pt <- pt_m4 |> remove_empty()
 
-pt <- pt_ine2871 \%>\% remove_empty()
+pt <- pt_ine2871 |> remove_empty()
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},

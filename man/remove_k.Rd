@@ -29,25 +29,22 @@ contain labels must be defined, and the table must only contain the pivot
 table rows and columns.
 }
 \examples{
-library(tidyr)
 
 pt <-
-  pt_m4 \%>\%
-  remove_top(1) \%>\%
-  define_labels(n_col = 2, n_row = 2) \%>\%
+  pt_m4 |>
+  remove_top(1) |>
+  define_labels(n_col = 2, n_row = 2) |>
   remove_k()
 
 pt <-
-  pt_ine2871 \%>\%
-  remove_top(6) \%>\%
-  remove_bottom(9) \%>\%
-  define_labels(n_col = 1, n_row = 2) \%>\%
+  pt_ine2871 |>
+  remove_top(6) |>
+  remove_bottom(9) |>
+  define_labels(n_col = 1, n_row = 2) |>
   remove_k()
 
 }
 \seealso{
-
-
 Other pivot table transformation functions: 
 \code{\link{extract_labels}()},
 \code{\link{fill_labels}()},

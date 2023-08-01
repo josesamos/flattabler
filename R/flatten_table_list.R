@@ -14,18 +14,17 @@
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
 #' f <- function(pt) {
-#'   pt %>%
-#'     set_page(1, 1) %>%
-#'     remove_top(1) %>%
-#'     define_labels(n_col = 2, n_row = 2) %>%
-#'     remove_k() %>%
-#'     replace_dec() %>%
-#'     fill_values() %>%
-#'     fill_labels() %>%
-#'     remove_agg() %>%
+#'   pt |>
+#'     set_page(1, 1) |>
+#'     remove_top(1) |>
+#'     define_labels(n_col = 2, n_row = 2) |>
+#'     remove_k() |>
+#'     replace_dec() |>
+#'     fill_values() |>
+#'     fill_labels() |>
+#'     remove_agg() |>
 #'     unpivot()
 #' }
 #'

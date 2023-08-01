@@ -18,12 +18,11 @@
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4_compact %>%
+#' pt <- pt_m4_compact |>
 #'   extract_labels(col = 1, labels = c("b1", "b2", "b3", "b4", "Total general"))
 #'
-#' pt <- pt_ine2871 %>%
+#' pt <- pt_ine2871 |>
 #'   extract_labels(col = 1, labels = c("18 Granada"))
 #'
 #' @export

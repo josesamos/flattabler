@@ -66,13 +66,12 @@ spacer_columns <- function(df) {
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' lpt <- pt_set_h %>% divide()
+#' lpt <- pt_set_h |> divide()
 #'
-#' lpt <- pt_set_v %>% divide()
+#' lpt <- pt_set_v |> divide()
 #'
-#' lpt <- pt_set_h_v %>% divide()
+#' lpt <- pt_set_h_v |> divide()
 #'
 #' @export
 divide <- function(pt) {

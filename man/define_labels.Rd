@@ -25,14 +25,11 @@ values, usually numeric data. This function defines the quantity of rows and
 columns that contain labels.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4 \%>\% define_labels(n_col = 2, n_row = 2)
+pt <- pt_m4 |> define_labels(n_col = 2, n_row = 2)
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{divide}()},
 \code{\link{get_page}()},

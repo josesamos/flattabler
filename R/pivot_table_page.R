@@ -53,11 +53,10 @@ get_page.pivot_table <- function(pt) {
 #' @seealso
 #'
 #' @examples
-#' library(tidyr)
 #'
-#' pt <- pt_m4 %>% set_page(1, 1)
+#' pt <- pt_m4 |> set_page(1, 1)
 #'
-#' pt <- pt_m4 %>% set_page(page = "M4")
+#' pt <- pt_m4 |> set_page(page = "M4")
 #'
 #' @export
 set_page <- function(pt, row = 0, col = 0, page = "") {

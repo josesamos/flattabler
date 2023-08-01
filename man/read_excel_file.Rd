@@ -38,8 +38,6 @@ lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
 
 }
 \seealso{
-
-
 Other import functions: 
 \code{\link{pivot_table}()},
 \code{\link{read_excel_folder}()},

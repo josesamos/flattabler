@@ -21,18 +21,17 @@ Given a list of pivot tables and a transformation function that flattens a
 results into a flat table.
 }
 \examples{
-library(tidyr)
 
 f <- function(pt) {
-  pt \%>\%
-    set_page(1, 1) \%>\%
-    remove_top(1) \%>\%
-    define_labels(n_col = 2, n_row = 2) \%>\%
-    remove_k() \%>\%
-    replace_dec() \%>\%
-    fill_values() \%>\%
-    fill_labels() \%>\%
-    remove_agg() \%>\%
+  pt |>
+    set_page(1, 1) |>
+    remove_top(1) |>
+    define_labels(n_col = 2, n_row = 2) |>
+    remove_k() |>
+    replace_dec() |>
+    fill_values() |>
+    fill_labels() |>
+    remove_agg() |>
     unpivot()
 }
 
@@ -40,8 +39,6 @@ ft <- flatten_table_list(list_pt, f)
 
 }
 \seealso{
-
-
 Other flat table generation functions: 
 \code{\link{unpivot}()}
 }

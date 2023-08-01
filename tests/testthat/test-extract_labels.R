@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test extract_labels")
 
@@ -67,7 +66,7 @@ test_that("extract_labels works", {
       row.names = c(NA,
                     26L)
     )
-  pt <- pt_m4_compact %>%
+  pt <- pt_m4_compact |>
     extract_labels(col = 1,
                    labels = c("b1", "b2", "b3", "b4", "Total general"))
   expect_equal(pt[, c(1, 2)], result)

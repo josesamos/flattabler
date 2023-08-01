@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test remove")
 
@@ -24,7 +23,7 @@ test_that("remove works", {
       class = c("data.frame",
                 "pivot_table")
     )
-  pt <- list_pt_ie[[1]] %>% remove_rows(c(-3))
+  pt <- list_pt_ie[[1]] |> remove_rows(c(-3))
   expect_equal(pt, result)
 
   result <-
@@ -53,10 +52,10 @@ test_that("remove works", {
       n_row_labels = 0,
       n_extract = 0
     )
-  pt <- list_pt_ie[[1]] %>% remove_cols(c(-3))
+  pt <- list_pt_ie[[1]] |> remove_cols(c(-3))
   expect_equal(pt, result)
 
-  pt <- pt_ine2871 %>% remove_empty()
+  pt <- pt_ine2871 |> remove_empty()
   expect_equal(nrow(pt), 184)
   expect_equal(ncol(pt), 70)
 
@@ -81,7 +80,7 @@ test_that("remove works", {
       class = c("data.frame",
                 "pivot_table")
     )
-  pt <- list_pt_ie[[1]] %>% remove_top(11)
+  pt <- list_pt_ie[[1]] |> remove_top(11)
   expect_equal(pt, result)
 
   result <-
@@ -105,7 +104,7 @@ test_that("remove works", {
       class = c("data.frame",
                 "pivot_table")
     )
-  pt <- list_pt_ie[[1]] %>% remove_bottom(11)
+  pt <- list_pt_ie[[1]] |> remove_bottom(11)
   expect_equal(pt, result)
 
   result <-
@@ -133,7 +132,7 @@ test_that("remove works", {
       n_row_labels = 0,
       n_extract = 0
     )
-  pt <- list_pt_ie[[1]] %>% remove_left(8)
+  pt <- list_pt_ie[[1]] |> remove_left(8)
   expect_equal(pt, result)
 
   result <-
@@ -161,6 +160,6 @@ test_that("remove works", {
       n_row_labels = 0,
       n_extract = 0
     )
-  pt <- list_pt_ie[[1]] %>% remove_right(8)
+  pt <- list_pt_ie[[1]] |> remove_right(8)
   expect_equal(pt, result)
 })

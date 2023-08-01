@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test unpivot")
 
@@ -337,9 +336,9 @@ test_that("unpivot works", {
                 "tbl", "data.frame")
     )
   pt <-
-    list_pt_ie[[1]] %>%
-    remove_top(1) %>%
-    define_labels(n_col = 2, n_row = 2) %>%
+    list_pt_ie[[1]] |>
+    remove_top(1) |>
+    define_labels(n_col = 2, n_row = 2) |>
     unpivot(include_page = FALSE)
   expect_equal(pt, result)
 })

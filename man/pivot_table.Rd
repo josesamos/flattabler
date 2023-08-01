@@ -28,8 +28,6 @@ pt <- pivot_table(df, page = "M4")
 
 }
 \seealso{
-
-
 Other import functions: 
 \code{\link{read_excel_file}()},
 \code{\link{read_excel_folder}()},

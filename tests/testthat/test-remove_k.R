@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test remove_k")
 
@@ -126,9 +125,9 @@ test_that("remove_k works", {
   pt[4, 4] <- "1.232.344,46"
   pt[8, 7] <- "2.001.232.344,35"
   pt <-
-    pt %>%
-    remove_top(1) %>%
-    define_labels(n_col = 2, n_row = 2) %>%
+    pt |>
+    remove_top(1) |>
+    define_labels(n_col = 2, n_row = 2) |>
     remove_k()
   expect_equal(pt, result)
 })

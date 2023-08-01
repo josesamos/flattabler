@@ -29,16 +29,13 @@ All rows not belonging to the pivot table must be removed. It is common to
 find rows with header or footer information, which must be removed.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4 \%>\% remove_rows(1)
+pt <- pt_m4 |> remove_rows(1)
 
-pt <- pt_m4 \%>\% remove_rows(c(1, 8, 14, 19, 25, 26))
+pt <- pt_m4 |> remove_rows(c(1, 8, 14, 19, 25, 26))
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},

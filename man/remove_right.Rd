@@ -30,14 +30,11 @@ This function is very useful because it is not necessary to know the number
 of columns in the table.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4 \%>\% remove_right(2)
+pt <- pt_m4 |> remove_right(2)
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},

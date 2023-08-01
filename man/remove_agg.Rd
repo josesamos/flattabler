@@ -32,24 +32,21 @@ contain labels must be defined, and the table must only contain the pivot
 table rows and columns.
 }
 \examples{
-library(tidyr)
 
 pt <-
-  pt_m4 \%>\%
-  remove_top(1) \%>\%
-  define_labels(n_col = 2, n_row = 2) \%>\%
+  pt_m4 |>
+  remove_top(1) |>
+  define_labels(n_col = 2, n_row = 2) |>
   remove_agg()
 
 pt <-
-  pt_pivottabler \%>\%
-  define_labels(n_col = 2, n_row = 2) \%>\%
-  remove_agg("Total") \%>\%
+  pt_pivottabler |>
+  define_labels(n_col = 2, n_row = 2) |>
+  remove_agg("Total") |>
   remove_agg()
 
 }
 \seealso{
-
-
 Other pivot table transformation functions: 
 \code{\link{extract_labels}()},
 \code{\link{fill_labels}()},

@@ -31,18 +31,15 @@ table rows and columns.
 The only decimal separators considered are "." and ",".
 }
 \examples{
-library(tidyr)
 
 pt <-
-  pt_m4 \%>\%
-  remove_top(1) \%>\%
-  define_labels(n_col = 2, n_row = 2) \%>\%
+  pt_m4 |>
+  remove_top(1) |>
+  define_labels(n_col = 2, n_row = 2) |>
   replace_dec()
 
 }
 \seealso{
-
-
 Other pivot table transformation functions: 
 \code{\link{extract_labels}()},
 \code{\link{fill_labels}()},

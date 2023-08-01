@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test remove_agg")
 
@@ -27,9 +26,9 @@ test_that("remove_agg works", {
       n_extract = 0
     )
   pt <-
-    list_pt_ie[[1]] %>%
-    remove_top(1) %>%
-    define_labels(n_col = 2, n_row = 2) %>%
+    list_pt_ie[[1]] |>
+    remove_top(1) |>
+    define_labels(n_col = 2, n_row = 2) |>
     remove_agg()
   expect_equal(pt, result)
 })

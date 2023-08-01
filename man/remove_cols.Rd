@@ -28,16 +28,13 @@ values, usually numeric data.
 All columns not belonging to the pivot table must be removed.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4 \%>\% remove_cols(7)
+pt <- pt_m4 |> remove_cols(7)
 
-pt <- pt_m4 \%>\% remove_cols(c(6,7))
+pt <- pt_m4 |> remove_cols(c(6,7))
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},

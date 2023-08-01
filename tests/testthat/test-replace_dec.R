@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test replace_dec")
 
@@ -122,12 +121,12 @@ test_that("replace_dec works", {
                 "pivot_table")
     )
   pt <-
-    list_pt_ie[[1]] %>%
-    remove_top(1) %>%
+    list_pt_ie[[1]] |>
+    remove_top(1) |>
     define_labels(n_col = 2, n_row = 2)
-  pt1 <- pt %>% replace_dec()
+  pt1 <- pt |> replace_dec()
   expect_equal(pt1, result)
 
-  pt2 <- pt %>% replace_dec(",")
+  pt2 <- pt |> replace_dec(",")
   expect_equal(pt2, pt)
 })

@@ -1,4 +1,3 @@
-library(tidyr)
 
 context("test divide")
 
@@ -11,6 +10,6 @@ test_that("divide works", {
   expect_equal(x, c(1, 29, 58))
   expect_equal(y, c(1, 21))
 
-  lpt <- pt_set_h_v %>% divide()
+  lpt <- pt_set_h_v |> divide()
   expect_equal(lpt, list_pt)
 })

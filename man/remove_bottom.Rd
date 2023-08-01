@@ -31,16 +31,13 @@ This function is very useful because it is not necessary to know the number
 of rows in the table.
 }
 \examples{
-library(tidyr)
 
-pt <- pt_m4 \%>\% remove_bottom(1)
+pt <- pt_m4 |> remove_bottom(1)
 
-pt <- pt_ine2871 \%>\% remove_bottom(9)
+pt <- pt_ine2871 |> remove_bottom(9)
 
 }
 \seealso{
-
-
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},
