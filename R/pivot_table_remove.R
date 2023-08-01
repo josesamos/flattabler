@@ -1,42 +1,4 @@
 
-# rows --------------------------------------------------------------------
-
-#' Remove rows from a pivot table
-#'
-#' Remove the rows whose numbers are indicated from the pivot table represented
-#' by the object.
-#'
-#' A pivot table should only contain label rows and columns, and an array of
-#' values, usually numeric data.
-#'
-#' All rows not belonging to the pivot table must be removed. It is common to
-#' find rows with header or footer information, which must be removed.
-#'
-#' @param pt A `pivot_table` object.
-#' @param r A vector of numbers, row numbers.
-#'
-#' @return A `pivot_table` object.
-#'
-#' @family pivot table definition functions
-#' @seealso
-#'
-#' @examples
-#'
-#' pt <- pt_m4 |> remove_rows(1)
-#'
-#' pt <- pt_m4 |> remove_rows(c(1, 8, 14, 19, 25, 26))
-#'
-#' @export
-remove_rows <- function(pt, r) {
-  UseMethod("remove_rows")
-}
-
-#' @rdname remove_rows
-#' @export
-remove_rows.pivot_table <- function(pt, r) {
-  pt[-r,]
-}
-
 
 # cols -----------------------------------------------------------------
 

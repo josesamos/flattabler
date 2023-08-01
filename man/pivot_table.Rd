@@ -33,7 +33,7 @@ converted to character data type.
 }
 \examples{
 
-df <- data.frame(unclass(pt_m4)[c(1:7)])
+df <- df_ex
 pt <- pivot_table(df)
 
 pt <- pivot_table(df, page = "M4")

@@ -33,9 +33,9 @@ name, sheet name, or a cell attached to the pivot table.
 }
 \examples{
 
-pt <- pt_m4 |> set_page(1, 1)
+pt <- pt_ex |> set_page(1, 1)
 
-pt <- pt_m4 |> set_page(page = "M4")
+pt <- pt_ex |> set_page(page = "M4")
 
 }
 \seealso{

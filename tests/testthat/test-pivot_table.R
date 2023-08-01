@@ -255,3 +255,26 @@ test_that("set_page(), get_page() pivot_table page", {
   }, "M4")
 })
 
+
+test_that("define_labels(), pivot_table", {
+  expect_equal({
+    df <- data.frame()
+    pt <- pivot_table(df)
+    pt <- define_labels(pt, n_col = 2, n_row = 2)
+    pt
+  }, structure(
+    list(
+      df = structure(
+        list(),
+        names = character(0),
+        class = "data.frame",
+        row.names = integer(0)
+      ),
+      page = character(0),
+      n_col_labels = 2,
+      n_row_labels = 2,
+      n_extract = 0
+    ),
+    class = "pivot_table"
+  ))
+})
