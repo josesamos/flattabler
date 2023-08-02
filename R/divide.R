@@ -66,11 +66,7 @@ spacer_columns <- function(df) {
 #'
 #' @examples
 #'
-#' lpt <- divide(pt_set_h)
-#'
-#' lpt <- divide(pt_set_v)
-#'
-#' lpt <- divide(pt_set_h_v)
+#' lft <- divide(ft_set_h_v)
 #'
 #' @export
 divide <- function(pt) {
