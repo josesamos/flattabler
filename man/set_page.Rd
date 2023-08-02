@@ -45,7 +45,6 @@ Other pivot table definition functions:
 \code{\link{define_labels}()},
 \code{\link{divide}()},
 \code{\link{get_page}()},
-\code{\link{pivot_table}()},
-\code{\link{view_table_attr}()}
+\code{\link{pivot_table}()}
 }
 \concept{pivot table definition functions}

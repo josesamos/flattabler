@@ -4,13 +4,7 @@
 \alias{pivot_table}
 \title{\code{pivot_table} S3 class}
 \usage{
-pivot_table(
-  df,
-  page = vector("character"),
-  n_col_labels = 0,
-  n_row_labels = 0,
-  n_extract = 0
-)
+pivot_table(df, page = vector("character"), n_col_labels = 0, n_row_labels = 0)
 }
 \arguments{
 \item{df}{A data frame, contains one or more pivot tables.}
@@ -20,8 +14,6 @@ pivot_table(
 \item{n_col_labels}{A number, number of columns containing pivot table labels.}
 
 \item{n_row_labels}{A number, number of rows containing pivot table labels.}
-
-\item{n_extract}{A number, number of new columns added to the table.}
 }
 \value{
 A \code{pivot_table} object.
@@ -46,7 +38,6 @@ Other pivot table definition functions:
 \code{\link{define_labels}()},
 \code{\link{divide}()},
 \code{\link{get_page}()},
-\code{\link{set_page}()},
-\code{\link{view_table_attr}()}
+\code{\link{set_page}()}
 }
 \concept{pivot table definition functions}

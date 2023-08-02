@@ -12,8 +12,7 @@ test_that("pivot_table() creates a pivot_table object", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -228,8 +227,7 @@ test_that("pivot_table() creates a pivot_table object", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -270,8 +268,7 @@ test_that("define_labels(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 2,
-      n_row_labels = 2,
-      n_extract = 0
+      n_row_labels = 2
     ),
     class = "pivot_table"
   ))
@@ -396,8 +393,7 @@ test_that("remove_rows(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -502,8 +498,7 @@ test_that("remove_cols(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -571,8 +566,7 @@ test_that("remove_empty(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -598,8 +592,7 @@ test_that("remove_top(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -626,8 +619,7 @@ test_that("remove_top(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -653,8 +645,7 @@ test_that("remove_bottom(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -681,8 +672,7 @@ test_that("remove_bottom(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -730,8 +720,7 @@ test_that("remove_left(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -752,8 +741,7 @@ test_that("remove_left(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -800,8 +788,7 @@ test_that("remove_right(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -822,8 +809,7 @@ test_that("remove_right(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 0,
-      n_row_labels = 0,
-      n_extract = 0
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))
@@ -1034,8 +1020,7 @@ test_that("fill_labels(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 2,
-      n_row_labels = 2,
-      n_extract = 0
+      n_row_labels = 2
     ),
     class = "pivot_table"
   ))
@@ -1247,8 +1232,7 @@ test_that("fill_labels(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 2,
-      n_row_labels = 2,
-      n_extract = 0
+      n_row_labels = 2
     ),
     class = "pivot_table"
   ))
@@ -1381,8 +1365,7 @@ test_that("remove_agg(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 2,
-      n_row_labels = 2,
-      n_extract = 0
+      n_row_labels = 2
     ),
     class = "pivot_table"
   ))
@@ -1594,8 +1577,7 @@ test_that("fill_values(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 2,
-      n_row_labels = 2,
-      n_extract = 0
+      n_row_labels = 2
     ),
     class = "pivot_table"
   ))
@@ -1811,8 +1793,7 @@ test_that("remove_k(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 2,
-      n_row_labels = 2,
-      n_extract = 0
+      n_row_labels = 2
     ),
     class = "pivot_table"
   ))
@@ -2023,8 +2004,470 @@ test_that("replace_dec(), pivot_table", {
       ),
       page = character(0),
       n_col_labels = 2,
-      n_row_labels = 2,
-      n_extract = 0
+      n_row_labels = 2
+    ),
+    class = "pivot_table"
+  ))
+})
+
+test_that("extract_labels(), pivot_table", {
+  expect_equal({
+    pivot_table(df_ex_compact) |>
+      extract_labels(col = 1,
+                     labels = c("b1", "b2", "b3", "b4", "Total general"))
+  }, structure(
+    list(
+      df = structure(
+        list(
+          V1 = c(
+            "",
+            "",
+            "",
+            "b1",
+            "",
+            "",
+            "",
+            "",
+            "b2",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "b3",
+            "",
+            "",
+            "",
+            "",
+            "b4",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Total general"
+          ),
+          V2 = c(
+            "M4",
+            "",
+            "Etiquetas de fila",
+            "",
+            "a05",
+            "a09",
+            "a13",
+            "a17",
+            "",
+            "a02",
+            "a06",
+            "a10",
+            "a14",
+            "a18",
+            "",
+            "a03",
+            "a07",
+            "a15",
+            "a19",
+            "",
+            "a04",
+            "a08",
+            "a12",
+            "a16",
+            "a20",
+            ""
+          ),
+          V3 = c(
+            "Etiquetas de columna",
+            "e2",
+            "d3",
+            "1.261,79",
+            "70,40",
+            "674,31",
+            "421,08",
+            "96,00",
+            "7.622,24",
+            "924,80",
+            "1.058,40",
+            "791,04",
+            "4.698,00",
+            "150,00",
+            "3.187,52",
+            "658,56",
+            "92,00",
+            "2.043,00",
+            "393,96",
+            "2.113,35",
+            "263,13",
+            "69,66",
+            "346,00",
+            "1.399,68",
+            "34,88",
+            "14.184,90"
+          ),
+          V4 = c(
+            "",
+            "",
+            "d4",
+            "3.491,96",
+            "1.089,00",
+            "",
+            "1.055,12",
+            "1.347,84",
+            "2.966,72",
+            "1.867,02",
+            "494,19",
+            "121,03",
+            "40,96",
+            "443,52",
+            "2.910,81",
+            "203,52",
+            "1.466,08",
+            "184,96",
+            "1.056,25",
+            "2.878,61",
+            "204,80",
+            "1.261,17",
+            "1.008,61",
+            "142,08",
+            "261,95",
+            "12.248,10"
+          ),
+          V5 = c(
+            "",
+            "",
+            "d5",
+            "609,96",
+            "",
+            "",
+            "64,68",
+            "545,28",
+            "213,15",
+            "73,50",
+            "139,65",
+            "",
+            "",
+            "",
+            "692,66",
+            "148,48",
+            "",
+            "544,18",
+            "",
+            "841,60",
+            "489,00",
+            "101,50",
+            "124,74",
+            "43,36",
+            "83,00",
+            "2.357,37"
+          ),
+          V6 = c(
+            "",
+            "Total e2",
+            "",
+            "5.363,71",
+            "1.159,40",
+            "674,31",
+            "1.540,88",
+            "1.989,12",
+            "10.802,11",
+            "2.865,32",
+            "1.692,24",
+            "912,07",
+            "4.738,96",
+            "593,52",
+            "6.790,99",
+            "1.010,56",
+            "1.558,08",
+            "2.772,14",
+            "1.450,21",
+            "5.833,56",
+            "956,93",
+            "1.432,33",
+            "1.479,35",
+            "1.585,12",
+            "379,83",
+            "28.790,37"
+          ),
+          V7 = c(
+            "",
+            "Total general",
+            "",
+            "5.363,71",
+            "1.159,40",
+            "674,31",
+            "1.540,88",
+            "1.989,12",
+            "10.802,11",
+            "2.865,32",
+            "1.692,24",
+            "912,07",
+            "4.738,96",
+            "593,52",
+            "6.790,99",
+            "1.010,56",
+            "1.558,08",
+            "2.772,14",
+            "1.450,21",
+            "5.833,56",
+            "956,93",
+            "1.432,33",
+            "1.479,35",
+            "1.585,12",
+            "379,83",
+            "28.790,37"
+          )
+        ),
+        class = "data.frame",
+        row.names = c(NA, 26L)
+      ),
+      page = character(0),
+      n_col_labels = 0,
+      n_row_labels = 0
+    ),
+    class = "pivot_table"
+  ))
+})
+
+test_that("extract_labels(), pivot_table", {
+  expect_equal({
+    a_df <- cbind("A", df_ex_compact)
+    pivot_table(a_df) |>
+      extract_labels(col = 2,
+                     labels = c("b1", "b2", "b3", "b4", "Total general"))
+  }, structure(
+    list(
+      df = structure(
+        list(
+          V1 = c(
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A",
+            "A"
+          ),
+          V2 = c(
+            "",
+            "",
+            "",
+            "b1",
+            "",
+            "",
+            "",
+            "",
+            "b2",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "b3",
+            "",
+            "",
+            "",
+            "",
+            "b4",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Total general"
+          ),
+          V3 = c(
+            "M4",
+            "",
+            "Etiquetas de fila",
+            "",
+            "a05",
+            "a09",
+            "a13",
+            "a17",
+            "",
+            "a02",
+            "a06",
+            "a10",
+            "a14",
+            "a18",
+            "",
+            "a03",
+            "a07",
+            "a15",
+            "a19",
+            "",
+            "a04",
+            "a08",
+            "a12",
+            "a16",
+            "a20",
+            ""
+          ),
+          V4 = c(
+            "Etiquetas de columna",
+            "e2",
+            "d3",
+            "1.261,79",
+            "70,40",
+            "674,31",
+            "421,08",
+            "96,00",
+            "7.622,24",
+            "924,80",
+            "1.058,40",
+            "791,04",
+            "4.698,00",
+            "150,00",
+            "3.187,52",
+            "658,56",
+            "92,00",
+            "2.043,00",
+            "393,96",
+            "2.113,35",
+            "263,13",
+            "69,66",
+            "346,00",
+            "1.399,68",
+            "34,88",
+            "14.184,90"
+          ),
+          V5 = c(
+            "",
+            "",
+            "d4",
+            "3.491,96",
+            "1.089,00",
+            "",
+            "1.055,12",
+            "1.347,84",
+            "2.966,72",
+            "1.867,02",
+            "494,19",
+            "121,03",
+            "40,96",
+            "443,52",
+            "2.910,81",
+            "203,52",
+            "1.466,08",
+            "184,96",
+            "1.056,25",
+            "2.878,61",
+            "204,80",
+            "1.261,17",
+            "1.008,61",
+            "142,08",
+            "261,95",
+            "12.248,10"
+          ),
+          V6 = c(
+            "",
+            "",
+            "d5",
+            "609,96",
+            "",
+            "",
+            "64,68",
+            "545,28",
+            "213,15",
+            "73,50",
+            "139,65",
+            "",
+            "",
+            "",
+            "692,66",
+            "148,48",
+            "",
+            "544,18",
+            "",
+            "841,60",
+            "489,00",
+            "101,50",
+            "124,74",
+            "43,36",
+            "83,00",
+            "2.357,37"
+          ),
+          V7 = c(
+            "",
+            "Total e2",
+            "",
+            "5.363,71",
+            "1.159,40",
+            "674,31",
+            "1.540,88",
+            "1.989,12",
+            "10.802,11",
+            "2.865,32",
+            "1.692,24",
+            "912,07",
+            "4.738,96",
+            "593,52",
+            "6.790,99",
+            "1.010,56",
+            "1.558,08",
+            "2.772,14",
+            "1.450,21",
+            "5.833,56",
+            "956,93",
+            "1.432,33",
+            "1.479,35",
+            "1.585,12",
+            "379,83",
+            "28.790,37"
+          ),
+          V8 = c(
+            "",
+            "Total general",
+            "",
+            "5.363,71",
+            "1.159,40",
+            "674,31",
+            "1.540,88",
+            "1.989,12",
+            "10.802,11",
+            "2.865,32",
+            "1.692,24",
+            "912,07",
+            "4.738,96",
+            "593,52",
+            "6.790,99",
+            "1.010,56",
+            "1.558,08",
+            "2.772,14",
+            "1.450,21",
+            "5.833,56",
+            "956,93",
+            "1.432,33",
+            "1.479,35",
+            "1.585,12",
+            "379,83",
+            "28.790,37"
+          )
+        ),
+        class = "data.frame",
+        row.names = c(NA, 26L)
+      ),
+      page = character(0),
+      n_col_labels = 0,
+      n_row_labels = 0
     ),
     class = "pivot_table"
   ))

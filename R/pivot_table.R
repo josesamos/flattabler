@@ -8,7 +8,6 @@
 #' @param page A string, additional information associated with the pivot table.
 #' @param n_col_labels A number, number of columns containing pivot table labels.
 #' @param n_row_labels A number, number of rows containing pivot table labels.
-#' @param n_extract A number, number of new columns added to the table.
 #'
 #' @return A `pivot_table` object.
 #'
@@ -26,8 +25,7 @@
 pivot_table <- function(df,
                         page = vector("character"),
                         n_col_labels = 0,
-                        n_row_labels = 0,
-                        n_extract = 0) {
+                        n_row_labels = 0) {
   stopifnot(is.data.frame(df))
   stopifnot(is.vector(page))
 
@@ -41,8 +39,7 @@ pivot_table <- function(df,
       df = df,
       page = page,
       n_col_labels = n_col_labels,
-      n_row_labels = n_row_labels,
-      n_extract = n_extract
+      n_row_labels = n_row_labels
     ),
     class = "pivot_table"
   )
@@ -834,4 +831,53 @@ unpivot.pivot_table <- function(pt,
     df <- df[!is.na(df[, "value"]),]
   }
   tibble::tibble(df)
+}
+
+#' Extract labels
+#'
+#' Extract the given set of labels from a table column in compact format to
+#' generate a new column in the table.
+#'
+#' Sometimes a table column includes values of multiple label fields, this is
+#' generally known as compact table format. Given a column number and a set of
+#' labels, it generates a new column with the labels located at the positions
+#' they occupied in the original column and removes them from it.
+#'
+#' @param pt A `pivot_table` object.
+#' @param col A number, column from which labels are extracted.
+#' @param labels A vector of strings, set of labels to extract.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table transformation functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' pt <- pivot_table(df_ex_compact) |>
+#'   extract_labels(col = 1, labels = c("b1", "b2", "b3", "b4", "Total general"))
+#'
+#' @export
+extract_labels <- function(pt, col, labels) UseMethod("extract_labels")
+
+#' @rdname extract_labels
+#' @export
+extract_labels.pivot_table <- function(pt, col = 1, labels = c()) {
+  if (col > 0 && length(labels) > 0) {
+    df <- data.frame(new = rep("", nrow(pt$df)), stringsAsFactors = FALSE)
+    for (label in labels) {
+      df[pt$df[, col] == label, 1] <- label
+      pt$df[pt$df[, col] == label, col] <- ""
+    }
+    if (col == 1) {
+      pt$df <- cbind(df, pt$df)
+    } else {
+      pt$df <- cbind(pt$df[, 1:(col - 1), drop = FALSE], df, pt$df[, col:ncol(pt$df)])
+    }
+    if (pt$n_col_labels > 0) {
+      pt$n_col_labels <- pt$n_row_labels + 1
+    }
+    pt$df <- assign_names(pt$df)
+  }
+  pt
 }
