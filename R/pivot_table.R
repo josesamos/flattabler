@@ -12,7 +12,7 @@
 #'
 #' @return A `pivot_table` object.
 #'
-#' @family import data functions
+#' @family pivot table definition functions
 #' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
@@ -33,6 +33,7 @@ pivot_table <- function(df,
 
   df <-
     data.frame(lapply(df, as.character), stringsAsFactors = FALSE)
+  df <- assign_names(df)
   page <- as.character(page)
 
   structure(
@@ -46,6 +47,23 @@ pivot_table <- function(df,
     class = "pivot_table"
   )
 }
+
+
+#' data frame col and row names
+#'
+#' Assign names to the rows and columns of the data frame.
+#'
+#' @param df A data frame.
+#'
+#' @return  A data frame.
+#'
+#' @keywords internal
+assign_names <- function(df) {
+  if (nrow(df) > 0) row.names(df) <- 1:nrow(df)
+  if (length(df) > 0) colnames(df) <- sprintf("V%d", 1:length(df))
+  df
+}
+
 
 #' Get the page information of a pivot table
 #'
@@ -63,7 +81,7 @@ pivot_table <- function(df,
 #' @return A vector of strings.
 #'
 #' @family pivot table definition functions
-#' @seealso
+#' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
 #' page <- get_page(pt_ex)
@@ -99,7 +117,7 @@ get_page.pivot_table <- function(pt) {
 #' @return A `pivot_table` object.
 #'
 #' @family pivot table definition functions
-#' @seealso
+#' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
 #'
@@ -118,7 +136,7 @@ set_page.pivot_table <- function(pt,
                                  row = 0,
                                  col = 0,
                                  page = "") {
-  if (row > 0 & col > 0) {
+  if (row > 0 && col > 0) {
     pt$page <- pt$df[row, col]
   } else {
     pt$page <- page
@@ -139,7 +157,7 @@ set_page.pivot_table <- function(pt,
 #' @return A `pivot_table` object.
 #'
 #' @family pivot table definition functions
-#' @seealso
+#' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
 #'
@@ -179,7 +197,7 @@ define_labels.pivot_table <- function(pt,
 #' @return A `pivot_table` object.
 #'
 #' @family pivot table definition functions
-#' @seealso
+#' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
 #'
@@ -188,12 +206,251 @@ define_labels.pivot_table <- function(pt,
 #' pt <- pt_ex |> remove_rows(c(1, 8, 14, 19, 25, 26))
 #'
 #' @export
-remove_rows <- function(pt, r) UseMethod("remove_rows")
+remove_rows <- function(pt, r)
+  UseMethod("remove_rows")
 
 #' @rdname remove_rows
 #' @export
 remove_rows.pivot_table <- function(pt, r) {
-  pt$df <- pt$df[-r,]
+  pt$df <- as.data.frame(pt$df[-r, ], stringsAsFactors = FALSE)
+  pt$df <- assign_names(pt$df)
   pt
 }
 
+#' Remove columns from a pivot table
+#'
+#' Remove the columns whose numbers are indicated from the pivot table
+#' represented by the object.
+#'
+#' A pivot table should only contain label rows and columns, and an array of
+#' values, usually numeric data.
+#'
+#' All columns not belonging to the pivot table must be removed.
+#'
+#' @param pt A `pivot_table` object.
+#' @param c A vector of numbers, column numbers.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' pt <- pt_ex |> remove_cols(7)
+#'
+#' pt <- pt_ex |> remove_cols(c(6,7))
+#'
+#' @export
+remove_cols <- function(pt, c)
+  UseMethod("remove_cols")
+
+#' @rdname remove_cols
+#' @export
+remove_cols.pivot_table <- function(pt, c) {
+  pt$df <- as.data.frame(pt$df[, -c], stringsAsFactors = FALSE)
+  pt$df <- assign_names(pt$df)
+  pt
+}
+
+
+#' Remove empty rows and columns from a pivot table
+#'
+#' Remove rows and columns without data from the pivot table represented by the
+#' object.
+#'
+#' A pivot table should only contain label rows and columns, and an array of
+#' values, usually numeric data.
+#'
+#' All rows and columns not belonging to the pivot table must be removed,
+#' including those without data.
+#'
+#' @param pt A `pivot_table` object.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' df <- df_ex
+#' df[seq(from = 1, to = 25, by = 2), ] <- " "
+#' df[, seq(from = 1, to = 7, by = 2)] <- " "
+#' pt <- pivot_table(df)
+#' pt <- pt |> remove_empty()
+#'
+#' @export
+remove_empty <- function(pt)
+  UseMethod("remove_empty")
+
+#' @rdname remove_empty
+#' @export
+remove_empty.pivot_table <- function(pt) {
+  # empty cells with NA
+  pt$df <-
+    data.frame(lapply(pt$df, function(x)
+      dplyr::na_if(stringr::str_trim(x), "")), stringsAsFactors = FALSE)
+  pt$df <-
+    as.data.frame(pt$df[rowSums(is.na(pt$df)) != ncol(pt$df), colSums(is.na(pt$df)) != nrow(pt$df)], stringsAsFactors = FALSE)
+  pt$df <- assign_names(pt$df)
+  pt
+}
+
+#' Remove top rows from a pivot table
+#'
+#' Remove top rows from the pivot table represented by the object.
+#'
+#' A pivot table should only contain label rows and columns, and an array of
+#' values, usually numeric data.
+#'
+#' All rows not belonging to the pivot table must be removed. It is common to
+#' find rows with header information, which must be removed.
+#'
+#' @param pt A `pivot_table` object.
+#' @param n A number, number of rows to remove.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' pt <- pt_ex |> remove_top(3)
+#'
+#' @export
+remove_top <- function(pt, n) UseMethod("remove_top")
+
+#' @rdname remove_top
+#' @export
+remove_top.pivot_table <- function(pt, n) {
+  if (n > 0) {
+    pt$df <- pt$df[c(-1:-n), ]
+    pt$df <- assign_names(pt$df)
+  }
+  pt
+}
+
+#' Remove bottom rows from a pivot table
+#'
+#' Remove bottom rows from the pivot table represented by the object.
+#'
+#' A pivot table should only contain label rows and columns, and an array of
+#' values, usually numeric data.
+#'
+#' All rows not belonging to the pivot table must be removed. It is common to
+#' find rows with footer information, which must be removed.
+#'
+#' This function is very useful because it is not necessary to know the number
+#' of rows in the table.
+#'
+#' @param pt A `pivot_table` object.
+#' @param n A number, number of rows to remove.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' pt <- pt_ex |> remove_bottom(3)
+#'
+#' @export
+remove_bottom <- function(pt, n) UseMethod("remove_bottom")
+
+#' @rdname remove_bottom
+#' @export
+remove_bottom.pivot_table <- function(pt, n) {
+  if (n > 0) {
+    n_rows <- nrow(pt$df)
+    if (n >= n_rows) {
+      first_row <- 1
+    } else {
+      first_row <- nrow(pt$df) - n + 1
+    }
+    pt$df <- pt$df[c(-first_row:-n_rows),]
+    pt$df <- assign_names(pt$df)
+  }
+  pt
+}
+
+
+#' Remove left columns from a pivot table
+#'
+#' Remove left columns from the pivot table represented by the object.
+#'
+#' A pivot table should only contain label rows and columns, and an array of
+#' values, usually numeric data.
+#'
+#' All columns not belonging to the pivot table must be removed.
+#'
+#' @param pt A `pivot_table` object.
+#' @param n A number, number of columns to remove.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' pt <- pt_ex |> remove_left(3)
+#'
+#' @export
+remove_left <- function(pt, n) UseMethod("remove_left")
+
+#' @rdname remove_left
+#' @export
+remove_left.pivot_table <- function(pt, n) {
+  if (n > 0) {
+    pt$df <- as.data.frame(pt$df[, c(-1:-n)], stringsAsFactors = FALSE)
+    pt$df <- assign_names(pt$df)
+  }
+  pt
+}
+
+
+#' Remove right columns from a pivot table
+#'
+#' Remove right columns from the pivot table represented by the object.
+#'
+#' A pivot table should only contain label rows and columns, and an array of
+#' values, usually numeric data.
+#'
+#' All columns not belonging to the pivot table must be removed.
+#'
+#' This function is very useful because it is not necessary to know the number
+#' of columns in the table.
+#'
+#' @param pt A `pivot_table` object.
+#' @param n A number, number of columns to remove.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' pt <- pt_ex |> remove_right(3)
+#'
+#' @export
+remove_right <- function(pt, n) UseMethod("remove_right")
+
+#' @rdname remove_right
+#' @export
+remove_right.pivot_table <- function(pt, n) {
+  if (n > 0) {
+    n_cols <- ncol(pt$df)
+    if (n >= n_cols) {
+      first_col <- 1
+    } else {
+      first_col <- ncol(pt$df) - n + 1
+    }
+    pt$df <- as.data.frame(pt$df[, c(-first_col:-n_cols)], stringsAsFactors = FALSE)
+    pt$df <- assign_names(pt$df)
+  }
+  pt
+}

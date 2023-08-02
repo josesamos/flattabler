@@ -2,33 +2,31 @@ Package: flattabler
 Title: Obtaining a Flat Table from Pivot Tables
 Version: 1.2.0.9000
 Authors@R: 
-    person(given = "Jose",
-           family = "Samos",
-           role = c("aut", "cre", "cph"),
-           email = "jsamos@ugr.es",
+    person("Jose", "Samos", , "jsamos@ugr.es", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-4457-3439"))
-Description: Transformations that allow obtaining a flat table from 
-    reports in text or Excel format that contain data in the form of 
-    pivot tables. They can be defined for a single report and applied 
-    to a set of reports.
+Description: Transformations that allow obtaining a flat table from
+    reports in text or Excel format that contain data in the form of pivot
+    tables. They can be defined for a single report and applied to a set
+    of reports.
 License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Imports: 
+    dplyr,
+    readxl,
+    stringr,
+    tibble,
+    utils
+Suggests: 
+    knitr,
+    pander,
+    rmarkdown,
+    testthat,
+    tidyr
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Imports: 
-    utils,
-    dplyr,
-    stringr,
-    tibble,
-    readxl
-Suggests: 
-    testthat,
-    knitr,
-    rmarkdown,
-    pander,
-    tidyr
-VignetteBuilder: knitr
-Depends: 
-    R (>= 2.10)

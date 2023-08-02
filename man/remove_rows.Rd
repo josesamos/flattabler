@@ -36,10 +36,13 @@ pt <- pt_ex |> remove_rows(c(1, 8, 14, 19, 25, 26))
 
 }
 \seealso{
+\code{\link{pivot_table}}
+
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},
 \code{\link{get_page}()},
+\code{\link{pivot_table}()},
 \code{\link{remove_bottom}()},
 \code{\link{remove_cols}()},
 \code{\link{remove_empty}()},
