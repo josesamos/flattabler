@@ -51,6 +51,7 @@ Other pivot table transformation functions:
 \code{\link{remove_left}()},
 \code{\link{remove_right}()},
 \code{\link{remove_top}()},
-\code{\link{replace_dec}()}
+\code{\link{replace_dec}()},
+\code{\link{unpivot}()}
 }
 \concept{pivot table transformation functions}

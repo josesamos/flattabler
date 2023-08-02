@@ -38,8 +38,4 @@ f <- function(pt) {
 ft <- flatten_table_list(list_pt, f)
 
 }
-\seealso{
-Other flat table generation functions: 
-\code{\link{unpivot}()}
-}
 \concept{flat table generation functions}
