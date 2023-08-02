@@ -40,8 +40,10 @@ pt <- pt_ex |> remove_cols(c(6,7))
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},
+\code{\link{fill_labels}()},
 \code{\link{get_page}()},
 \code{\link{pivot_table}()},
+\code{\link{remove_agg}()},
 \code{\link{remove_bottom}()},
 \code{\link{remove_empty}()},
 \code{\link{remove_left}()},

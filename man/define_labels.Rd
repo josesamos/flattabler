@@ -34,8 +34,10 @@ pt <- pt_ex |> define_labels(n_col = 2, n_row = 2)
 
 Other pivot table definition functions: 
 \code{\link{divide}()},
+\code{\link{fill_labels}()},
 \code{\link{get_page}()},
 \code{\link{pivot_table}()},
+\code{\link{remove_agg}()},
 \code{\link{remove_bottom}()},
 \code{\link{remove_cols}()},
 \code{\link{remove_empty}()},

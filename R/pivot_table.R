@@ -475,8 +475,8 @@ remove_right.pivot_table <- function(pt, n) {
 #'
 #' @return A `pivot_table` object.
 #'
-#' @family pivot table transformation functions
-#' @seealso
+#' @family pivot table definition functions
+#' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
 #'
@@ -538,4 +538,62 @@ fill_vector <- function(v, contrary) {
     }
   }
   v
+}
+
+#' Remove rows and columns with aggregated data
+#'
+#' Removes pivot table rows and columns that contain aggregated data.
+#'
+#' A pivot table should only contain label rows and columns, and an array of
+#' values, usually numeric data.
+#'
+#' Aggregated data is recognized because the label of the row or column closest
+#' to the array of values is empty or has a special value as an indicator.
+#'
+#' To correctly carry out this operation, the number of rows and columns that
+#' contain labels must be defined, and the table must only contain the pivot
+#' table rows and columns.
+
+#'
+#' @param pt A `pivot_table` object.
+#' @param indicator A string, row or column label for aggregates.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table definition functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' pt <-
+#'   pt_ex |>
+#'   remove_top(1) |>
+#'   define_labels(n_col = 2, n_row = 2) |>
+#'   remove_agg()
+#'
+#' @export
+remove_agg <- function(pt, indicator) UseMethod("remove_agg")
+
+#' @rdname remove_agg
+#' @export
+remove_agg.pivot_table <- function(pt, indicator = "") {
+  n_col <- pt$n_col_labels
+  n_row <- pt$n_row_labels
+  cols <- (n_col + 1):ncol(pt$df)
+  rows <- (n_row + 1):nrow(pt$df)
+
+  if (n_col > 0) {
+    pt$df[rows, n_col] <-
+      dplyr::na_if(stringr::str_trim(pt$df[rows, n_col]), indicator)
+    pt$df <-
+      pt$df[c(rep(TRUE, n_row),!is.na(pt$df[rows, n_col])),]
+  }
+  if (n_row > 0) {
+    pt$df[n_row, cols] <-
+      dplyr::na_if(stringr::str_trim(pt$df[n_row, cols]), indicator)
+    pt$df <-
+      pt$df[, c(rep(TRUE, n_col),!is.na(pt$df[n_row, cols]))]
+  }
+  pt$df <- assign_names(pt$df)
+  pt
 }

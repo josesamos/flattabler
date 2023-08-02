@@ -36,7 +36,9 @@ page <- get_page(pt_ex)
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
 \code{\link{divide}()},
+\code{\link{fill_labels}()},
 \code{\link{pivot_table}()},
+\code{\link{remove_agg}()},
 \code{\link{remove_bottom}()},
 \code{\link{remove_cols}()},
 \code{\link{remove_empty}()},

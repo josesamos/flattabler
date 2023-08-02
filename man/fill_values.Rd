@@ -45,9 +45,7 @@ pt <-
 \seealso{
 Other pivot table transformation functions: 
 \code{\link{extract_labels}()},
-\code{\link{fill_labels}()},
 \code{\link{get_col_values}()},
-\code{\link{remove_agg}()},
 \code{\link{remove_k}()},
 \code{\link{replace_dec}()}
 }

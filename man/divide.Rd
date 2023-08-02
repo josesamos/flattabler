@@ -46,8 +46,10 @@ lpt <- pt_set_h_v |> divide()
 \seealso{
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
+\code{\link{fill_labels}()},
 \code{\link{get_page}()},
 \code{\link{pivot_table}()},
+\code{\link{remove_agg}()},
 \code{\link{remove_bottom}()},
 \code{\link{remove_cols}()},
 \code{\link{remove_empty}()},
