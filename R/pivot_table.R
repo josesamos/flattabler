@@ -454,3 +454,88 @@ remove_right.pivot_table <- function(pt, n) {
   }
   pt
 }
+
+
+#' Fill in missing labels
+#'
+#' Fills missing values in row and column labels for a pivot table. By default,
+#' columns are filled down and rows are filled right.
+#'
+#' A pivot table should only contain label rows and columns, and an array of
+#' values, usually numeric data. The row and column closest to the data array
+#' are not filled (they must have data defined for each cell).
+#'
+#' To correctly carry out this operation, the number of rows and columns that
+#' contain labels must be defined, and the table must only contain the pivot
+#' table rows and columns.
+#'
+#' @param pt A `pivot_table` object.
+#' @param down A boolean, fill down.
+#' @param right A boolean, fill right.
+#'
+#' @return A `pivot_table` object.
+#'
+#' @family pivot table transformation functions
+#' @seealso
+#'
+#' @examples
+#'
+#' pt <-
+#'   pt_ex |>
+#'   remove_top(1) |>
+#'   define_labels(n_col = 2, n_row = 2) |>
+#'   fill_labels(down = TRUE, right = TRUE)
+#'
+#' @export
+fill_labels <- function(pt, down, right) UseMethod("fill_labels")
+
+#' @rdname fill_labels
+#' @export
+fill_labels.pivot_table <- function(pt, down = TRUE, right = TRUE) {
+  if (pt$n_col_labels > 1) {
+    cols <- c(1:(pt$n_col_labels - 1))
+  } else {
+    cols <- c()
+  }
+  if (pt$n_row_labels > 1) {
+    rows <- c(1:(pt$n_row_labels - 1))
+  } else {
+    rows <- c()
+  }
+  for (c in cols) {
+    pt$df[, c] <- fill_vector(pt$df[, c], contrary = !down)
+  }
+  for (r in rows) {
+    pt$df[r,] <- fill_vector(pt$df[r,], contrary = !right)
+  }
+  pt
+}
+
+
+#' Fill in missing values in a vector
+#'
+#' Fills missing values in a vector with previous value.
+#'
+#' @param v A vector.
+#' @param contrary A boolean, fill in contrary sense.
+#'
+#' @return A vector.
+#'
+#' @keywords internal
+fill_vector <- function(v, contrary) {
+  v <- dplyr::na_if(stringr::str_trim(v), "")
+  last <- ""
+  if (contrary) {
+    lv <- length(v):1
+  } else {
+    lv <- 1:length(v)
+  }
+  for (i in  lv) {
+    if (is.na(v[i])) {
+      v[i] <- last
+    } else {
+      last <- v[i]
+    }
+  }
+  v
+}
