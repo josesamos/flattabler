@@ -33,7 +33,6 @@ pt <- pt_ex |> define_labels(n_col = 2, n_row = 2)
 \code{\link{pivot_table}}
 
 Other pivot table definition functions: 
-\code{\link{divide}()},
 \code{\link{get_page}()},
 \code{\link{pivot_table}()},
 \code{\link{set_page}()}

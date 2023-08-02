@@ -58,29 +58,22 @@ spacer_columns <- function(df) {
 #' a grid on the initial table. The only requirement to be able to divide it is
 #' that there is some empty row or column between them.
 #'
-#' @param pt A `pivot_table` object.
+#' @param pt A data frame.
 #'
-#' @return A `pivot_table` object list.
+#' @return A data frame list.
 #'
-#' @family pivot table definition functions
-#' @seealso
+#' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
 #'
-#' lpt <- pt_set_h |> divide()
+#' lpt <- divide(pt_set_h)
 #'
-#' lpt <- pt_set_v |> divide()
+#' lpt <- divide(pt_set_v)
 #'
-#' lpt <- pt_set_h_v |> divide()
+#' lpt <- divide(pt_set_h_v)
 #'
 #' @export
 divide <- function(pt) {
-  UseMethod("divide")
-}
-
-#' @rdname divide
-#' @export
-divide.pivot_table <- function(pt) {
   # empty cells with NA
   df <-
     data.frame(lapply(pt, function(x)
@@ -99,13 +92,13 @@ divide.pivot_table <- function(pt) {
       if (length(x2) > 2 || length(y2) > 2) {
         # recursively divide
         lpt <-
-          c(lpt, divide.pivot_table(pivot_table(pt2, attr(pt, "page"))))
+          c(lpt, divide(data.frame(pt2)))
       } else {
         # remove empty rows and columns
         pt2 <-
           pt2[rowSums(is.na(df2)) != ncol(df2), colSums(is.na(df2)) != nrow(df2)]
         lpt <-
-          c(lpt, list(pivot_table(pt2, attr(pt, "page"))))
+          c(lpt, list(data.frame(pt2)))
       }
     }
   }

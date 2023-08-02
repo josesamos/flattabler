@@ -12,7 +12,7 @@
 #' @return A `pivot_table` object.
 #'
 #' @family pivot table definition functions
-#' @seealso \code{\link{pivot_table}}
+#' @seealso \code{\link{divide}}
 #'
 #' @examples
 #'

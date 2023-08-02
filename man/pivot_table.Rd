@@ -32,11 +32,10 @@ pt <- pivot_table(df, page = "M4")
 
 }
 \seealso{
-\code{\link{pivot_table}}
+\code{\link{divide}}
 
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
-\code{\link{divide}()},
 \code{\link{get_page}()},
 \code{\link{set_page}()}
 }

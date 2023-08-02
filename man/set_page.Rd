@@ -43,7 +43,6 @@ pt <- pt_ex |> set_page(page = "M4")
 
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
-\code{\link{divide}()},
 \code{\link{get_page}()},
 \code{\link{pivot_table}()}
 }

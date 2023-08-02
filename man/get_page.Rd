@@ -35,7 +35,6 @@ page <- get_page(pt_ex)
 
 Other pivot table definition functions: 
 \code{\link{define_labels}()},
-\code{\link{divide}()},
 \code{\link{pivot_table}()},
 \code{\link{set_page}()}
 }
