@@ -41,7 +41,6 @@ pt <- pivot_table(df_ex_compact) |>
 Other pivot table transformation functions: 
 \code{\link{fill_labels}()},
 \code{\link{fill_values}()},
-\code{\link{get_col_values}()},
 \code{\link{remove_agg}()},
 \code{\link{remove_bottom}()},
 \code{\link{remove_cols}()},
