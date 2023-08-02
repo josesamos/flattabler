@@ -37,20 +37,19 @@ pt <- pt_ex |> remove_right(3)
 \seealso{
 \code{\link{pivot_table}}
 
-Other pivot table definition functions: 
-\code{\link{define_labels}()},
-\code{\link{divide}()},
+Other pivot table transformation functions: 
+\code{\link{extract_labels}()},
 \code{\link{fill_labels}()},
-\code{\link{get_page}()},
-\code{\link{pivot_table}()},
+\code{\link{fill_values}()},
+\code{\link{get_col_values}()},
 \code{\link{remove_agg}()},
 \code{\link{remove_bottom}()},
 \code{\link{remove_cols}()},
 \code{\link{remove_empty}()},
+\code{\link{remove_k}()},
 \code{\link{remove_left}()},
 \code{\link{remove_rows}()},
 \code{\link{remove_top}()},
-\code{\link{set_page}()},
-\code{\link{view_table_attr}()}
+\code{\link{replace_dec}()}
 }
-\concept{pivot table definition functions}
+\concept{pivot table transformation functions}

@@ -40,9 +40,18 @@ pt <- pt_ine2871 |>
 }
 \seealso{
 Other pivot table transformation functions: 
+\code{\link{fill_labels}()},
 \code{\link{fill_values}()},
 \code{\link{get_col_values}()},
+\code{\link{remove_agg}()},
+\code{\link{remove_bottom}()},
+\code{\link{remove_cols}()},
+\code{\link{remove_empty}()},
 \code{\link{remove_k}()},
+\code{\link{remove_left}()},
+\code{\link{remove_right}()},
+\code{\link{remove_rows}()},
+\code{\link{remove_top}()},
 \code{\link{replace_dec}()}
 }
 \concept{pivot table transformation functions}
