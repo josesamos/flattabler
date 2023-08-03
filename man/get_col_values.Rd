@@ -7,7 +7,7 @@
 get_col_values(lpt, col = 1, start_row = 2, rows_left = 0)
 }
 \arguments{
-\item{lpt}{List of tables.}
+\item{lpt}{\code{pivot_table} object list.}
 
 \item{col}{A number, column to consider.}
 
@@ -30,7 +30,9 @@ the study of the labels included in the same column of several tables, this
 function gets the values of the indicated column in a list of tables.
 }
 \examples{
-df <- get_col_values(list_pt_compact, start_row = 4)
+
+lpt <- divide(ft_set_h_v)
+df <- get_col_values(lpt, col = 1, start_row = 4)
 labels <- sort(unique(df$label))
 
 }

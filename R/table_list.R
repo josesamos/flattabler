@@ -1,7 +1,7 @@
 #' Divide table
 #'
 #' Divides a table into tables separated by some empty row or column. Returns a
-#' table list.
+#' `pivot_table` object list.
 #'
 #' Sometimes multiple pivot tables are placed in a text document, imported as
 #' one text table. This operation recursively divides the initial table into
@@ -19,14 +19,14 @@
 #'
 #' @param pt A data frame.
 #'
-#' @return A data frame list.
+#' @return A `pivot_table` list.
 #'
 #' @family flat table list functions
 #' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
 #'
-#' lft <- divide(ft_set_h_v)
+#' lpt <- divide(ft_set_h_v)
 #'
 #' @export
 divide <- function(pt) {
@@ -45,7 +45,7 @@ divide <- function(pt) {
       df2 <- df[x[i]:x[(i + 1)], y[j]:y[(j + 1)]]
       x2 <- spacer_rows(df2)
       y2 <- spacer_columns(df2)
-      if (length(x2) > 2 || length(y2) > 2) {
+      if (length(x2) > 2 | length(y2) > 2) {
         # recursively divide
         lpt <-
           c(lpt, divide(data.frame(pt2)))
@@ -54,7 +54,7 @@ divide <- function(pt) {
         pt2 <-
           pt2[rowSums(is.na(df2)) != ncol(df2), colSums(is.na(df2)) != nrow(df2)]
         lpt <-
-          c(lpt, list(data.frame(pt2)))
+          c(lpt, list(pivot_table(pt2)))
       }
     }
   }
@@ -103,11 +103,11 @@ spacer_columns <- function(df) {
 }
 
 
-#' Transform a pivot table list into a flat table
+#' Transform a `pivot_table` object list into a flat table
 #'
-#' Given a list of pivot tables and a transformation function that flattens a
-#' `pivot_table` object, transforms each table using the function and merges the
-#' results into a flat table.
+#' Given a list of `pivot_table` objects and a transformation function that
+#' flattens a `pivot_table` object, transforms each object using the function
+#' and merges the results into a flat table.
 #'
 #' @param lpt A list of `pivot_table` objects.
 #' @param FUN A function, transformation function that flattens a `pivot_table`
@@ -121,7 +121,7 @@ spacer_columns <- function(df) {
 #' @examples
 #'
 #' f <- function(pt) {
-#'   pt |>
+#'  pt |>
 #'     set_page(1, 1) |>
 #'     remove_top(1) |>
 #'     define_labels(n_col = 2, n_row = 2) |>
@@ -133,7 +133,8 @@ spacer_columns <- function(df) {
 #'     unpivot()
 #' }
 #'
-#' ft <- flatten_table_list(list_pt, f)
+#' lpt <- divide(ft_set_h_v)
+#' ft <- flatten_table_list(lpt, f)
 #'
 #' @export
 flatten_table_list <- function(lpt = list(), FUN) {
@@ -158,7 +159,7 @@ flatten_table_list <- function(lpt = list(), FUN) {
 #' the study of the labels included in the same column of several tables, this
 #' function gets the values of the indicated column in a list of tables.
 #'
-#' @param lpt List of tables.
+#' @param lpt `pivot_table` object list.
 #' @param col A number, column to consider.
 #' @param start_row A number, start row in each table.
 #' @param rows_left A number, rows to ignore at the end of each table.
@@ -170,7 +171,9 @@ flatten_table_list <- function(lpt = list(), FUN) {
 #' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
-#' df <- get_col_values(list_pt_compact, start_row = 4)
+#'
+#' lpt <- divide(ft_set_h_v)
+#' df <- get_col_values(lpt, col = 1, start_row = 4)
 #' labels <- sort(unique(df$label))
 #'
 #' @export
@@ -182,9 +185,10 @@ get_col_values <-
     label <- c()
     table <- c()
     for (i in seq_along(lpt)) {
+      nr <- nrow(lpt[[i]]$df)
       label <-
-        c(label, lpt[[i]][start_row:(nrow(lpt[[i]]) - rows_left), col])
-      table <- c(table, rep(i, nrow(lpt[[i]]) - rows_left - start_row + 1))
+        c(label, lpt[[i]]$df[start_row:(nr - rows_left), col])
+      table <- c(table, rep(i, nr - rows_left - start_row + 1))
     }
-    data.frame(table, label, stringsAsFactors = FALSE)
+    data.frame(label, table, stringsAsFactors = FALSE)
   }

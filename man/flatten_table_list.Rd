@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_list.R
 \name{flatten_table_list}
 \alias{flatten_table_list}
-\title{Transform a pivot table list into a flat table}
+\title{Transform a \code{pivot_table} object list into a flat table}
 \usage{
 flatten_table_list(lpt = list(), FUN)
 }
@@ -16,14 +16,14 @@ object (it returns a \code{tibble}).}
 A \code{tibble}, a flat table implemented by a \code{tibble}.
 }
 \description{
-Given a list of pivot tables and a transformation function that flattens a
-\code{pivot_table} object, transforms each table using the function and merges the
-results into a flat table.
+Given a list of \code{pivot_table} objects and a transformation function that
+flattens a \code{pivot_table} object, transforms each object using the function
+and merges the results into a flat table.
 }
 \examples{
 
 f <- function(pt) {
-  pt |>
+ pt |>
     set_page(1, 1) |>
     remove_top(1) |>
     define_labels(n_col = 2, n_row = 2) |>
@@ -35,7 +35,8 @@ f <- function(pt) {
     unpivot()
 }
 
-ft <- flatten_table_list(list_pt, f)
+lpt <- divide(ft_set_h_v)
+ft <- flatten_table_list(lpt, f)
 
 }
 \seealso{

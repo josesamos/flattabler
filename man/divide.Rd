@@ -10,11 +10,11 @@ divide(pt)
 \item{pt}{A data frame.}
 }
 \value{
-A data frame list.
+A \code{pivot_table} list.
 }
 \description{
 Divides a table into tables separated by some empty row or column. Returns a
-table list.
+\code{pivot_table} object list.
 }
 \details{
 Sometimes multiple pivot tables are placed in a text document, imported as
@@ -33,7 +33,7 @@ that there is some empty row or column between them.
 }
 \examples{
 
-lft <- divide(ft_set_h_v)
+lpt <- divide(ft_set_h_v)
 
 }
 \seealso{
