@@ -13,6 +13,7 @@
 #' @param file A string, name of a text file.
 #' @param sep Column separator character.
 #' @param encoding A string, encoding to be assumed for input strings.
+#' @param define_page A boolean, include file name as pivot_table page definition.
 #'
 #' @return A `pivot_table` object.
 #'
@@ -20,11 +21,17 @@
 #' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
+#'
 #' file <- system.file("extdata", "csv/ine2871.csv", package = "flattabler")
 #' pt <- read_text_file(file)
 #'
 #' @export
-read_text_file <- function(file, sep = ';', encoding = "UTF-8") {
+read_text_file <- function(file, sep = ';', encoding = "UTF-8", define_page = TRUE) {
+  if (define_page) {
+    page <- basename(file)
+  } else {
+    page <- NULL
+  }
   pivot_table(
     utils::read.table(
       file,
@@ -34,7 +41,7 @@ read_text_file <- function(file, sep = ';', encoding = "UTF-8") {
       encoding = encoding,
       colClasses = c("character")
     ),
-    file
+    page
   )
 }
 
@@ -60,6 +67,7 @@ read_text_file <- function(file, sep = ';', encoding = "UTF-8") {
 #' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
+#'
 #' folder <- system.file("extdata", "csvfolder", package = "flattabler")
 #' lpt <- read_text_folder(folder)
 #'
@@ -69,5 +77,5 @@ read_text_folder <-
             sep = ';',
             encoding = "UTF-8") {
     lf <- list.files(path = folder, full.names = TRUE)
-    do.call(list, lapply(lf, read_text_file, sep = sep, encoding = encoding))
+    do.call(list, lapply(lf, read_text_file, sep = sep, encoding = encoding, define_page = TRUE))
   }

@@ -30,6 +30,7 @@ order not to lose this information, it is always stored in each \code{pivot_tabl
 object.
 }
 \examples{
+
 folder <- system.file("extdata", "csvfolder", package = "flattabler")
 lpt <- read_text_folder(folder)
 

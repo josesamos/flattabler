@@ -4,7 +4,7 @@
 \alias{read_text_file}
 \title{Import text file}
 \usage{
-read_text_file(file, sep = ";", encoding = "UTF-8")
+read_text_file(file, sep = ";", encoding = "UTF-8", define_page = TRUE)
 }
 \arguments{
 \item{file}{A string, name of a text file.}
@@ -12,6 +12,8 @@ read_text_file(file, sep = ";", encoding = "UTF-8")
 \item{sep}{Column separator character.}
 
 \item{encoding}{A string, encoding to be assumed for input strings.}
+
+\item{define_page}{A boolean, include file name as pivot_table page definition.}
 }
 \value{
 A \code{pivot_table} object.
@@ -29,6 +31,7 @@ order not to lose this information, it is always stored in the \code{pivot_table
 object.
 }
 \examples{
+
 file <- system.file("extdata", "csv/ine2871.csv", package = "flattabler")
 pt <- read_text_file(file)
 

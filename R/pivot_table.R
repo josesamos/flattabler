@@ -56,8 +56,10 @@ pivot_table <- function(df,
 #'
 #' @keywords internal
 assign_names <- function(df) {
-  if (nrow(df) > 0) row.names(df) <- 1:nrow(df)
-  if (length(df) > 0) colnames(df) <- sprintf("V%d", 1:length(df))
+  if (nrow(df) > 0)
+    row.names(df) <- 1:nrow(df)
+  if (length(df) > 0)
+    colnames(df) <- sprintf("V%d", 1:length(df))
   df
 }
 
@@ -209,7 +211,7 @@ remove_rows <- function(pt, r)
 #' @rdname remove_rows
 #' @export
 remove_rows.pivot_table <- function(pt, r) {
-  pt$df <- as.data.frame(pt$df[-r, ], stringsAsFactors = FALSE)
+  pt$df <- as.data.frame(pt$df[-r,], stringsAsFactors = FALSE)
   pt$df <- assign_names(pt$df)
   pt
 }
@@ -245,7 +247,7 @@ remove_cols <- function(pt, c)
 #' @rdname remove_cols
 #' @export
 remove_cols.pivot_table <- function(pt, c) {
-  pt$df <- as.data.frame(pt$df[, -c], stringsAsFactors = FALSE)
+  pt$df <- as.data.frame(pt$df[,-c], stringsAsFactors = FALSE)
   pt$df <- assign_names(pt$df)
   pt
 }
@@ -317,13 +319,14 @@ remove_empty.pivot_table <- function(pt) {
 #' pt <- pt_ex |> remove_top(3)
 #'
 #' @export
-remove_top <- function(pt, n) UseMethod("remove_top")
+remove_top <- function(pt, n)
+  UseMethod("remove_top")
 
 #' @rdname remove_top
 #' @export
 remove_top.pivot_table <- function(pt, n) {
   if (n > 0) {
-    pt$df <- pt$df[c(-1:-n), ]
+    pt$df <- pt$df[c(-1:-n),]
     pt$df <- assign_names(pt$df)
   }
   pt
@@ -355,7 +358,8 @@ remove_top.pivot_table <- function(pt, n) {
 #' pt <- pt_ex |> remove_bottom(3)
 #'
 #' @export
-remove_bottom <- function(pt, n) UseMethod("remove_bottom")
+remove_bottom <- function(pt, n)
+  UseMethod("remove_bottom")
 
 #' @rdname remove_bottom
 #' @export
@@ -367,7 +371,7 @@ remove_bottom.pivot_table <- function(pt, n) {
     } else {
       first_row <- nrow(pt$df) - n + 1
     }
-    pt$df <- pt$df[c(-first_row:-n_rows),]
+    pt$df <- pt$df[c(-first_row:-n_rows), ]
     pt$df <- assign_names(pt$df)
   }
   pt
@@ -396,7 +400,8 @@ remove_bottom.pivot_table <- function(pt, n) {
 #' pt <- pt_ex |> remove_left(3)
 #'
 #' @export
-remove_left <- function(pt, n) UseMethod("remove_left")
+remove_left <- function(pt, n)
+  UseMethod("remove_left")
 
 #' @rdname remove_left
 #' @export
@@ -434,7 +439,8 @@ remove_left.pivot_table <- function(pt, n) {
 #' pt <- pt_ex |> remove_right(3)
 #'
 #' @export
-remove_right <- function(pt, n) UseMethod("remove_right")
+remove_right <- function(pt, n)
+  UseMethod("remove_right")
 
 #' @rdname remove_right
 #' @export
@@ -446,7 +452,8 @@ remove_right.pivot_table <- function(pt, n) {
     } else {
       first_col <- ncol(pt$df) - n + 1
     }
-    pt$df <- as.data.frame(pt$df[, c(-first_col:-n_cols)], stringsAsFactors = FALSE)
+    pt$df <-
+      as.data.frame(pt$df[, c(-first_col:-n_cols)], stringsAsFactors = FALSE)
     pt$df <- assign_names(pt$df)
   }
   pt
@@ -484,7 +491,8 @@ remove_right.pivot_table <- function(pt, n) {
 #'   fill_labels(down = TRUE, right = TRUE)
 #'
 #' @export
-fill_labels <- function(pt, down, right) UseMethod("fill_labels")
+fill_labels <- function(pt, down, right)
+  UseMethod("fill_labels")
 
 #' @rdname fill_labels
 #' @export
@@ -503,7 +511,7 @@ fill_labels.pivot_table <- function(pt, down = TRUE, right = TRUE) {
     pt$df[, c] <- fill_vector(pt$df[, c], contrary = !down)
   }
   for (r in rows) {
-    pt$df[r,] <- fill_vector(pt$df[r,], contrary = !right)
+    pt$df[r, ] <- fill_vector(pt$df[r, ], contrary = !right)
   }
   pt
 }
@@ -539,13 +547,14 @@ fill_vector <- function(v, contrary) {
 
 #' Remove rows and columns with aggregated data
 #'
-#' Removes pivot table rows and columns that contain aggregated data.
+#' Aggregated data is recognized because the label of the row or column closest
+#' to the array of values is empty.
 #'
 #' A pivot table should only contain label rows and columns, and an array of
 #' values, usually numeric data.
 #'
-#' Aggregated data is recognized because the label of the row or column closest
-#' to the array of values is empty or has a special value as an indicator.
+#' Removes pivot table rows and columns that contain aggregated data. It only
+#' checks the value in the row or column closest to the array of values.
 #'
 #' To correctly carry out this operation, the number of rows and columns that
 #' contain labels must be defined, and the table must only contain the pivot
@@ -553,7 +562,6 @@ fill_vector <- function(v, contrary) {
 
 #'
 #' @param pt A `pivot_table` object.
-#' @param indicator A string, row or column label for aggregates.
 #'
 #' @return A `pivot_table` object.
 #'
@@ -569,27 +577,28 @@ fill_vector <- function(v, contrary) {
 #'   remove_agg()
 #'
 #' @export
-remove_agg <- function(pt, indicator) UseMethod("remove_agg")
+remove_agg <- function(pt)
+  UseMethod("remove_agg")
 
 #' @rdname remove_agg
 #' @export
-remove_agg.pivot_table <- function(pt, indicator = "") {
+remove_agg.pivot_table <- function(pt) {
+  indicator <- ""
   n_col <- pt$n_col_labels
   n_row <- pt$n_row_labels
   cols <- (n_col + 1):ncol(pt$df)
   rows <- (n_row + 1):nrow(pt$df)
-
   if (n_col > 0) {
     pt$df[rows, n_col] <-
       dplyr::na_if(stringr::str_trim(pt$df[rows, n_col]), indicator)
     pt$df <-
-      pt$df[c(rep(TRUE, n_row),!is.na(pt$df[rows, n_col])),]
+      pt$df[c(rep(TRUE, n_row), !is.na(pt$df[rows, n_col])), ]
   }
   if (n_row > 0) {
     pt$df[n_row, cols] <-
       dplyr::na_if(stringr::str_trim(pt$df[n_row, cols]), indicator)
     pt$df <-
-      pt$df[, c(rep(TRUE, n_col),!is.na(pt$df[n_row, cols]))]
+      pt$df[, c(rep(TRUE, n_col), !is.na(pt$df[n_row, cols]))]
   }
   pt$df <- assign_names(pt$df)
   pt
@@ -622,7 +631,8 @@ remove_agg.pivot_table <- function(pt, indicator = "") {
 #'   fill_values()
 #'
 #' @export
-fill_values <- function(pt) UseMethod("fill_values")
+fill_values <- function(pt)
+  UseMethod("fill_values")
 
 #' @rdname fill_values
 #' @export
@@ -664,23 +674,24 @@ fill_values.pivot_table <- function(pt) {
 #'   remove_k()
 #'
 #' @export
-remove_k <- function(pt, sep) UseMethod("remove_k")
+remove_k <- function(pt, sep)
+  UseMethod("remove_k")
 
 #' @rdname remove_k
 #' @export
 remove_k.pivot_table <- function(pt, sep = ".") {
-    if (sep == ".") {
-      pattern <- "\\."
-    } else {
-      pattern <- sep
-    }
-    rows <- (pt$n_row_labels + 1):nrow(pt$df)
-    cols <- (pt$n_col_labels + 1):ncol(pt$df)
-    pt$df[rows, cols] <-
-      apply(pt$df[rows, cols, drop = FALSE], 2, function(x)
-        stringr::str_replace_all(x, pattern, ""))
-    pt
+  if (sep == ".") {
+    pattern <- "\\."
+  } else {
+    pattern <- sep
   }
+  rows <- (pt$n_row_labels + 1):nrow(pt$df)
+  cols <- (pt$n_col_labels + 1):ncol(pt$df)
+  pt$df[rows, cols] <-
+    apply(pt$df[rows, cols, drop = FALSE], 2, function(x)
+      stringr::str_replace_all(x, pattern, ""))
+  pt
+}
 
 
 #' Replace decimal separator
@@ -713,24 +724,25 @@ remove_k.pivot_table <- function(pt, sep = ".") {
 #'   replace_dec()
 #'
 #' @export
-replace_dec <- function(pt, sep) UseMethod("replace_dec")
+replace_dec <- function(pt, sep)
+  UseMethod("replace_dec")
 
 #' @rdname replace_dec
 #' @export
 replace_dec.pivot_table <- function(pt, sep = ".") {
-    if (sep == ".") {
-      pattern <- ","
-    } else {
-      pattern <- "\\."
-      sep <- ','
-    }
-    rows <- (pt$n_row_labels + 1):nrow(pt$df)
-    cols <- (pt$n_col_labels + 1):ncol(pt$df)
-    pt$df[rows, cols] <-
-      apply(pt$df[rows, cols, drop = FALSE], 2, function(x)
-        stringr::str_replace(x, pattern, sep))
-    pt
+  if (sep == ".") {
+    pattern <- ","
+  } else {
+    pattern <- "\\."
+    sep <- ','
   }
+  rows <- (pt$n_row_labels + 1):nrow(pt$df)
+  cols <- (pt$n_col_labels + 1):ncol(pt$df)
+  pt$df[rows, cols] <-
+    apply(pt$df[rows, cols, drop = FALSE], 2, function(x)
+      stringr::str_replace(x, pattern, sep))
+  pt
+}
 
 
 #' Extract labels
@@ -758,13 +770,16 @@ replace_dec.pivot_table <- function(pt, sep = ".") {
 #'   extract_labels(col = 1, labels = c("b1", "b2", "b3", "b4", "Total general"))
 #'
 #' @export
-extract_labels <- function(pt, col, labels) UseMethod("extract_labels")
+extract_labels <-
+  function(pt, col, labels)
+    UseMethod("extract_labels")
 
 #' @rdname extract_labels
 #' @export
 extract_labels.pivot_table <- function(pt, col = 1, labels = c()) {
   if (col > 0 && length(labels) > 0) {
-    df <- data.frame(new = rep("", nrow(pt$df)), stringsAsFactors = FALSE)
+    df <-
+      data.frame(new = rep("", nrow(pt$df)), stringsAsFactors = FALSE)
     for (label in labels) {
       df[pt$df[, col] == label, 1] <- label
       pt$df[pt$df[, col] == label, col] <- ""
@@ -772,7 +787,8 @@ extract_labels.pivot_table <- function(pt, col = 1, labels = c()) {
     if (col == 1) {
       pt$df <- cbind(df, pt$df)
     } else {
-      pt$df <- cbind(pt$df[, 1:(col - 1), drop = FALSE], df, pt$df[, col:ncol(pt$df)])
+      pt$df <-
+        cbind(pt$df[, 1:(col - 1), drop = FALSE], df, pt$df[, col:ncol(pt$df)])
     }
     if (pt$n_col_labels > 0) {
       pt$n_col_labels <- pt$n_row_labels + 1

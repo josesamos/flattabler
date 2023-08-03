@@ -5,27 +5,26 @@
 \alias{remove_agg.pivot_table}
 \title{Remove rows and columns with aggregated data}
 \usage{
-remove_agg(pt, indicator)
+remove_agg(pt)
 
-\method{remove_agg}{pivot_table}(pt, indicator = "")
+\method{remove_agg}{pivot_table}(pt)
 }
 \arguments{
 \item{pt}{A \code{pivot_table} object.}
-
-\item{indicator}{A string, row or column label for aggregates.}
 }
 \value{
 A \code{pivot_table} object.
 }
 \description{
-Removes pivot table rows and columns that contain aggregated data.
+Aggregated data is recognized because the label of the row or column closest
+to the array of values is empty.
 }
 \details{
 A pivot table should only contain label rows and columns, and an array of
 values, usually numeric data.
 
-Aggregated data is recognized because the label of the row or column closest
-to the array of values is empty or has a special value as an indicator.
+Removes pivot table rows and columns that contain aggregated data. It only
+checks the value in the row or column closest to the array of values.
 
 To correctly carry out this operation, the number of rows and columns that
 contain labels must be defined, and the table must only contain the pivot
