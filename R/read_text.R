@@ -7,13 +7,13 @@
 #'
 #' When multiple files are handled, the file name may contain information
 #' associated with the pivot table, it could be the table page information. In
-#' order not to lose this information, it is always stored in the `pivot_table`
+#' order not to lose this information, it can be stored in the `pivot_table`
 #' object.
 #'
 #' @param file A string, name of a text file.
 #' @param sep Column separator character.
 #' @param encoding A string, encoding to be assumed for input strings.
-#' @param define_page A boolean, include file name as pivot_table page definition.
+#' @param define_page A boolean, include file name as `pivot_table` page definition.
 #'
 #' @return A `pivot_table` object.
 #'

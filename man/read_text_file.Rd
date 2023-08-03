@@ -13,7 +13,7 @@ read_text_file(file, sep = ";", encoding = "UTF-8", define_page = TRUE)
 
 \item{encoding}{A string, encoding to be assumed for input strings.}
 
-\item{define_page}{A boolean, include file name as pivot_table page definition.}
+\item{define_page}{A boolean, include file name as \code{pivot_table} page definition.}
 }
 \value{
 A \code{pivot_table} object.
@@ -27,7 +27,7 @@ The file name is included as part of the object attributes.
 \details{
 When multiple files are handled, the file name may contain information
 associated with the pivot table, it could be the table page information. In
-order not to lose this information, it is always stored in the \code{pivot_table}
+order not to lose this information, it can be stored in the \code{pivot_table}
 object.
 }
 \examples{
