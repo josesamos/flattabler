@@ -10,6 +10,8 @@ status](https://www.r-pkg.org/badges/version/flattabler)](https://CRAN.R-project
 [![R-CMD-check](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
+<!-- [![Codecov test coverage](https://codecov.io/gh/josesamos/flattabler/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/flattabler?branch=master) -->
+
 Pivot tables are generally used to present raw and summary data. They
 are generated from spreadsheets and, more recently, also from R
 ([`pivottabler`](https://CRAN.R-project.org/package=pivottabler)).
