@@ -26,7 +26,7 @@
 #'
 #' @examples
 #'
-#' lpt <- divide(ft_set_h_v)
+#' lpt <- divide(df_set_h_v)
 #'
 #' @export
 divide <- function(pt) {
@@ -133,7 +133,7 @@ spacer_columns <- function(df) {
 #'     unpivot()
 #' }
 #'
-#' lpt <- divide(ft_set_h_v)
+#' lpt <- divide(df_set_h_v)
 #' ft <- flatten_table_list(lpt, f)
 #'
 #' @export
@@ -172,7 +172,7 @@ flatten_table_list <- function(lpt = list(), FUN) {
 #'
 #' @examples
 #'
-#' lpt <- divide(ft_set_h_v)
+#' lpt <- divide(df_set_h_v)
 #' df <- get_col_values(lpt, col = 1, start_row = 4)
 #' labels <- sort(unique(df$label))
 #'

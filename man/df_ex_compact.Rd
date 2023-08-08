@@ -15,7 +15,7 @@ Pivot table in data frame in compact table format: with a column with data
 from two label fields.
 }
 \seealso{
-\code{\link{pt_ex}}
+\code{\link{pf_ex_compact}}
 
 Other pivot table in data frame: 
 \code{\link{df_ex}}

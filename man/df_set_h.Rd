@@ -13,4 +13,12 @@ df_set_h
 \description{
 Set of pivot tables placed horizontally on one sheet.
 }
+\seealso{
+\code{\link{df_ex}}
+
+Other pivot table set in data frame: 
+\code{\link{df_set_h_v}},
+\code{\link{df_set_v}}
+}
+\concept{pivot table set in data frame}
 \keyword{datasets}

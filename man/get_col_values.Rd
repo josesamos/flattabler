@@ -31,7 +31,7 @@ function gets the values of the indicated column in a list of tables.
 }
 \examples{
 
-lpt <- divide(ft_set_h_v)
+lpt <- divide(df_set_h_v)
 df <- get_col_values(lpt, col = 1, start_row = 4)
 labels <- sort(unique(df$label))
 

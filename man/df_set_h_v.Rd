@@ -14,4 +14,12 @@ df_set_h_v
 Example of a set of pivot tables located horizontally and vertically on one
 sheet.
 }
+\seealso{
+\code{\link{df_ex}}
+
+Other pivot table set in data frame: 
+\code{\link{df_set_h}},
+\code{\link{df_set_v}}
+}
+\concept{pivot table set in data frame}
 \keyword{datasets}

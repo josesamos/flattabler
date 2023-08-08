@@ -33,7 +33,8 @@ ft_ex_v2 <- pivot_table(df_ex) |>
 \code{\link{df_ex}}
 
 Other flat table: 
-\code{\link{ft_ex}}
+\code{\link{ft_ex}},
+\code{\link{ft_set}}
 }
 \concept{flat table}
 \keyword{datasets}

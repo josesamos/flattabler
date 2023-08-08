@@ -79,7 +79,7 @@
 #' from two label fields.
 #'
 #' @family pivot table in data frame
-#' @seealso \code{\link{pt_ex}}
+#' @seealso \code{\link{pf_ex_compact}}
 #'
 #' @format A data frame.
 #'
@@ -107,6 +107,9 @@
 #'
 #' Set of pivot tables placed horizontally on one sheet.
 #'
+#' @family pivot table set in data frame
+#' @seealso \code{\link{df_ex}}
+#'
 #' @format A data frame.
 #'
 "df_set_h"
@@ -116,6 +119,9 @@
 #' Example of a set of pivot tables located horizontally and vertically on one
 #' sheet.
 #'
+#' @family pivot table set in data frame
+#' @seealso \code{\link{df_ex}}
+#'
 #' @format A data frame.
 #'
 "df_set_h_v"
@@ -124,31 +130,39 @@
 #'
 #' Set of pivot tables placed vertically on one sheet.
 #'
+#' @family pivot table set in data frame
+#' @seealso \code{\link{df_ex}}
+#'
 #' @format A data frame.
 #'
 "df_set_v"
 
-#' List of pivot tables
+#' Flat table with page from a pivot table with with thousands indicator and decimal numbers
 #'
-#' List of pivot tables.
+#' Flat table with page from a pivot table with with thousands indicator and decimal numbers.
 #'
-#' @format List of `pivot_table` objects.
+#' @family flat table
+#' @seealso \code{\link{df_set_h_v}}
+#' @examples
+#' # Defined by:
 #'
-"list_pt"
+#' f <- function(pt) {
+#'  pt |>
+#'     set_page(1, 1) |>
+#'     remove_top(1) |>
+#'     define_labels(n_col = 2, n_row = 2) |>
+#'     remove_k() |>
+#'     replace_dec() |>
+#'     fill_values() |>
+#'     fill_labels() |>
+#'     remove_agg() |>
+#'     unpivot()
+#' }
+#'
+#' lpt <- divide(df_set_h_v)
+#' ft_set <- flatten_table_list(lpt, f)
+#'
+#' @format A `tibble` object.
+#'
+"ft_set"
 
-#' Pivot tables with a column with data from two label fields
-#'
-#' List of pivot tables with a column with data from two label fields (this is
-#' generally known as compact table format).
-#'
-#' @format List of `pivot_table` objects.
-#'
-"list_pt_compact"
-
-#' List of pivot tables used in the vignette
-#'
-#' List of pivot tables used in the vignette, an illustrative example.
-#'
-#' @format List of `pivot_table` objects.
-#'
-"list_pt_ie"

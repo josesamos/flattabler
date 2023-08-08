@@ -144,3 +144,33 @@ test_that("read_excel_folder()", {
     pt2
   })
 })
+
+
+test_that("read_excel_folder()", {
+  expect_equal({
+    folder <- system.file("extdata", "excelfolder", package = "flattabler")
+    lpt <- read_excel_folder(folder, allSheets = TRUE, define_page = 1)
+    pt <- lpt[[4]] |>
+      remove_top(1) |>
+      define_labels(n_col = 2, n_row = 2) |>
+      fill_values() |>
+      fill_labels() |>
+      remove_agg() |>
+      unpivot()
+    pt$value <- substr(pt$value, 1, 2)
+    pt
+  }, {
+    pt2 <- pt_ex |>
+      set_page(page = "m4.xlsx") |>
+      remove_top(1) |>
+      define_labels(n_col = 2, n_row = 2) |>
+      remove_k() |>
+      replace_dec() |>
+      fill_values() |>
+      fill_labels() |>
+      remove_agg() |>
+      unpivot()
+    pt2$value <- substr(pt$value, 1, 2)
+    pt2
+  })
+})

@@ -33,7 +33,7 @@ that there is some empty row or column between them.
 }
 \examples{
 
-lpt <- divide(ft_set_h_v)
+lpt <- divide(df_set_h_v)
 
 }
 \seealso{

@@ -35,7 +35,7 @@ f <- function(pt) {
     unpivot()
 }
 
-lpt <- divide(ft_set_h_v)
+lpt <- divide(df_set_h_v)
 ft <- flatten_table_list(lpt, f)
 
 }
