@@ -11,9 +11,12 @@
 #' in the `pivot_table` object.
 
 #' @param file A string, name of an Excel file.
+#'
 #' @param sheetIndex A number, sheet index in the workbook.
 #' @param sheetName A string, sheet name.
-#' @param define_page A boolean, include file name as `pivot_table` page definition.
+#' @param define_page A integer, 0: no page, 1: file name as page, 2: sheet name
+#' as page, 3: file and sheet names as page, separated by the indicated separator.
+#' @param page_sep A string, separator to form the page value.
 #'
 #' @return A `pivot_table` object.
 #'
@@ -31,15 +34,19 @@
 read_excel_sheet <- function(file,
                              sheetIndex = 1,
                              sheetName = NULL,
-                             define_page = TRUE) {
+                             define_page = 3,
+                             page_sep = ':') {
   if (is.null(sheetName)) {
     wb <- readxl::excel_sheets(file)
     sheetName <- wb[sheetIndex]
   }
-  if (define_page) {
-    page <- c(basename(file), sheetName)
-  } else {
-    page <- NULL
+  page <- NULL
+  if (define_page == 1) {
+    page <- basename(file)
+  } else if (define_page == 2) {
+    page <- sheetName
+  } else if (define_page == 3) {
+    page <- paste(c(basename(file), sheetName), collapse = page_sep)
   }
   ft <- suppressMessages(
     readxl::read_excel(
@@ -50,7 +57,11 @@ read_excel_sheet <- function(file,
       trim_ws = TRUE
     )
   )
-  pivot_table(as.data.frame(ft), page)
+  if (is.null(page)) {
+    pivot_table(as.data.frame(ft))
+  } else {
+    pivot_table(as.data.frame(ft), page)
+  }
 }
 
 #' Import Excel file

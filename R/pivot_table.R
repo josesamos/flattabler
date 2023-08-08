@@ -83,7 +83,7 @@ assign_names <- function(df) {
 #' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
-#' page <- get_page(pt_ex)
+#' page <- pt_ex |> get_page()
 #'
 #' @export
 get_page <- function(pt)

@@ -27,7 +27,7 @@ their origin, date or author. This information is often included in the file
 name, sheet name, or cells attached to the pivot table.
 }
 \examples{
-page <- get_page(pt_ex)
+page <- pt_ex |> get_page()
 
 }
 \seealso{
