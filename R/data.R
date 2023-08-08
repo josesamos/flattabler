@@ -166,3 +166,15 @@
 #'
 "ft_set"
 
+#' Pivot table with basic and subtotal labels in the same column
+#'
+#' A dataset containing number of train passengers, generated with the
+#' `pivottabler` package. It contains basic and subtotal labels in the same column.
+#'
+#' @family pivot table in data frame
+#'
+#' @format A data frame.
+#' @source
+#'   \url{https://CRAN.R-project.org/package=pivottabler}
+#'
+"df_pivottabler"

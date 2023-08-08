@@ -18,7 +18,8 @@ from two label fields.
 \code{\link{pf_ex_compact}}
 
 Other pivot table in data frame: 
-\code{\link{df_ex}}
+\code{\link{df_ex}},
+\code{\link{df_pivottabler}}
 }
 \concept{pivot table in data frame}
 \keyword{datasets}

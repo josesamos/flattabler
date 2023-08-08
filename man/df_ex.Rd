@@ -17,7 +17,8 @@ Pivot table in data frame with with thousands indicator and decimal numbers.
 \code{\link{pt_ex}}
 
 Other pivot table in data frame: 
-\code{\link{df_ex_compact}}
+\code{\link{df_ex_compact}},
+\code{\link{df_pivottabler}}
 }
 \concept{pivot table in data frame}
 \keyword{datasets}
