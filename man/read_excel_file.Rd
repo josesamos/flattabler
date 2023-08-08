@@ -4,7 +4,13 @@
 \alias{read_excel_file}
 \title{Import Excel file}
 \usage{
-read_excel_file(file, sheetIndexes = NULL, sheetNames = NULL)
+read_excel_file(
+  file,
+  sheetIndexes = NULL,
+  sheetNames = NULL,
+  define_page = 3,
+  page_sep = ":"
+)
 }
 \arguments{
 \item{file}{A string, name of an Excel file.}
@@ -12,6 +18,11 @@ read_excel_file(file, sheetIndexes = NULL, sheetNames = NULL)
 \item{sheetIndexes}{A vector of numbers, sheet indexes in the workbook.}
 
 \item{sheetNames}{A vector of strings, sheet names.}
+
+\item{define_page}{A integer, 0: no page, 1: file name as page, 2: sheet name
+as page, 3: file and sheet names as page, separated by the indicated separator.}
+
+\item{page_sep}{A string, separator to form the page value.}
 }
 \value{
 A \code{pivot_table} object list.

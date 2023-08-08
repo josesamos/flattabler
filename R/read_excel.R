@@ -25,10 +25,10 @@
 #'
 #' @examples
 #'
-#' file <- system.file("extdata", "excel/ine2871.xlsx", package = "flattabler")
+#' file <- system.file("extdata", "excelfolder/m4.xlsx", package = "flattabler")
 #' pt <- read_excel_sheet(file)
 #'
-#' pt <- read_excel_sheet(file, sheetName = "tabla-2871")
+#' pt <- read_excel_sheet(file, sheetName = "Hoja2", define_page = 1)
 #'
 #' @export
 read_excel_sheet <- function(file,
@@ -96,7 +96,9 @@ read_excel_sheet <- function(file,
 #' @export
 read_excel_file <- function (file,
                              sheetIndexes = NULL,
-                             sheetNames = NULL) {
+                             sheetNames = NULL,
+                             define_page = 3,
+                             page_sep = ':') {
   if (is.null(sheetIndexes) & is.null(sheetNames)) {
     sheetNames <- readxl::excel_sheets(file)
   } else if (is.null(sheetNames)) {
@@ -114,8 +116,20 @@ read_excel_file <- function (file,
       )
     )
     if (nrow(ft) > 0) {
+      page <- NULL
+      if (define_page == 1) {
+        page <- basename(file)
+      } else if (define_page == 2) {
+        page <- name
+      } else if (define_page == 3) {
+        page <- paste(c(basename(file), name), collapse = page_sep)
+      }
       ft <- as.data.frame(ft)
-      lpt <- c(lpt, list(pivot_table(ft, c(basename(file), name))))
+      if (is.null(page)) {
+        lpt <- c(lpt, list(pivot_table(ft)))
+      } else {
+        lpt <- c(lpt, list(pivot_table(ft, page)))
+      }
     }
   }
   lpt
@@ -153,7 +167,9 @@ read_excel_file <- function (file,
 read_excel_folder <- function (folder,
                                sheetIndex = 1,
                                sheetName = NULL,
-                               allSheets = FALSE) {
+                               allSheets = FALSE,
+                               define_page = 3,
+                               page_sep = ':') {
   lf <- list.files(path = folder, full.names = TRUE)
   if (allSheets) {
     do.call(c,
@@ -161,7 +177,9 @@ read_excel_folder <- function (folder,
               lf,
               read_excel_file,
               sheetIndexes = NULL,
-              sheetNames = NULL
+              sheetNames = NULL,
+              define_page = define_page,
+              page_sep = page_sep
             ))
   } else {
     do.call(list,
@@ -169,7 +187,9 @@ read_excel_folder <- function (folder,
               lf,
               read_excel_sheet,
               sheetIndex = sheetIndex,
-              sheetName = sheetName
+              sheetName = sheetName,
+              define_page = define_page,
+              page_sep = page_sep
             ))
   }
 }

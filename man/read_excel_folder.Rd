@@ -4,7 +4,14 @@
 \alias{read_excel_folder}
 \title{Import one sheet from each Excel file in a folder}
 \usage{
-read_excel_folder(folder, sheetIndex = 1, sheetName = NULL, allSheets = FALSE)
+read_excel_folder(
+  folder,
+  sheetIndex = 1,
+  sheetName = NULL,
+  allSheets = FALSE,
+  define_page = 3,
+  page_sep = ":"
+)
 }
 \arguments{
 \item{folder}{A string, folder name.}
@@ -14,6 +21,11 @@ read_excel_folder(folder, sheetIndex = 1, sheetName = NULL, allSheets = FALSE)
 \item{sheetName}{A string, sheet name.}
 
 \item{allSheets}{A boolean.}
+
+\item{define_page}{A integer, 0: no page, 1: file name as page, 2: sheet name
+as page, 3: file and sheet names as page, separated by the indicated separator.}
+
+\item{page_sep}{A string, separator to form the page value.}
 }
 \value{
 A \code{pivot_table} object list.
