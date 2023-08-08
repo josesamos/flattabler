@@ -1,0 +1,23 @@
+---
+title: "Basics and getting started with the flattabler package"
+author: "Jose Samos (jsamos@ugr.es)"
+date: "2023-08-08"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{flattabler}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE, message=FALSE}
+library(rolap)
+```
+
+# Introduction

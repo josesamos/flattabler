@@ -8,3 +8,7 @@
 ^CRAN-RELEASE$
 ^datos$
 ^ejemplos.R$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

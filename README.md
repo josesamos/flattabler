@@ -4,6 +4,10 @@
 # flattabler
 
 <!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/flattabler)](https://CRAN.R-project.org/package=flattabler)
+[![R-CMD-check](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Pivot tables are generally used to present raw and summary data. They
