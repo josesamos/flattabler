@@ -2,7 +2,7 @@ test_that("read_excel_sheet()", {
   expect_equal({
     file <-
       system.file("extdata", "excelfolder/m4.xlsx", package = "flattabler")
-    pt <- read_excel_sheet(file, define_page = 1) |>
+    pt <- read_excel_sheet(file, define_page = 0) |>
       remove_top(1) |>
       define_labels(n_col = 2, n_row = 2) |>
       fill_values() |>
@@ -13,7 +13,6 @@ test_that("read_excel_sheet()", {
     pt
   }, {
     pt2 <- pt_ex |>
-      set_page(page = "m4.xlsx") |>
       remove_top(1) |>
       define_labels(n_col = 2, n_row = 2) |>
       remove_k() |>
@@ -31,7 +30,7 @@ test_that("read_excel_sheet()", {
   expect_equal({
     file <-
       system.file("extdata", "excelfolder/m4.xlsx", package = "flattabler")
-    pt <- read_excel_sheet(file, sheetName = "Hoja2", define_page = 1) |>
+    pt <- read_excel_sheet(file, sheetName = "Hoja2", define_page = 0) |>
       remove_top(1) |>
       define_labels(n_col = 2, n_row = 2) |>
       fill_values() |>
@@ -42,7 +41,6 @@ test_that("read_excel_sheet()", {
     pt
   }, {
     pt2 <- pt_ex |>
-      set_page(page = "m4.xlsx") |>
       remove_top(1) |>
       define_labels(n_col = 2, n_row = 2) |>
       remove_k() |>
@@ -119,7 +117,7 @@ test_that("read_excel_file()", {
 test_that("read_excel_folder()", {
   expect_equal({
     folder <- system.file("extdata", "excelfolder", package = "flattabler")
-    lpt <- read_excel_folder(folder, define_page = 1)
+    lpt <- read_excel_folder(folder, define_page = 0)
     pt <- lpt[[4]] |>
       remove_top(1) |>
       define_labels(n_col = 2, n_row = 2) |>
@@ -131,7 +129,6 @@ test_that("read_excel_folder()", {
     pt
   }, {
     pt2 <- pt_ex |>
-      set_page(page = "m4.xlsx") |>
       remove_top(1) |>
       define_labels(n_col = 2, n_row = 2) |>
       remove_k() |>
@@ -149,7 +146,7 @@ test_that("read_excel_folder()", {
 test_that("read_excel_folder()", {
   expect_equal({
     folder <- system.file("extdata", "excelfolder", package = "flattabler")
-    lpt <- read_excel_folder(folder, allSheets = TRUE, define_page = 1)
+    lpt <- read_excel_folder(folder, allSheets = TRUE, define_page = 0)
     pt <- lpt[[4]] |>
       remove_top(1) |>
       define_labels(n_col = 2, n_row = 2) |>
@@ -161,7 +158,6 @@ test_that("read_excel_folder()", {
     pt
   }, {
     pt2 <- pt_ex |>
-      set_page(page = "m4.xlsx") |>
       remove_top(1) |>
       define_labels(n_col = 2, n_row = 2) |>
       remove_k() |>
