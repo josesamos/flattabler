@@ -35,3 +35,133 @@ The rest of this document is structured as follows: First, in addition to commen
 In this example, given a pivot table and the flat table obtained from it, the transformations performed are presented. Next, a function is defined that groups these transformations. This function is applied to a list of pivot tables to obtain a single flat table. Finally, it is shown how the flat table can be modified using functions from `tidyverse` package components.
 
 ## Pivot table
+
+A *pivot table* allows to represent information in a structured way, mainly to be analysed by a person or to make a graphical representation of it. In addition to a header and/or footer, it contains label rows and columns, and a matrix of values, usually numeric data. 
+
+```{r, results = "asis", echo = FALSE}
+pt <- flattabler::df_ex
+rownames(pt) <- sprintf("r%d",1:nrow(pt))
+colnames(pt) <- sprintf("c%d",1:ncol(pt))
+pander::pandoc.table(pt, split.table = Inf, emphasize.italics.cols = 1:2, emphasize.italics.rows = 1:3)
+```
+
+The table above, contained in the `df_ex` variable of the package, has the following parts:
+
+   - The ***header*** is made up of row _r1_ and the intersection between rows and columns of labels (cells of _c1_ and _c2_ with _r2_ and _r3_). Let us suppose that the content of the cell _(r1, c1)_ is especially relevant, it is part of the table header and identifies the content of this pivot table with respect to others: It is the identifier of the *page*.
+
+   - Columns _c1_ and _c2_, also rows _r2_ and _r3_, contain ***labels***, except those of the intersection that are part of the header. It is common to try not to repeat the values of the outer labels, it being understood that, if there is no value, the value of that position is the last one shown in the same row or column (this is the case in column _c1_ and in row _r2_). In the innermost labels, if there are no values, it is because the corresponding position in the outer row or column corresponds to an aggregate (this is the case in column _c2_ and in row _r3_).
+   
+   - The ***matrix of values*** is made up of rows and columns after those containing labels (rows from _r4_ on, and columns from _c3_ on). Each value of this matrix is characterized by the combination of labels of the corresponding row and column. It is common to find null values in that matrix because the data is not produced or recorded for the combination of labels that define it, that is, the data is usually scattered. In addition to base data, aggregated data can be included in the matrix. Since it was intended for a person, the thousands separator had been used and, both this and the decimal separator, had been used with the Spanish style.
+
+
+## Obtaining a flat table
+
+A flat database or flat-file database is a database that only contains a single table. A *flat table* is a generally denormalized table that is not related to other tables. It is not necessarily tidy data (in the sense of the [`tidyverse`](https://CRAN.R-project.org/package=tidyverse) package) but in each column all the data must be of the same type, so that it can be easily stored in a RDBMS (*Relational Database Management System*).
+
+A pivot table is not a flat table, but from a pivot table we can obtain a flat table, that is what we are going to do with the help of the `flattabler` package. Below are the transformations performed using its functions.
+
+```{r}
+library(flattabler)
+
+ft <- pivot_table(df_ex) |>
+  set_page(1, 1) |>
+  remove_top(1) |>
+  define_labels(n_col = 2, n_row = 2) |>
+  fill_labels() |>
+  remove_agg() |>
+  fill_values() |>
+  remove_k() |>
+  replace_dec() |>
+  unpivot()
+```
+
+Starting from the pivot table in the variable `df_ex`:
+
+1. We get an object using the `pivot_table()` function, the constructor of the `pivot_table` class.
+
+1. We define that the value that identifies the pivot table (its page) is in cell _(r1, c1)_, by means of `set_page(1, 1)`.
+
+1. We should leave only the labels and the matrix of values, therefore rows or columns with other information have to be removed. The cells between the rows and columns of labels are ignored (cells of _c1_ and _c2_ with _r2_ and _r3_). We delete the first row using `remove_top(1)` because it does not contain labels.
+
+1. Then, we define the number of rows and columns containing labels using `define_labels(n_col = 2, n_row = 2)`. There are two columns and two rows of labels.
+
+1. Since there are more than one row or column with labels, the values of the labels of the first row and column have not been repeated. They are filled using `fill_labels()`.
+
+1. The pivot table contains aggregated data. It is removed by `remove_agg()`. It is recognized exclusively because there are no values in the row or column of the labels next to the array of values.
+
+1. The array of values has gaps that, instead of having a numeric value, have an empty string. In R it is more appropriate to have `NA` if the data is not available. This operation is performed through `fill_values()`.
+
+1. The example is a Spanish report that uses thousands and decimal separators in the value matrix. We need to adapt them to the R syntax for numbers. This operation is carried out using `remove_k()` to remove the thousands separator and `replace_dec()` to replace the decimal separator.
+
+1. Finally, it is transformed into a flat table by `unpivot()`: each row corresponds to a value with its combination of labels. By default, `NA` values are not considered.
+
+The result obtained can be seen in the following table. An additional label has been added with the value that identifies the pivot table, the pivot table _page_.
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(ft)
+```
+
+Since this table is not intended to be analysed directly by a person, aggregated data has been removed as well as data that was not available for tag combinations (of course this is optional). The numerical data has been transformed so that it can be easily processed in R. 
+
+The result of the transformations is a `tibble` that can be further transformed using the functions of the [`tidyverse`](https://CRAN.R-project.org/package=tidyverse) package.
+
+## Transforming a set of pivot tables
+
+Once we have defined the necessary transformations for a pivot table, we can apply them to any other with the same structure. Candidate tables **can have different number of rows or columns**, depending on the number of labels, but they **must have the same number of rows and columns of labels, and the same number of header or footer rows**, so that the transformations are the same for each table.
+
+To easily perform this operation, we define a function `f` from the transformations, as shown below.
+
+```{r}
+f <- function(pt) {
+  pt |>
+  set_page(1, 1) |>
+  remove_top(1) |>
+  define_labels(n_col = 2, n_row = 2) |>
+  fill_labels() |>
+  remove_agg() |>
+  fill_values() |>
+  remove_k() |>
+  replace_dec() |>
+  unpivot()
+}
+```
+
+The only difference from the original transformation is that we don't need to build a `pivot_table` object because the input functions provided by the package build it automatically.
+
+The package has functions that allow data to be read in either text format or Excel format, from a single file or from a folder with multiple files. For example, the following code reads files in CSV format contained in a package data folder. The result is a list of `pivot_table` objects that can be directly transformed.
+
+```{r}
+folder <- system.file("extdata", "csvfolder", package = "flattabler")
+lpt <- read_text_folder(folder)
+
+class(lpt[[1]])
+```
+
+Given a list of pivot tables, `lpt`, `flatten_table_list()` applies the transformation defined by function `f` to each of them, and merges the results into a flat table. 
+
+```{r}
+ftl <- flatten_table_list(lpt, f)
+```
+
+In this case, the full result is not shown in this document because it takes up too much space, but a sample is shown below.
+
+```{r, results = "asis", echo = FALSE}
+ft_sample <- dplyr::slice_sample(ftl, prop = 0.20) |> 
+    dplyr::arrange(page, col1, col2, row1, row2)
+pander::pandoc.table(ft_sample)
+```
+
+Once we have a flat table, implemented using `tibble`, we can use [`tidyverse`](https://CRAN.R-project.org/package=tidyverse) package components to transform it, as shown below. In this case all results are displayed.
+
+```{r}
+t <- ftl |>
+  tidyr::pivot_wider(names_from = page, values_from = value) |>
+  dplyr::rename(B = col1, A = col2, E = row1, D = row2) |> 
+  dplyr::select(A, B, D, E, M1, M2, M3, M4) |> 
+  dplyr::arrange(A, B, D, E)
+```
+
+```{r, results = "asis", echo = FALSE}
+pander::pandoc.table(t)
+```
+
