@@ -861,6 +861,34 @@ test_that("extract_labels(), pivot_table", {
   }, pf_ex_compact)
 })
 
+
+test_that("divide() divides a pt in a pt list", {
+  expect_equal({
+    pt <- pivot_table(df_set_h_v)
+    lpt <- pt |> divide()
+    lpt[[1]]
+  }, pt_ex)
+})
+
+test_that("divide() divides a pt in a pt list", {
+  expect_equal({
+    pt <- pivot_table(df_set_h)
+    lpt <- pt |> divide()
+    lpt[[1]]
+  }, pt_ex)
+})
+
+test_that("divide() divides a pt in a pt list", {
+  expect_equal({
+    pt <- pivot_table(df_set_v)
+    lpt <- pt |> divide()
+    lpt[[1]]
+  }, pt_ex)
+})
+
+
+
+
 test_that("unpivot(), pivot_table", {
   expect_equal({
     pt_ex |>

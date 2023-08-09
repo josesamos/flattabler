@@ -159,7 +159,8 @@
 #'     unpivot()
 #' }
 #'
-#' lpt <- divide(df_set_h_v)
+#' pt <- pivot_table(df_set_h_v)
+#' lpt <- pt |> divide()
 #' ft_set <- flatten_table_list(lpt, f)
 #'
 #' @format A `tibble` object.

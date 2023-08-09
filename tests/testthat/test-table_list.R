@@ -1,21 +1,3 @@
-test_that("divide() divides a df in a df list", {
-  expect_equal({
-    divide(df_set_h_v)[[1]]
-  }, pt_ex)
-})
-
-test_that("divide() divides a df in a df list", {
-  expect_equal({
-    divide(df_set_h)[[1]]
-  }, pt_ex)
-})
-
-test_that("divide() divides a df in a df list", {
-  expect_equal({
-    divide(df_set_v)[[1]]
-  }, pt_ex)
-})
-
 test_that("flatten_table_list() flats a list of pivot tables", {
   expect_equal({
     f <- function(pt) {
@@ -31,14 +13,16 @@ test_that("flatten_table_list() flats a list of pivot tables", {
         unpivot()
     }
 
-    lpt <- divide(df_set_h_v)
+    pt <- pivot_table(df_set_h_v)
+    lpt <- pt |> divide()
     flatten_table_list(lpt, f)
   }, ft_set)
 })
 
 test_that("get_col_values() gets values of a column in a list of tables", {
   expect_equal({
-    lpt <- divide(df_set_h_v)
+    pt <- pivot_table(df_set_h_v)
+    lpt <- pt |> divide()
     get_col_values(lpt, col = 1, start_row = 4)
   }, structure(
     list(

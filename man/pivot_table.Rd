@@ -4,12 +4,22 @@
 \alias{pivot_table}
 \title{\code{pivot_table} S3 class}
 \usage{
-pivot_table(df, page = vector("character"), n_col_labels = 0, n_row_labels = 0)
+pivot_table(
+  df,
+  page = "",
+  page_row = 0,
+  page_col = 0,
+  n_col_labels = 0,
+  n_row_labels = 0
+)
 }
 \arguments{
 \item{df}{A data frame, contains one or more pivot tables.}
 
 \item{page}{A string, additional information associated with the pivot table.}
+
+\item{page_row, page_col}{A cell (row and column number), page information
+included in the table.}
 
 \item{n_col_labels}{A number, number of columns containing pivot table labels.}
 
@@ -25,10 +35,13 @@ converted to character data type.
 }
 \examples{
 
-df <- df_ex
-pt <- pivot_table(df)
+pt <- pivot_table(df_ex)
 
-pt <- pivot_table(df, page = "M4")
+pt <- pivot_table(df_ex, page = "M4")
+
+pt <- pivot_table(df_ex, page_row = 1, page_col = 1)
+
+pt <- pivot_table(df_ex, page_row = 1, page_col = 1, n_col_labels = 2, n_row_labels = 2)
 
 }
 \seealso{

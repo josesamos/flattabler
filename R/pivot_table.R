@@ -6,6 +6,8 @@
 #'
 #' @param df A data frame, contains one or more pivot tables.
 #' @param page A string, additional information associated with the pivot table.
+#' @param page_row,page_col A cell (row and column number), page information
+#' included in the table.
 #' @param n_col_labels A number, number of columns containing pivot table labels.
 #' @param n_row_labels A number, number of rows containing pivot table labels.
 #'
@@ -16,23 +18,32 @@
 #'
 #' @examples
 #'
-#' df <- df_ex
-#' pt <- pivot_table(df)
+#' pt <- pivot_table(df_ex)
 #'
-#' pt <- pivot_table(df, page = "M4")
+#' pt <- pivot_table(df_ex, page = "M4")
+#'
+#' pt <- pivot_table(df_ex, page_row = 1, page_col = 1)
+#'
+#' pt <- pivot_table(df_ex, page_row = 1, page_col = 1, n_col_labels = 2, n_row_labels = 2)
 #'
 #' @export
 pivot_table <- function(df,
-                        page = vector("character"),
+                        page = "",
+                        page_row = 0,
+                        page_col = 0,
                         n_col_labels = 0,
                         n_row_labels = 0) {
   stopifnot(is.data.frame(df))
-  stopifnot(is.vector(page))
-
   df <-
     data.frame(lapply(df, as.character), stringsAsFactors = FALSE)
   df <- assign_names(df)
-  page <- as.character(page)
+
+  if (page_row > 0 & page_col > 0) {
+    page <- df[page_row, page_col]
+  }
+  else if (page == "") {
+    page <- character(0)
+  }
 
   structure(
     list(
@@ -796,6 +807,119 @@ extract_labels.pivot_table <- function(pt, col = 1, labels = c()) {
     pt$df <- assign_names(pt$df)
   }
   pt
+}
+
+
+#' Divide table
+#'
+#' Divides a table into tables separated by some empty row or column. Returns a
+#' `pivot_table` object list.
+#'
+#' Sometimes multiple pivot tables are placed in a text document, imported as
+#' one text table. This operation recursively divides the initial table into
+#' tables separated by some empty row or column. Once a division has been made,
+#' it tries to divide each part of the result. An object is generated for each
+#' indivisible pivot table. Returns a list of `pivot_table` objects.
+#'
+#' If individual tables have a header or footer, they should not be separated
+#' from the table by empty rows. If they were, objects would be generated from
+#' them that must later be removed from the list of objects in the result.
+#'
+#' The operation can be applied to tables located horizontally, vertically or in
+#' a grid on the initial table. The only requirement to be able to divide it is
+#' that there is some empty row or column between them.
+#'
+#' @param pt A `pivot_table` object.
+#'
+#' @return A `pivot_table` list.
+#'
+#' @family flat table list functions
+#' @seealso \code{\link{pivot_table}}
+#'
+#' @examples
+#'
+#' pt <- pivot_table(df_set_h_v)
+#' lpt <- pt |> divide()
+#'
+#' @export
+divide <- function(pt) UseMethod("divide")
+
+#' @rdname divide
+#' @export
+divide.pivot_table <- function(pt) {
+  # empty cells with NA
+  df <-
+    data.frame(lapply(pt$df, function(x)
+      dplyr::na_if(stringr::str_trim(x), "")), stringsAsFactors = FALSE)
+  # get spacer rows and columns
+  x <- spacer_rows(df)
+  y <- spacer_columns(df)
+  # get subtables
+  lpt <- vector("list")
+  for (i in (1:(length(x) - 1))) {
+    for (j in (1:(length(y) - 1))) {
+      pt2 <- pt
+      pt2$df <- pt$df[x[i]:x[(i + 1)], y[j]:y[(j + 1)]]
+      pt2$df <- assign_names(pt2$df)
+      df2 <- df[x[i]:x[(i + 1)], y[j]:y[(j + 1)]]
+      x2 <- spacer_rows(df2)
+      y2 <- spacer_columns(df2)
+      if (length(x2) > 2 | length(y2) > 2) {
+        # recursively divide
+        lpt <-
+          c(lpt, divide(pt2))
+      } else {
+        # remove empty rows and columns
+        pt2$df <-
+          pt2$df[rowSums(is.na(df2)) != ncol(df2), colSums(is.na(df2)) != nrow(df2)]
+        pt2$df <- assign_names(pt2$df)
+        lpt <-
+          c(lpt, list(pt2))
+      }
+    }
+  }
+  lpt
+}
+
+
+#' Spacer rows
+#'
+#' Gets the empty row numbers for a table. If there are several consecutive
+#' empty rows, only one is considered. The first and last rows in the table are
+#' also added to the list even if they are not empty.
+#'
+#' @param df A data frame.
+#'
+#' @return A vector of numbers.
+#'
+#' @keywords internal
+spacer_rows <- function(df) {
+  # empty rows
+  x <- which((rowSums(is.na(df)) == ncol(df)) == TRUE)
+  # consider the first and last rows
+  x <- unique(c(1, x, nrow(df)))
+  # only one row as spacer
+  x <- x[c(x[-1], 0) - x != 1]
+}
+
+#' Spacer columns
+#'
+#' Gets the empty column numbers for a table. If there are several consecutive
+#' empty columns, only one is considered. The first and last columns in the
+#' table are also added to the list even if they are not empty.
+#'
+#' @param df A data frame.
+#'
+#' @return A vector of numbers.
+#'
+#' @keywords internal
+spacer_columns <- function(df) {
+  # empty columns
+  y <- which((colSums(is.na(df)) == nrow(df)) == TRUE)
+  # consider the first and last columns
+  y <- unique(c(1, y, ncol(df)))
+  # only one column as separator
+  y <- y[c(y[-1], 0) - y != 1]
 }
 
 
