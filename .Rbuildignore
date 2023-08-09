@@ -6,3 +6,10 @@
 ^cran-comments\.md$
 ^\.travis\.yml$
 ^CRAN-RELEASE$
+^datos$
+^ejemplos.R$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^codecov\.yml$

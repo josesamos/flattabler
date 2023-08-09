@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 inst/doc
+datos
+ejemplos.R
+docs
