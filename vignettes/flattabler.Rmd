@@ -4,7 +4,7 @@ author: "Jose Samos (jsamos@ugr.es)"
 date: "2023-08-08"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{flattabler}
+  %\VignetteIndexEntry{Basics and getting started with the flattabler package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,3 +21,17 @@ library(rolap)
 ```
 
 # Introduction
+
+Pivot tables are generally used to present raw and summary data. They are generated from spreadsheets and, more recently, also from R ([`pivottabler`](https://CRAN.R-project.org/package=pivottabler)).
+
+If we generate pivot tables from our own data, `flattabler` package is not necessary. But, if we get data in pivot table format and need to represent or analyse it using another tool, this package can be very helpful: It can save us several hours of programming or manual transformation. 
+
+`flattabler` package offers a set of operations that allow us to transform one or more pivot tables into a flat table. 
+
+The rest of this document is structured as follows: First, in addition to commenting on the `flattabler` package operations, an illustrative example of transforming a pivot table into a flat table is presented; continuing with the example, the operations of the packages `dplyr` and `tidyr`, to carry out the rest of the transformations of the data, are also shown. Then, various cases of transformation of pivot tables are presented. Finally, the document ends with the conclusions section.
+
+# An illustrative example
+
+In this example, given a pivot table and the flat table obtained from it, the transformations performed are presented. Next, a function is defined that groups these transformations. This function is applied to a list of pivot tables to obtain a single flat table. Finally, it is shown how the flat table can be modified using functions from `tidyverse` package components.
+
+## Pivot table
