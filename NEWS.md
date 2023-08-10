@@ -1,3 +1,5 @@
+# flattabler (development version)
+
 # flattabler 2.0.0
 * New data model for `pivot_table` class, vectorial algorithm for `unpivot()`.
 * New examples for README and vignette.
