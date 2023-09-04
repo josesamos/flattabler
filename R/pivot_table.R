@@ -941,6 +941,7 @@ spacer_columns <- function(df) {
 #'   information is included or not.
 #' @param na.rm A boolean, indicates whether NA values from the array of values
 #'   are removed or not.
+#' @param keep_col_names A boolean, if possible, keep the column names.
 #'
 #' @return A `tibble`.
 #'
@@ -968,13 +969,14 @@ spacer_columns <- function(df) {
 #'   unpivot()
 #'
 #' @export
-unpivot <- function(pt, include_page, na.rm) UseMethod("unpivot")
+unpivot <- function(pt, include_page, na.rm, keep_col_names) UseMethod("unpivot")
 
 #' @rdname unpivot
 #' @export
 unpivot.pivot_table <- function(pt,
-                                 include_page = TRUE,
-                                 na.rm = TRUE)
+                                include_page = TRUE,
+                                na.rm = TRUE,
+                                keep_col_names = FALSE)
 {
   n_col <- pt$n_col_labels
   n_row <- pt$n_row_labels
@@ -996,7 +998,17 @@ unpivot.pivot_table <- function(pt,
   if (n_col > 0) {
     seq_c <- 1:n_col
     for (c in seq_c) {
-      names <- c(names, sprintf("col%d", c))
+      if (keep_col_names) {
+        col_name <- pt$df[n_row, c]
+        if (length(col_name) == 0) {
+          col_name  <- sprintf("col%d", c)
+        } else if (trimws(col_name) == "") {
+          col_name  <- sprintf("col%d", c)
+        }
+      } else {
+        col_name <- sprintf("col%d", c)
+      }
+      names <- c(names, col_name)
     }
   } else {
     seq_c <- NULL

@@ -5,9 +5,9 @@
 \alias{unpivot.pivot_table}
 \title{Unpivot a pivot table}
 \usage{
-unpivot(pt, include_page, na.rm)
+unpivot(pt, include_page, na.rm, keep_col_names)
 
-\method{unpivot}{pivot_table}(pt, include_page = TRUE, na.rm = TRUE)
+\method{unpivot}{pivot_table}(pt, include_page = TRUE, na.rm = TRUE, keep_col_names = FALSE)
 }
 \arguments{
 \item{pt}{A \code{pivot_table} object.}
@@ -17,6 +17,8 @@ information is included or not.}
 
 \item{na.rm}{A boolean, indicates whether NA values from the array of values
 are removed or not.}
+
+\item{keep_col_names}{A boolean, if possible, keep the column names.}
 }
 \value{
 A \code{tibble}.

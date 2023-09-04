@@ -181,7 +181,18 @@ read_excel_folder <- function (folder,
               define_page = define_page,
               page_sep = page_sep
             ))
-  } else {
+  } else if (length(sheetIndex) > 1 | length(sheetName) > 1) {
+    do.call(c,
+            lapply(
+              lf,
+              read_excel_file,
+              sheetIndexes = sheetIndex,
+              sheetNames = sheetName,
+              define_page = define_page,
+              page_sep = page_sep
+            ))
+  }
+  else {
     do.call(list,
             lapply(
               lf,
