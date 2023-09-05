@@ -30,7 +30,7 @@ read_text_file <- function(file, sep = ';', encoding = "UTF-8", define_page = TR
   if (define_page) {
     page <- basename(file)
   } else {
-    page <- NULL
+    page <- ""
   }
   pivot_table(
     utils::read.table(

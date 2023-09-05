@@ -40,7 +40,7 @@ read_excel_sheet <- function(file,
     wb <- readxl::excel_sheets(file)
     sheetName <- wb[sheetIndex]
   }
-  page <- NULL
+  page <- ""
   if (define_page == 1) {
     page <- basename(file)
   } else if (define_page == 2) {
@@ -57,11 +57,7 @@ read_excel_sheet <- function(file,
       trim_ws = TRUE
     )
   )
-  if (is.null(page)) {
-    pivot_table(as.data.frame(ft))
-  } else {
-    pivot_table(as.data.frame(ft), page)
-  }
+  pivot_table(as.data.frame(ft), page)
 }
 
 #' Import Excel file
@@ -116,7 +112,7 @@ read_excel_file <- function (file,
       )
     )
     if (nrow(ft) > 0) {
-      page <- NULL
+      page <- ""
       if (define_page == 1) {
         page <- basename(file)
       } else if (define_page == 2) {
@@ -125,11 +121,7 @@ read_excel_file <- function (file,
         page <- paste(c(basename(file), name), collapse = page_sep)
       }
       ft <- as.data.frame(ft)
-      if (is.null(page)) {
-        lpt <- c(lpt, list(pivot_table(ft)))
-      } else {
-        lpt <- c(lpt, list(pivot_table(ft, page)))
-      }
+      lpt <- c(lpt, list(pivot_table(ft, page)))
     }
   }
   lpt
