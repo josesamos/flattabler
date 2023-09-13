@@ -26,7 +26,7 @@ ft_ex_v2 <- pivot_table(df_ex) |>
   fill_labels() |>
   remove_agg() |>
   unpivot(include_page = FALSE,
-  na.rm = FALSE)
+  na_rm = FALSE)
 
 }
 \seealso{

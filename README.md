@@ -78,7 +78,7 @@ ft <- pivot_table(df_pivottabler) |>
   fill_labels() |>
   remove_agg() |>
   fill_values() |>
-  unpivot(na.rm = TRUE)
+  unpivot(na_rm = TRUE)
 ```
 
 The result is a `tibble` object that can be further transformed, for

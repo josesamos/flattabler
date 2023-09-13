@@ -901,7 +901,7 @@ test_that("unpivot(), pivot_table", {
       fill_labels() |>
       remove_agg() |>
       unpivot(include_page = TRUE,
-              na.rm = TRUE)
+              na_rm = TRUE)
   }, ft_ex)
 })
 
@@ -917,7 +917,7 @@ test_that("unpivot(), pivot_table", {
       fill_labels() |>
       remove_agg() |>
       unpivot(include_page = FALSE,
-              na.rm = FALSE)
+              na_rm = FALSE)
   }, ft_ex_v2)
 })
 

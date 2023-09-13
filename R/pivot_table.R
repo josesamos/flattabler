@@ -939,7 +939,7 @@ spacer_columns <- function(df) {
 #' @param pt A `pivot_table` object.
 #' @param include_page A boolean, indicates whether a column with the page
 #'   information is included or not.
-#' @param na.rm A boolean, indicates whether NA values from the array of values
+#' @param na_rm A boolean, indicates whether NA values from the array of values
 #'   are removed or not.
 #' @param keep_col_names A boolean, if possible, keep the column names.
 #'
@@ -969,13 +969,13 @@ spacer_columns <- function(df) {
 #'   unpivot()
 #'
 #' @export
-unpivot <- function(pt, include_page, na.rm, keep_col_names) UseMethod("unpivot")
+unpivot <- function(pt, include_page, na_rm, keep_col_names) UseMethod("unpivot")
 
 #' @rdname unpivot
 #' @export
 unpivot.pivot_table <- function(pt,
                                 include_page = TRUE,
-                                na.rm = TRUE,
+                                na_rm = TRUE,
                                 keep_col_names = FALSE)
 {
   n_col <- pt$n_col_labels
@@ -1058,7 +1058,7 @@ unpivot.pivot_table <- function(pt,
     }
     df[, k] <-
       as.vector(t(pt$df[(n_row + 1):nrow(pt$df), (n_col + 1):ncol(pt$df)]))
-    if (na.rm) {
+    if (na_rm) {
       df <- df[!is.na(df[, k]), ]
     }
   }

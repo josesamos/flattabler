@@ -1,5 +1,5 @@
 # flattabler (development version)
-* Add parameter `keep_col_names` to `unpivot` function.
+* Add `keep_col_names` and `na_rm` parameters to `unpivot` function.
 * Read the indicated sheets from a folder of Excel files in `read_excel_folder()`.
 
 # flattabler 2.0.0

@@ -67,7 +67,7 @@
 #'   fill_labels() |>
 #'   remove_agg() |>
 #'   unpivot(include_page = FALSE,
-#'   na.rm = FALSE)
+#'   na_rm = FALSE)
 #'
 #' @format A `tibble` object.
 #'
