@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/flattabler)](https://CRAN.R-project.org/package=flattabler)
 [![R-CMD-check](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml)
+[![Downloads](http://cranlogs.r-pkg.org/badges/flattabler?color=brightgreen)](http://www.r-pkg.org/pkg/flattabler)
 <!-- badges: end -->
 
 <!-- [![Codecov test coverage](https://codecov.io/gh/josesamos/flattabler/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/flattabler?branch=master) -->
