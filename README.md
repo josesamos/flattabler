@@ -10,9 +10,9 @@ status](https://www.r-pkg.org/badges/version/flattabler)](https://CRAN.R-project
 [![R-CMD-check](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/josesamos/flattabler/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/flattabler?branch=master)
-[![Downloads](http://cranlogs.r-pkg.org/badges/flattabler?color=brightgreen)](http://www.r-pkg.org/pkg/flattabler)
 <!-- badges: end -->
 
+<!-- [![Downloads](http://cranlogs.r-pkg.org/badges/flattabler?color=brightgreen)](http://www.r-pkg.org/pkg/flattabler) -->
 <!-- [![Codecov test coverage](https://codecov.io/gh/josesamos/flattabler/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/flattabler?branch=master) -->
 
 Pivot tables are generally used to present raw and summary data. They
