@@ -33,7 +33,8 @@ pivot_table <- function(df,
                         page_col = 0,
                         n_col_labels = 0,
                         n_row_labels = 0) {
-  stopifnot("A data frame was expected." = is.data.frame(df))
+  # stopifnot("A data frame was expected." = is.data.frame(df))
+  df <- as.data.frame(df)
   df <-
     data.frame(lapply(df, as.character), stringsAsFactors = FALSE)
   df <- assign_names(df)
