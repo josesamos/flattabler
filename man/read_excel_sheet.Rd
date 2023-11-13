@@ -41,10 +41,10 @@ in the \code{pivot_table} object.
 }
 \examples{
 
-# file <- system.file("extdata", "excelfolder/m4.xlsx", package = "flattabler")
-# pt <- read_excel_sheet(file)
+file <- system.file("extdata", "excelfolder/m4.xlsx", package = "flattabler")
+pt <- read_excel_sheet(file)
 
-# pt <- read_excel_sheet(file, sheetName = "Hoja2", define_page = 1)
+pt <- read_excel_sheet(file, sheetName = "Hoja2", define_page = 1)
 
 }
 \seealso{

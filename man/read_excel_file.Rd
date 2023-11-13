@@ -40,12 +40,12 @@ page information. In order not to lose this information, they are always
 stored in each \code{pivot_table} object.
 }
 \examples{
-# file <- system.file("extdata", "excel/set_sheets.xlsx", package = "flattabler")
-# lpt <- read_excel_file(file)
+file <- system.file("extdata", "excel/set_sheets.xlsx", package = "flattabler")
+lpt <- read_excel_file(file)
 
-# lpt <- read_excel_file(file, sheetIndexes = 1:4)
+lpt <- read_excel_file(file, sheetIndexes = 1:4)
 
-# lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
+lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
 
 }
 \seealso{

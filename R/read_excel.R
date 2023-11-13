@@ -25,10 +25,10 @@
 #'
 #' @examples
 #'
-#' # file <- system.file("extdata", "excelfolder/m4.xlsx", package = "flattabler")
-#' # pt <- read_excel_sheet(file)
+#' file <- system.file("extdata", "excelfolder/m4.xlsx", package = "flattabler")
+#' pt <- read_excel_sheet(file)
 #'
-#' # pt <- read_excel_sheet(file, sheetName = "Hoja2", define_page = 1)
+#' pt <- read_excel_sheet(file, sheetName = "Hoja2", define_page = 1)
 #'
 #' @export
 read_excel_sheet <- function(file,
@@ -82,12 +82,12 @@ read_excel_sheet <- function(file,
 #' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
-#' # file <- system.file("extdata", "excel/set_sheets.xlsx", package = "flattabler")
-#' # lpt <- read_excel_file(file)
+#' file <- system.file("extdata", "excel/set_sheets.xlsx", package = "flattabler")
+#' lpt <- read_excel_file(file)
 #'
-#' # lpt <- read_excel_file(file, sheetIndexes = 1:4)
+#' lpt <- read_excel_file(file, sheetIndexes = 1:4)
 #'
-#' # lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
+#' lpt <- read_excel_file(file, sheetNames = c("M1", "M2", "M3", "M4"))
 #'
 #' @export
 read_excel_file <- function (file,
@@ -150,10 +150,10 @@ read_excel_file <- function (file,
 #' @seealso \code{\link{pivot_table}}
 #'
 #' @examples
-#' # folder <- system.file("extdata", "excelfolder", package = "flattabler")
-#' # lpt <- read_excel_folder(folder)
+#' folder <- system.file("extdata", "excelfolder", package = "flattabler")
+#' lpt <- read_excel_folder(folder)
 #'
-#' # lpt <- read_excel_folder(folder, allSheets = TRUE)
+#' lpt <- read_excel_folder(folder, allSheets = TRUE)
 #'
 #' @export
 read_excel_folder <- function (folder,

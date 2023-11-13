@@ -44,10 +44,10 @@ page information. In order not to lose this information, they are always
 stored in each \code{pivot_table} object.
 }
 \examples{
-# folder <- system.file("extdata", "excelfolder", package = "flattabler")
-# lpt <- read_excel_folder(folder)
+folder <- system.file("extdata", "excelfolder", package = "flattabler")
+lpt <- read_excel_folder(folder)
 
-# lpt <- read_excel_folder(folder, allSheets = TRUE)
+lpt <- read_excel_folder(folder, allSheets = TRUE)
 
 }
 \seealso{
