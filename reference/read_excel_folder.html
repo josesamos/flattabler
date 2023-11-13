@@ -128,12 +128,11 @@ stored in each <code>pivot_table</code> object.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># folder &lt;- system.file("extdata", "excelfolder", package = "flattabler")</span></span></span>
-<span class="r-in"><span><span class="co"># lpt &lt;- read_excel_folder(folder)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">folder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"excelfolder"</span>, package <span class="op">=</span> <span class="st">"flattabler"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lpt</span> <span class="op">&lt;-</span> <span class="fu">read_excel_folder</span><span class="op">(</span><span class="va">folder</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># lpt &lt;- read_excel_folder(folder, allSheets = TRUE)</span></span></span>
+<span class="r-in"><span><span class="va">lpt</span> <span class="op">&lt;-</span> <span class="fu">read_excel_folder</span><span class="op">(</span><span class="va">folder</span>, allSheets <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
