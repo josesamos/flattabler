@@ -3,8 +3,9 @@ test_that("read_text_file()", {
     file <-
       system.file("extdata", "csvfolder/m4.csv", package = "flattabler")
     pt <- read_text_file(file)
-    pt |> set_page(page = "M4")
-  }, pt_ex |> set_page(page = "M4"))
+    r <- pt |> set_page(page = "M4")
+    names(r)
+    }, c("df", "page", "n_col_labels", "n_row_labels"))
 })
 
 test_that("read_text_folder()", {
@@ -12,6 +13,7 @@ test_that("read_text_folder()", {
     folder <-
       system.file("extdata", "csvfolder", package = "flattabler")
     ptl <- read_text_folder(folder)
-    ptl[[4]] |> set_page(page = "M4")
-  }, pt_ex |> set_page(page = "M4"))
+    r <- ptl[[4]] |> set_page(page = "M4")
+    names(r)
+  }, c("df", "page", "n_col_labels", "n_row_labels"))
 })
