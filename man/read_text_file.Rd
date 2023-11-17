@@ -32,7 +32,7 @@ object.
 }
 \examples{
 
-file <- system.file("extdata", "csvfolder/m4.csv", package = "flattabler")
+file <- system.file("extdata", "m4.csv", package = "flattabler")
 pt <- read_text_file(file)
 
 }
