@@ -16,10 +16,10 @@ Depends:
     R (>= 2.10)
 Imports: 
     dplyr,
+    readr,
     readxl,
     stringr,
-    tibble,
-    utils
+    tibble
 Suggests: 
     knitr,
     pander,

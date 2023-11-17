@@ -33,13 +33,12 @@ read_text_file <- function(file, sep = ';', encoding = "UTF-8", define_page = TR
     page <- ""
   }
   pivot_table(
-    utils::read.table(
+    readr::read_delim(
       file,
-      sep = sep,
-      header = FALSE,
-      stringsAsFactors = FALSE,
-      encoding = encoding,
-      colClasses = c("character")
+      delim = sep,
+      col_names = FALSE,
+      skip_empty_rows = FALSE,
+      col_types = readr::cols(.default = readr::col_character())
     ),
     page
   )
