@@ -31,8 +31,8 @@ object.
 }
 \examples{
 
-# folder <- system.file("extdata", "csvfolder", package = "flattabler")
-# lpt <- read_text_folder(folder)
+folder <- system.file("extdata", "csvfolder", package = "flattabler")
+lpt <- read_text_folder(folder)
 
 }
 \seealso{

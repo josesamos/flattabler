@@ -22,8 +22,8 @@
 #'
 #' @examples
 #'
-#' # file <- system.file("extdata", "csvfolder/m4.csv", package = "flattabler")
-#' # pt <- read_text_file(file)
+#' file <- system.file("extdata", "csvfolder/m4.csv", package = "flattabler")
+#' pt <- read_text_file(file)
 #'
 #' @export
 read_text_file <- function(file, sep = ';', encoding = "UTF-8", define_page = TRUE) {
@@ -68,8 +68,8 @@ read_text_file <- function(file, sep = ';', encoding = "UTF-8", define_page = TR
 #'
 #' @examples
 #'
-#' # folder <- system.file("extdata", "csvfolder", package = "flattabler")
-#' # lpt <- read_text_folder(folder)
+#' folder <- system.file("extdata", "csvfolder", package = "flattabler")
+#' lpt <- read_text_folder(folder)
 #'
 #' @export
 read_text_folder <-
