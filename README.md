@@ -10,7 +10,6 @@ status](https://www.r-pkg.org/badges/version/flattabler)](https://CRAN.R-project
 [![R-CMD-check](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/josesamos/flattabler/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/josesamos/flattabler/branch/master/graph/badge.svg)](https://app.codecov.io/gh/josesamos/flattabler?branch=master)
-[![Downloads](http://cranlogs.r-pkg.org/badges/flattabler?color=brightgreen)](https://www.r-pkg.org:443/pkg/flattabler)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/flattabler?color=brightgreen)](https://www.r-pkg.org:443/pkg/flattabler)
 <!-- badges: end -->
 
