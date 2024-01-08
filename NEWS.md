@@ -1,4 +1,4 @@
-# flattabler (development version)
+# flattabler 2.1.1
 * Modify the cph field of the description.
 * Improve read excel files test.
 
