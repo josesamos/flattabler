@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   flattabler: flattabler.html
-last_built: 2024-01-08T08:42Z
+last_built: 2024-01-08T08:58Z
 urls:
   reference: https://josesamos.github.io/flattabler/reference
   article: https://josesamos.github.io/flattabler/articles
