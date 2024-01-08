@@ -170,3 +170,15 @@ test_that("read_excel_folder()", {
     pt2
   })
 })
+
+
+
+test_that("read_excel_folder()", {
+  folder <- system.file("extdata", "excelfolder", package = "flattabler")
+  lpt <- read_excel_folder(folder, sheetIndex = c(1, 1), define_page = 0)
+  expect_equal({
+    length(lpt)
+  }, {
+   8
+  })
+})
